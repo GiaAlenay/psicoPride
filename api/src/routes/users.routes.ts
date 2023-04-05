@@ -4,7 +4,7 @@ import {
   getUsers,
   getUserById,
 
-} from '../controllers/user'; // importa los controladores
+} from '../controllers/user'; 
 
 const router = Router();
 

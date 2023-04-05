@@ -3,13 +3,19 @@ import express  from 'express';
 import bodyParser from 'body-parser';
 import { port } from './config';
 import sequelize from './database';
-import usersRoutes from './routes/users.routes';
+import allRoutes from './routes/index';
+import morgan from "morgan";
+import cors from "cors";
 
 
 const app = express();
+app.use(cors());
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/users', usersRoutes);
+app.use('/', allRoutes);
 
 sequelize.sync({ force: true}).then(() => {
     app.listen(3000, () => {
