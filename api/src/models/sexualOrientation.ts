@@ -5,7 +5,7 @@ import { SexualOrientationAttributes } from "../data";
 class SexualOrientation extends Model <SexualOrientationAttributes> implements SexualOrientationAttributes{
     public id?:number;
     public name!:string;
-    public flag!:string;
+     public flag!:string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 }
@@ -13,7 +13,7 @@ class SexualOrientation extends Model <SexualOrientationAttributes> implements S
 SexualOrientation.init(
     {
         id:{
-            type:DataTypes.NUMBER,
+            type:DataTypes.INTEGER,
             autoIncrement:true,
             primaryKey:true
         },
