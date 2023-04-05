@@ -1,21 +1,15 @@
-// src/routes/users.routes.ts
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import {
+  createUser,
+  getUsers,
+  getUserById,
+
+} from '../controllers/user'; // importa los controladores
+
 const router = Router();
-// GET - users
-router.get('/', async (req: Request, res: Response) => {
-  // TO DO
-  const result : string[] = [];
-  res.status(200).json({ users: result });
-});
-// GET - users/:id
-router.get('/:id', async (req: Request, res: Response) => {
-  // TO DO
-  const result : string = '';
-  res.status(200).json({ user: result });
-});
-// POST - users
-router.post('/', async (req: Request, res: Response) => {
-  // TO DO
-  res.status(201).json({ user: {} });
-});
+
+router.post('/', createUser);
+router.get('/', getUsers);
+router.get('/:id', getUserById);
+
 export default router;

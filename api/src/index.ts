@@ -1,15 +1,18 @@
-import http from 'http';
-import express from 'express';
+
+import express  from 'express';
 import bodyParser from 'body-parser';
-import { Request, Response } from 'express';
 import { port } from './config';
+import sequelize from './database';
 import usersRoutes from './routes/users.routes';
+
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/users', usersRoutes);
-const server = http.createServer(app);
-server.listen(port, () => {
-  console.log(`API started at http://localhost:${port}`);
-});
+
+sequelize.sync({ force: true}).then(() => {
+    app.listen(3000, () => {
+        console.log('Server started on port 3000');
+    });
+  });

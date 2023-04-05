@@ -1,23 +1,47 @@
-import { Sequelize, Model, DataTypes, Optional } from 'sequelize';
+// src/models/user.ts
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../database';
 interface UserAttributes {
-    id: number;
-    name: string;
-  }
-  
-  // Define la interfaz para las entradas opcionales de la tabla de usuarios
-  interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
-  
-  // Define el modelo de la tabla de usuarios
-  class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-    public id!: number;
-    public name!: string;
-  
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
-  
-    public static associate(models: any) {
-      User.hasMany(models.Identity);
-    }
-  }
+  id?: number;
+  username: string;
+  email: string;
+  password: string;
+}
 
-  export default User;
+class User extends Model<UserAttributes> implements UserAttributes {
+  public id?: number;
+  public username!: string;
+  public email!: string;
+  public password!: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
+
+User.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    tableName: "users",
+  }
+);
+
+export default User;
