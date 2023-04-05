@@ -1,12 +1,12 @@
 import { DataTypes,Model } from "sequelize";
 import sequelize from "../database";
 
-interface genderIdentityAttributes{
+interface GenderIdentityAttributes{
     id?:number;
     name:string;
 }
 
-class GenderIdentity extends Model <genderIdentityAttributes> implements genderIdentityAttributes{
+class GenderIdentity extends Model <GenderIdentityAttributes> implements GenderIdentityAttributes{
     public id?:number;
     public name!:string;
     public readonly createdAt!: Date;
