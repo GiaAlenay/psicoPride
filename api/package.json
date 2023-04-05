@@ -30,6 +30,7 @@
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.3",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
     "tslint": "^6.1.3",
