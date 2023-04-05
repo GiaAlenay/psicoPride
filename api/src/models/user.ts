@@ -1,11 +1,7 @@
 // src/models/user.ts
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database';
-interface UserAttributes {
-  id?: number;
-  age: number;
-  
-}
+import { UserAttributes } from '../data';
 
 class User extends Model<UserAttributes> implements UserAttributes {
   public id?: number;

@@ -1,11 +1,6 @@
 import { DataTypes ,Model } from "sequelize";
 import sequelize from "../database";
-
-interface SexualOrientationAttributes{
-    id?:number;
-    name:string;
-    flag:string;
-}
+import { SexualOrientationAttributes } from "../data";
 
 class SexualOrientation extends Model <SexualOrientationAttributes> implements SexualOrientationAttributes{
     public id?:number;

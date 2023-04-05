@@ -1,10 +1,7 @@
 import { DataTypes,Model } from "sequelize";
 import sequelize from "../database";
+import { GenderIdentityAttributes } from "../data";
 
-interface GenderIdentityAttributes{
-    id?:number;
-    name:string;
-}
 
 class GenderIdentity extends Model <GenderIdentityAttributes> implements GenderIdentityAttributes{
     public id?:number;
