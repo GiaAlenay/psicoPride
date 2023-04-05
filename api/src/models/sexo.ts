@@ -1,10 +1,10 @@
 import { Model,DataTypes } from "sequelize";
 import sequelize from "../database";
-
-interface SexoAttributes{
-    id?:number;
-    name:string;
-};
+import { SexoAttributes } from "../data";
+// interface SexoAttributes{
+//     id?:number;
+//     name:string;
+// };
 
 class Sexo extends Model <SexoAttributes> implements SexoAttributes{
     public id?:number;
