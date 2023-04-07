@@ -1,70 +1,43 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./chatBurbuja.css";
+import { DraggableCore, DraggableData, DraggableEvent } from "react-draggable";
 
-export const ChatBurbuja = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const boxRef = useRef<HTMLDivElement>(null);
+interface DraggableBoxProps {
+  initialX: number;
+  initialY: number;
+}
 
-  const isClicked = useRef<boolean>(false);
+export const ChatBurbuja: React.FC = () => {
+  const [width, setWidth] = useState(window.innerWidth);
 
-  const coords = useRef<{
-    startX: number;
-    startY: number;
-    lastX: number;
-    lastY: number;
-  }>({
-    startX: 0,
-    startY: 0,
-    lastX: 0,
-    lastY: 0,
-  });
+  const [x, setX] = useState(1150);
+  const [y, setY] = useState(400);
 
   useEffect(() => {
-    if (!boxRef.current || !containerRef.current) return;
-
-    const box = boxRef.current;
-    const container = containerRef.current;
-
-    const onMouseDown = (e: MouseEvent) => {
-      isClicked.current = true;
-      coords.current.startX = e.clientX;
-      coords.current.startY = e.clientY;
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    console.log(width);
+    if (width > 1100) {
+      setX(width - 200);
+    }
+    if (width < 1100) {
+      setX(width - 150);
+    }
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
+  }, [width]);
 
-    const onMouseUp = (e: MouseEvent) => {
-      isClicked.current = false;
-      coords.current.lastX = box.offsetLeft;
-      coords.current.lastY = box.offsetTop;
-    };
-
-    const onMouseMove = (e: MouseEvent) => {
-      if (!isClicked.current) return;
-
-      const nextX = e.clientX - coords.current.startX + coords.current.lastX;
-      const nextY = e.clientY - coords.current.startY + coords.current.lastY;
-
-      box.style.top = `${nextY}px`;
-      box.style.left = `${nextX}px`;
-    };
-
-    box.addEventListener("mousedown", onMouseDown);
-    box.addEventListener("mouseup", onMouseUp);
-    container.addEventListener("mousemove", onMouseMove);
-    container.addEventListener("mouseleave", onMouseUp);
-
-    const cleanup = () => {
-      box.removeEventListener("mousedown", onMouseDown);
-      box.removeEventListener("mouseup", onMouseUp);
-      container.removeEventListener("mousemove", onMouseMove);
-      container.removeEventListener("mouseleave", onMouseUp);
-    };
-
-    return cleanup;
-  }, []);
-
+  const handleDrag = (e: DraggableEvent, data: DraggableData) => {
+    setX(data.x);
+    setY(data.y);
+  };
   return (
-    <div ref={containerRef} className="container">
-      <div ref={boxRef} className="box"></div>
-    </div>
+    <DraggableCore onDrag={handleDrag}>
+      <div
+        className="box"
+        style={{ position: "absolute", left: x, top: y }}
+      ></div>
+    </DraggableCore>
   );
 };
