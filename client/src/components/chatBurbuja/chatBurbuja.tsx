@@ -1,7 +1,7 @@
-import { ChatPresentation } from "../../components/chatPresentation/chatPresentations";
 import { useEffect, useRef } from "react";
-import "./landing.css";
-export const Landing = () => {
+import "./chatBurbuja.css";
+
+export const ChatBurbuja = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -63,9 +63,7 @@ export const Landing = () => {
   }, []);
 
   return (
-    <div className="landingPag" ref={containerRef}>
-      <ChatPresentation />
-
+    <div ref={containerRef} className="container">
       <div ref={boxRef} className="box"></div>
     </div>
   );
