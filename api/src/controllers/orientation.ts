@@ -9,7 +9,8 @@ export const findOrCreateOrientations = async (req: Request, res: Response) => {
                 defaults:{name:s.name,flag:s.flag},
             })
         })
-      res.status(201).json({ Orientaciones: 'creados' });
+        const orientations= await SexualOrientation.findAll()
+      res.status(201).json(orientations);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Error creating Orientations' });

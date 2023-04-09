@@ -9,7 +9,8 @@ export const findOrCreatGender=async(req:Request, res:Response)=>{
             where:{name:g.name },            
         })
        }) 
-       res.status(200).json({gender:'generos creados'})   
+       const genders= await GenderIdentity.findAll() 
+       res.status(201).json(genders)   
     } catch (error) {
         
       res.status(500).json({ message: 'Error creating user' });

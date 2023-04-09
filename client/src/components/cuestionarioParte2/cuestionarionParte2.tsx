@@ -9,6 +9,7 @@ export const CuestionarioParte2 = () => {
   const { data, loading, error } = useSelector<RootState, SexoState>(
     (state) => state.sexo
   );
+
   useEffect(() => {
     dispatch(getSexos());
   }, [dispatch]);

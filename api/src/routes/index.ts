@@ -5,9 +5,9 @@ import gender from "./gender.routes"
 import orientation from "./orientations"
 
 const router = Router();
-router.use("/users", users)
+router.use("/usuarios", users)
 router.use("/sexos",sexo)
-router.use("/gender",gender)
-router.use("/orientation",orientation)
+router.use("/generos",gender)
+router.use("/orientaciones",orientation)
 
 export default router;
