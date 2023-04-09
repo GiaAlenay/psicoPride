@@ -1,3 +1,10 @@
+import UsersList from "../../components/userList/userList";
+
 export const Chat = () => {
-  return <div>Chat</div>;
+  return (
+    <div>
+      <div>cdc</div>
+      <UsersList />
+    </div>
+  );
 };
