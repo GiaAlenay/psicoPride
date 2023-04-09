@@ -5,6 +5,8 @@ import axios  from 'axios';
 interface Sexo {
   id: number;
   name: string;
+  createdAt?:Date;
+  updatedAt?:Date;
 }
 
 export interface SexoState {
@@ -44,7 +46,7 @@ export const { getSexoStart, getSexoSuccess, getSexoError } = sexoSlice.actions;
 export const getSexos = (): AppThunk => async (dispatch) => {
   dispatch(getSexoStart());
   try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    const response = await axios.get('http://localhost:3000/sexos');
     dispatch(getSexoSuccess(response.data));
   } catch (err) {
     dispatch(getSexoError());
