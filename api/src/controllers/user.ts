@@ -1,12 +1,48 @@
 
 import { Request, Response } from 'express';
 import  User  from '../models/user'; 
+import GenderIdentity from '../models/genderIdentity';
+import Sexo from '../models/sexo';
+import SexualOrientation from '../models/sexualOrientation'
+
+GenderIdentity.hasMany(User);
+User.belongsTo(GenderIdentity);
+
+Sexo.hasMany(User);
+User.belongsTo(Sexo);
+
+SexualOrientation.hasMany(User);
+User.belongsTo(SexualOrientation);
 
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const newUser = await User.create(req.body);
-    res.status(201).json({ user: newUser });
+    const {age,sexo,gender,orientation}=req.body
+
+    const findSexo = await Sexo.findOne({
+      where: { name: sexo },
+    });
+
+    const findGender = await GenderIdentity.findOne({
+      where: { name: gender },
+    });
+
+    const findOrientation = await SexualOrientation.findOne({
+      where: { name: orientation },
+    });
+
+    if (findGender && findSexo && findOrientation ) {
+      const newUser = await User.create({
+        age,
+        GenderIdentityId:findGender.id,
+        SexoId:findSexo.id,
+        SexualOrientationId:findOrientation.id     
+      });
+      res.status(201).json({ user: newUser });
+   }else{
+      res.status(404).json({ msg: "Información incorrecta, itentelo otra vez." });  
+   }
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error creating user' });

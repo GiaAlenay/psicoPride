@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true , limit: '50mb'}));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use('/', allRoutes);
 
-sequelize.sync({ force: true}).then(() => {
+sequelize.sync({ force: false}).then(() => {
     app.listen(3000, () => {
         console.log('Server started on port 3000');
     });

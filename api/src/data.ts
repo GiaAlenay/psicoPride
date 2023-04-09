@@ -14,7 +14,9 @@ export interface SexualOrientationAttributes{
 export interface UserAttributes {
     id?: number;
     age: number;
-    
+    GenderIdentityId?:number;
+    SexualOrientationId?:number;
+    SexoId?:number;
 }
 
 
