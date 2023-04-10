@@ -17,6 +17,3 @@ User.belongsTo(SexualOrientation);
 
 
 
-TemaChat.belongsToMany(SexualOrientation, { through: 'chat_orientation' });
-SexualOrientation.belongsToMany(TemaChat, { through: 'chat_orientation' });
-
