@@ -5,14 +5,7 @@ import GenderIdentity from '../models/genderIdentity';
 import Sexo from '../models/sexo';
 import SexualOrientation from '../models/sexualOrientation'
 
-GenderIdentity.hasMany(User);
-User.belongsTo(GenderIdentity);
 
-Sexo.hasMany(User);
-User.belongsTo(Sexo);
-
-SexualOrientation.hasMany(User);
-User.belongsTo(SexualOrientation);
 
 
 export const createUser = async (req: Request, res: Response) => {
