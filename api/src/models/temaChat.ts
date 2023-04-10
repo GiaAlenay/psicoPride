@@ -4,6 +4,7 @@ import Sexo from "./sexo";
 import { TemaChatAttributes } from "../data";
 import TemaChatSexo from "./temaChatSexo";
 import TemaChatGenero from "./temaChatGenero";
+import TemaChatOrientacion from "./temaChatOrientacion";
 
 class TemaChat extends Model <TemaChatAttributes> implements TemaChatAttributes{
     public id?:number;
@@ -13,6 +14,7 @@ class TemaChat extends Model <TemaChatAttributes> implements TemaChatAttributes{
     public readonly updatedAt!: Date;
     public readonly temaChatSexo?: TemaChatSexo[];
     public readonly temaChatGenero?: TemaChatGenero[];
+    public readonly temaChatOrientacion?: TemaChatOrientacion[];
 }
 
 TemaChat.init(

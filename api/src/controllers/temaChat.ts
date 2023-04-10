@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
 import TemaChat from '../models/temaChat';
 import TemaChatSexo from '../models/temaChatSexo';
+import TemaChatGenero from '../models/temaChatGenero';
+import TemaChatOrientacion from '../models/temaChatOrientacion';
 import Sexo from '../models/sexo';
 import GenderIdentity from '../models/genderIdentity';
+import SexualOrientation from '../models/sexualOrientation';
 import { chatArray } from '../data';
-import TemaChatGenero from '../models/temaChatGenero';
 
 export const findOrCreateTemasChat = async (req: Request, res: Response) => {    
     try {        
@@ -39,6 +41,19 @@ export const findOrCreateTemasChat = async (req: Request, res: Response) => {
                     }
                 
             }
+            if (s.orientaciones && s.orientaciones.length>0) {
+                for (const OrientacionId of s.orientaciones) {                    
+                    const orientacion = await SexualOrientation.findByPk(OrientacionId);
+                    if (orientacion) {
+                        await TemaChatOrientacion.findOrCreate({
+                            where:{TemaChatId: newTema.id,
+                                OrientacionId: orientacion.id,}, 
+                                defaults:{TemaChatId: newTema.id,
+                            OrientacionId: orientacion.id}
+                        });}                        
+                    }
+                
+            }
         })
   
         const Temas = await TemaChat.findAll({
@@ -50,6 +65,11 @@ export const findOrCreateTemasChat = async (req: Request, res: Response) => {
                 attributes: [],
               }, },
               { model: GenderIdentity,
+                attributes:["id","name"],
+                through: {
+                    attributes: [],
+                  }, },
+                { model: SexualOrientation,
                 attributes:["id","name"],
                 through: {
                     attributes: [],

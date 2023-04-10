@@ -1,6 +1,7 @@
 import { DataTypes ,Model } from "sequelize";
 import sequelize from "../database";
 import { SexualOrientationAttributes } from "../data";
+import TemaChatOrientacion from "./temaChatOrientacion";
 
 class SexualOrientation extends Model <SexualOrientationAttributes> implements SexualOrientationAttributes{
     public id?:number;
@@ -8,6 +9,7 @@ class SexualOrientation extends Model <SexualOrientationAttributes> implements S
      public flag!:string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
+    public readonly temaChatOrientacion?: TemaChatOrientacion[];
 }
 
 SexualOrientation.init(
