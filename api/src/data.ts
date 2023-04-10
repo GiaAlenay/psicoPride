@@ -23,7 +23,7 @@ export interface TemaChatAttributes{
     id?:number;
     pregunta:string;
     respuesta:string;
-    sexos?: SexoAttributes[]
+    sexos?: number[]
 }
 
 export interface TemaBibliotecaAttributes{
@@ -35,6 +35,7 @@ export interface TemaBibliotecaAttributes{
 
 export const chatArray:TemaChatAttributes[]=[
     {pregunta:'¿Por qué no tengo ganas de sexo?',
+        sexos:[1],
         respuesta:'Las estadísticas no son optimistas: estamos perdiendo las ganas de mantener relaciones sexuales. La ausencia de deseo sexual ha aumentado del 8% al 13% entre 2005 y 2016, señala una investigación publicada en The Journal of Sexual Medicine que analiza diferentes estudios en la materia. Un problema que acusan principalmente las mujeres,'},
     {pregunta:'¿Qué me impide llegar al orgasmo?',
         respuesta:'“Principalmente sucede por falta de deseo. Otro tipo de problema tras esta anorgasmia puede ser el dolor en la penetración. Lo tratamos con terapia, con o sin pareja”, dice. “Explicamos técnicas de masturbación o hablamos de cómo probar cosas con la pareja sexaul, afinando hacia dónde va la duda.'},
