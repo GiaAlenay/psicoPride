@@ -4,12 +4,14 @@ import { combineReducers } from '@reduxjs/toolkit';
 import userReducer from './user';
 import sexoReducer from './sexo'
 import genderReducer from './gender'
+import orientacionReducer from './orientacion';
 
 const rootReducer = combineReducers({
   // Agrega aquí tus reducers
   user: userReducer,
   sexo:sexoReducer,
-  gender:genderReducer
+  gender:genderReducer,
+  orientacion:orientacionReducer
 });
 
 export default rootReducer;
