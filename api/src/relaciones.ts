@@ -15,24 +15,8 @@ User.belongsTo(Sexo);
 SexualOrientation.hasMany(User);
 User.belongsTo(SexualOrientation);
 
-// User.belongsToMany(Group, {
-//     through: UserGroup,
-//     as: 'groups',
-//     foreignKey: 'userId',
-//   });
-//   Group.belongsToMany(User, {
-//     through: UserGroup,
-//     as: 'users',
-//     foreignKey: 'groupId',});
 
-TemaChat.belongsToMany(Sexo, { through: TemaChatSexo, as:'sexos',foreignKey:'TemaChatId' });
-Sexo.belongsToMany(TemaChat, { through: TemaChatSexo, as:'temachat',foreignKey:'SexoId' });
-
-TemaChat.belongsToMany(GenderIdentity, { through: 'chat_gender' });
-GenderIdentity.belongsToMany(TemaChat, { through: 'chat_gender' });
 
 TemaChat.belongsToMany(SexualOrientation, { through: 'chat_orientation' });
 SexualOrientation.belongsToMany(TemaChat, { through: 'chat_orientation' });
 
-// Profesor.belongsToMany(Materias, { through:  });
-// Materias.belongsToMany(Profesor, { through:  });

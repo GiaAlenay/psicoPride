@@ -1,19 +1,19 @@
 import TemaChat from './temaChat';
-import Sexo from './sexo';
+import GenderIdentity from './genderIdentity';
 import {Model,DataTypes} from 'sequelize'
 import sequelize from '../database';
 
 
-class TemaChatSexo extends Model {
+class TemaChatGenero extends Model {
     public TemaChatId!: number;
-    public SexoId!: number;  
+    public GeneroId!: number;  
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
     public readonly chat?: TemaChat;
-    public readonly sexo?: Sexo;  
+    public readonly gender?: GenderIdentity;  
   }
   
-  TemaChatSexo.init(
+  TemaChatGenero.init(
     {
       TemaChatId: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -23,24 +23,24 @@ class TemaChatSexo extends Model {
           key: 'id',
         },
       },
-      SexoId: {
+      GeneroId: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         references: {
-          model: Sexo,
+          model: GenderIdentity,
           key: 'id',
         },
       },
     },
     {
       sequelize,
-      tableName: 'chat_sexo',
+      tableName: 'chat_genero',
       timestamps: false
     }
   );
 
-TemaChat.belongsToMany(Sexo, { through: TemaChatSexo, foreignKey:'TemaChatId' });
-Sexo.belongsToMany(TemaChat, { through: TemaChatSexo, foreignKey:'SexoId' });
+TemaChat.belongsToMany(GenderIdentity, { through: TemaChatGenero, foreignKey:'TemaChatId' });
+GenderIdentity.belongsToMany(TemaChat, { through: TemaChatGenero, foreignKey:'GeneroId' });
 
 
-export default TemaChatSexo;
+export default TemaChatGenero;

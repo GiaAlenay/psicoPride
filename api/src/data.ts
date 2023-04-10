@@ -23,7 +23,9 @@ export interface TemaChatAttributes{
     id?:number;
     pregunta:string;
     respuesta:string;
-    sexos?: number[]
+    sexos?: number[];
+    generos?:number[];
+    orientaciones?:number[]
 }
 
 export interface TemaBibliotecaAttributes{
@@ -35,21 +37,27 @@ export interface TemaBibliotecaAttributes{
 
 export const chatArray:TemaChatAttributes[]=[
     {pregunta:'¿Por qué no tengo ganas de sexo?',
-        sexos:[1],
+        sexos:[1],generos:[1],
         respuesta:'Las estadísticas no son optimistas: estamos perdiendo las ganas de mantener relaciones sexuales. La ausencia de deseo sexual ha aumentado del 8% al 13% entre 2005 y 2016, señala una investigación publicada en The Journal of Sexual Medicine que analiza diferentes estudios en la materia. Un problema que acusan principalmente las mujeres,'},
     {pregunta:'¿Qué me impide llegar al orgasmo?',
+        generos:[1,3],
+        
         respuesta:'“Principalmente sucede por falta de deseo. Otro tipo de problema tras esta anorgasmia puede ser el dolor en la penetración. Lo tratamos con terapia, con o sin pareja”, dice. “Explicamos técnicas de masturbación o hablamos de cómo probar cosas con la pareja sexaul, afinando hacia dónde va la duda.'},
     {pregunta:' ¿El tamaño de mi pene es normal?',
+        generos:[2],
+        
     respuesta:'Según la web erótica Platanomelón, el 25% de las dudas recibidas en su plataforma están relacionadas con dudas sobre el tamaño del miembro masculino. Carme Sánchez lo corrobora matizando que no es una cuestión que surja tanto en consultas, sino más a través de consultorios en los que generalmente no se muestra la identidad de quien pregunta.'},
     {pregunta:'Soy eyaculador precoz: ¿Qué puedo hacer?',
     respuesta:'Laura Oliveros. ¡Ojo! El hecho de acabar antes de lo que deseo no significa siempre que sea eyaculación precoz. Bien porque pierden la erección o porque eyaculan antes es una de las cuestiones que más se abordan en consulta con los hombres.'},
     {pregunta:'¿Cómo combatir la disfunción eréctil?',
+    generos:[3],
     respuesta:'“Las disfunciones pueden aparecer a cualquier edad, pero se observa que los jóvenes, de entre 18 y 30 años, acuden antes a un profesional que personas de más de 35, que vienen cuando llevan mucho tiempo con el problema”, cuenta Laura Oliveros. '},
     {pregunta:'¿Existe la mujer multiorgásmica?',
     respuesta:'En su libro, Carme Sánchez apunta: «Existe porque las mujeres no necesitamos un tiempo de reposo demasiado largo entre orgasmos. Pero eso no significa que cada relación sexual se convierta en una competición con nuestra pareja sexual o con nosotras mismas.'},
     {pregunta:'¿Eyaculan las mujeres?',
     respuesta:'Algunas mujeres emiten un líquido bioquímicamente parecido al semen en el momento del orgasmo. En la mayoría de los casos la cantidad es tan pequeña que ni la mujer ni la pareja sexual se percatan del fenómeno, pero a veces la cantidad es bastante abundante.'},
     {pregunta:'¿Por qué las mujeres tardan más en llegar al orgasmo?',
+    generos:[2,3],
     respuesta:'El tiempo que se tarde en llegar al orgasmo depende del grado de deseo, de la capacidad de excitación y también de la adecuada estimulación, y no tanto de ser hombre o mujer. '},
     {pregunta:'¿Qué edad es la ideal para comenzar a tener relaciones sexuales?',
     respuesta:'todo depende de que la persona esté dispuesta a experimentar porque verdaderamente lo desea, no porque lo imponga su pareja o su grupo de amistades.'},

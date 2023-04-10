@@ -3,6 +3,7 @@ import sequelize from "../database";
 import Sexo from "./sexo";
 import { TemaChatAttributes } from "../data";
 import TemaChatSexo from "./temaChatSexo";
+import TemaChatGenero from "./temaChatGenero";
 
 class TemaChat extends Model <TemaChatAttributes> implements TemaChatAttributes{
     public id?:number;
@@ -11,6 +12,7 @@ class TemaChat extends Model <TemaChatAttributes> implements TemaChatAttributes{
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
     public readonly temaChatSexo?: TemaChatSexo[];
+    public readonly temaChatGenero?: TemaChatGenero[];
 }
 
 TemaChat.init(
