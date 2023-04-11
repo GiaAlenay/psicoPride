@@ -6,6 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
+  
 }
 
 code {
@@ -14,7 +16,11 @@ code {
 }
 *{
   font-family: 'Shippori Antique B1', sans-serif;
+  
+  
 }
 button{
-  all:unset
+  all:unset;
+  cursor: pointer;
 }
+

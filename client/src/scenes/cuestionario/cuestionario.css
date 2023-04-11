@@ -1,0 +1,115 @@
+.logoPsiPri{
+    margin: 20px;
+    max-width: 100px;
+    cursor: pointer;
+}
+
+.sgtBtnHolder{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;   
+	margin: auto;
+    margin-top: 3rem;
+	letter-spacing: 0.01em;
+	font-size: 16px;
+	font-size: .875rem;
+	line-height: 1.5;	
+  }
+  .sgtInside{
+
+    font-size: 16px;
+    height: 50px;
+    width: 194px;
+    border-radius: 3px;
+    text-align: center;
+    -o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    display: inline-block;
+    outline: 0;
+	white-space: nowrap;
+	line-height: 50px;	
+	font-weight: 300;
+	letter-spacing: 1px;
+  }
+.sgtInside i {
+	top: 1px;
+	line-height: 1;
+	margin-right: 5px;
+	width: 16px;
+}
+
+.sgtInside span {	
+	display: block;
+	opacity: 1;
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+}
+
+.gradient-border:enabled .sgtInside:hover span:first-child,
+.sgtInside span:last-child {
+	opacity: 0;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.gradient-border:enabled .sgtInside:hover span:last-child {
+	opacity: 1;
+	-webkit-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+
+.gradient-border {
+	background: #1D1F20;
+	position: relative;
+	border-radius: 3px;
+    height: 56px;
+    width: 200px;
+    display: grid;
+    justify-content: center;
+    align-items: center;   
+    background: linear-gradient(60deg, #8EB9F6, #f78ef7, #f37393, #d278e2, rgba(144,132,246,0.99), #7be4d6, #30d1bc,#4d74c7);
+	border-radius: 3px;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    
+}
+
+.gradient-border:enabled {
+    
+	animation-name: animatedgradient;
+    animation-timing-function: ease;
+}
+
+.gradient-border:disabled{
+    background: none;
+    background-color: rgb(107, 105, 105);
+    color: rgb(124, 122, 122) ;
+}
+/* .gradient-border:disabled .sgtInside:hover{
+    all:unset
+} */
+
+@keyframes animatedgradient {
+	0% { background: linear-gradient(60deg, #4d74c7,#30d1bc, #7be4d6, rgba(144,132,246,0.99), #d278e2, #f37393, #f78ef7, #8EB9F6, ); }
+	15% { background: linear-gradient(60deg, #8EB9F6, #4d74c7,#30d1bc, #7be4d6, rgba(144,132,246,0.99), #d278e2, #f37393, #f78ef7); }
+	30% { background: linear-gradient(60deg, #f78ef7, #8EB9F6, #4d74c7,#30d1bc, #7be4d6, rgba(144,132,246,0.99), #d278e2, #f37393) ;}
+    45% { background: linear-gradient(60deg,#f37393, #f78ef7, #8EB9F6, #4d74c7,#30d1bc, #7be4d6, rgba(144,132,246,0.99), #d278e2) }
+    60% { background: linear-gradient(60deg, #d278e2, #f37393, #f78ef7, #8EB9F6, #4d74c7,#30d1bc, #7be4d6, rgba(144,132,246,0.99)) }
+    75% { background: linear-gradient(60deg,rgba(144,132,246,0.99), #d278e2, #f37393, #f78ef7, #8EB9F6, #4d74c7,#30d1bc, #7be4d6, ) }
+    90% { background: linear-gradient(60deg, #7be4d6,rgba(144,132,246,0.99), #d278e2, #f37393, #f78ef7, #8EB9F6, #4d74c7,#30d1bc ) }
+    100% { background: linear-gradient(60deg,#30d1bc , #7be4d6,rgba(144,132,246,0.99), #d278e2, #f37393, #f78ef7, #8EB9F6, #4d74c7) }
+}
+
