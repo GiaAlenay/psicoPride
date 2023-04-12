@@ -94,6 +94,7 @@
 }
 
 .gradient-border:disabled{
+    cursor: not-allowed;
     background: none;
     background-color: rgb(107, 105, 105);
     color: rgb(124, 122, 122) ;

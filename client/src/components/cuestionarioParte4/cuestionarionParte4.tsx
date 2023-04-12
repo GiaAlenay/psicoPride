@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reduxToolkit/store";
@@ -7,7 +7,14 @@ import {
   OrientacionState,
 } from "../../reduxToolkit/reducers/orientacion";
 import { AppDispatch } from "../../reduxToolkit/store";
-export const CuestionarioParte4 = () => {
+
+interface MyComponentProps {
+  hanldledisable: () => void;
+}
+
+export const CuestionarioParte4: React.FC<MyComponentProps> = ({
+  hanldledisable,
+}) => {
   const dispatch: AppDispatch = useDispatch();
   const { data, loading, error } = useSelector<RootState, OrientacionState>(
     (state) => state.orientacion

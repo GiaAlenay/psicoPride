@@ -1,0 +1,59 @@
+.cardSexo{
+    max-width: 450px;
+    gap: 24px 10px;
+ 
+}
+.btnSexo{
+    background-color: rgb(33, 37, 41);
+    padding: 8px 16px;
+    box-shadow: 0 0 6px -2px #000, 0 0 45px -20px #000;
+    border-radius: 10px;
+    transition: color 0.25s linear;
+    position: relative;  
+    z-index: 1;
+}
+
+.btnmujer::before{
+    background: linear-gradient(rgb(255, 131, 193) 0%, rgb(250, 153, 83) 70%, rgb(160, 123, 182) 100%);
+}
+.btnhombre::before{
+background: linear-gradient(rgb(54, 51, 252) 0%, rgb(71, 159, 241) 70%, rgb(160, 123, 182) 100%);
+}
+
+.btnintersex::before{
+background: linear-gradient(rgb(137, 1, 190) 0%, rgb(101, 28, 236) 70%, rgb(238, 104, 250) 100%);
+
+}
+
+.sexoSemujer{
+    background: linear-gradient(rgb(255, 131, 193) 0%, rgb(250, 153, 83) 70%, rgb(160, 123, 182) 100%);
+}
+.sexoSehombre{
+background: linear-gradient(rgb(54, 51, 252) 0%, rgb(71, 159, 241) 70%, rgb(160, 123, 182) 100%);
+}
+
+.sexoSeintersex{
+background: linear-gradient(rgb(137, 1, 190) 0%, rgb(101, 28, 236) 70%, rgb(238, 104, 250) 100%);
+
+}
+
+.btnSexo::before{
+    border-radius: 10px;
+    position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transition: opacity 1s linear;
+  opacity: 0;
+}
+
+
+.btnSexo:hover::before {
+    opacity: 1;
+    border-radius: 10px;
+  }
+
+ 

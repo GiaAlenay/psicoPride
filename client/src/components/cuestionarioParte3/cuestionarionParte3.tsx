@@ -1,10 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reduxToolkit/store";
 import { getGenders, GenderState } from "../../reduxToolkit/reducers/gender";
 import { AppDispatch } from "../../reduxToolkit/store";
-export const CuestionarioParte3 = () => {
+
+interface MyComponentProps {
+  hanldledisable: () => void;
+}
+
+export const CuestionarioParte3: React.FC<MyComponentProps> = ({
+  hanldledisable,
+}) => {
   const dispatch: AppDispatch = useDispatch();
   const { data, loading, error } = useSelector<RootState, GenderState>(
     (state) => state.gender
