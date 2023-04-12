@@ -1,0 +1,10 @@
+.cardsGenero{
+    max-width: 340px;
+    gap: 12px 10px;
+}
+
+.btnGenero{
+    padding: 4px 20px;
+    border: 1px solid white;
+    border-radius: 25px;
+}
