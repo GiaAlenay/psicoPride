@@ -1,28 +1,47 @@
 .stepperCont{
-    border:1px solid white;
+    /* border:1px solid white; */
     width: 80%;
     text-align: center;
+    position: relative;
 
 }
 
 .progresLineStep{    
-    width: 50%;
-    height: 10px;
-    border:0.5px solid rgb(255, 255, 255,0.5);
-    background-color: none;
+    width: 90%;
+    height: 12px;
+    /* border:0.5px solid rgb(255, 255, 255,0.2); */
+    background-color: rgb(46, 42, 42);
+    box-shadow: inset 2px 1px 4px #111111;
+    
 
 }
 .progressDone{
     height: 8px;
     background-color: blueviolet;
-    transition: width 2s linear;
+    transition: width 1s linear;
+    box-shadow: inset 2px 1px 9px #111111;
 }
 
 
 .numberStep{
+    position: absolute;
     width: 40px;
     height: 40px;
-    background-color: blue;
+    background-color: rgb(63, 62, 62);
     border-radius: 50%;
-    
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.numberStep1{
+    left: 5%;
+}
+
+.numberStep2{
+    left: 35%;
+}
+.numberStep3{
+    right: 35%;
+}
+.numberStep4{
+    right:  5%;
 }
