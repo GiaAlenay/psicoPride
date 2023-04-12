@@ -44,7 +44,7 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
         {data.map((g: any) => (
           <button
             key={g.id}
-            className={`btnGenero`}
+            className={`btnGenero ${selected === g.name && "selectedGen"}`}
             onClick={() => {
               setSelected(g.name);
             }}
