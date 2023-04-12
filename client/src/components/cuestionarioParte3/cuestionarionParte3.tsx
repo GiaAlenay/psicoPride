@@ -30,15 +30,15 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
   }
 
   return (
-    <div>
-      <div>¿Cuál es tu identidad de genero?</div>
-      <ul>
+    <div className="W-100 text-center">
+      <h3>¿Cuál es tu identidad de genero?</h3>
+      <div>
         {data.map((sexo: any) => (
-          <li key={sexo.id}>
-            <p>{sexo.name}</p>
-          </li>
+          <button key={sexo.id}>
+            <h5>{sexo.name}</h5>
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
