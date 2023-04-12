@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./cuestionario.css";
 import { CuestionarioParte1 } from "../../components/cuestionarioParte1/cuestionarionParte1";
@@ -8,9 +8,16 @@ import { CuestionarioParte4 } from "../../components/cuestionarioParte4/cuestion
 import { Stepper } from "../../components/stepper/stepper";
 
 export const Cuestionario = () => {
+  const [desbloqueados, setDesbloqueados] = useState<number[]>([1]);
   const [current, setCurrent] = useState<number>(1);
   const [disable, setdisable] = useState<boolean>(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    !desbloqueados.find((n) => n === current + 1) &&
+      setDesbloqueados([...desbloqueados, current + 1]);
+    console.log(desbloqueados);
+  }, [current]);
 
   const handleNext = () => {
     setdisable(true);
@@ -33,7 +40,13 @@ export const Cuestionario = () => {
           navigate("/");
         }}
       />
-      <Stepper />
+      <Stepper
+        current={current}
+        desbloqueados={desbloqueados}
+        setCurrent={(e: number) => {
+          setCurrent(e);
+        }}
+      />
 
       {current === 1 && (
         <CuestionarioParte1
