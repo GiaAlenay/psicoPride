@@ -5,6 +5,8 @@ import { CuestionarioParte1 } from "../../components/cuestionarioParte1/cuestion
 import { CuestionarioParte2 } from "../../components/cuestionarioParte2/cuestionarionParte2";
 import { CuestionarioParte3 } from "../../components/cuestionarioParte3/cuestionarionParte3";
 import { CuestionarioParte4 } from "../../components/cuestionarioParte4/cuestionarionParte4";
+import { Stepper } from "../../components/stepper/stepper";
+
 export const Cuestionario = () => {
   const [current, setCurrent] = useState<number>(1);
   const [disable, setdisable] = useState<boolean>(true);
@@ -31,6 +33,7 @@ export const Cuestionario = () => {
           navigate("/");
         }}
       />
+      <Stepper />
 
       {current === 1 && (
         <CuestionarioParte1
