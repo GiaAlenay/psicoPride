@@ -7,6 +7,7 @@ import { CuestionarioParte3 } from "../../components/cuestionarioParte3/cuestion
 import { CuestionarioParte4 } from "../../components/cuestionarioParte4/cuestionarionParte4";
 import { Stepper } from "../../components/stepper/stepper";
 import { UserAtributtes } from "../../interfaces";
+import { Condiciones } from "../../components/condiciones/condicones";
 
 export const Cuestionario = () => {
   const [desbloqueados, setDesbloqueados] = useState<number[]>([1]);
@@ -14,6 +15,7 @@ export const Cuestionario = () => {
   const [disable, setdisable] = useState<boolean>(true);
   const navigate = useNavigate();
   const [user, setUser] = useState<UserAtributtes>({});
+  const [show, setShow] = useState<boolean>(true);
 
   useEffect(() => {
     if (desbloqueados.find((n) => n === current + 1) || !disable) {
@@ -42,6 +44,12 @@ export const Cuestionario = () => {
       className="text-light bg-dark "
       style={{ minHeight: "100vh", paddingBottom: "3rem" }}
     >
+      <Condiciones
+        show={show}
+        setShow={() => {
+          setShow(false);
+        }}
+      />
       <img
         src={"logo.png"}
         alt={"psicoPride"}
