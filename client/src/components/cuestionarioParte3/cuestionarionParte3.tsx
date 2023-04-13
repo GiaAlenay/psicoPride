@@ -5,13 +5,18 @@ import { RootState } from "../../reduxToolkit/store";
 import { getGenders, GenderState } from "../../reduxToolkit/reducers/gender";
 import { AppDispatch } from "../../reduxToolkit/store";
 import "./cuestionario3.css";
+import { UserAtributtes } from "../../interfaces";
 
 interface MyComponentProps {
   hanldledisable: () => void;
+  user: UserAtributtes;
+  setUser: (name: string, value: number) => void;
 }
 
 export const CuestionarioParte3: React.FC<MyComponentProps> = ({
   hanldledisable,
+  user,
+  setUser,
 }) => {
   const dispatch: AppDispatch = useDispatch();
   const { data, loading, error } = useSelector<RootState, GenderState>(

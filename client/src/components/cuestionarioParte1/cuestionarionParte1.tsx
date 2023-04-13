@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
 import "./cuestionario1.css";
 import React from "react";
+import { UserAtributtes } from "../../interfaces";
 
 interface MyComponentProps {
   hanldledisable: () => void;
+  user: UserAtributtes;
+  setUser: (name: string, value: number) => void;
 }
 
 export const CuestionarioParte1: React.FC<MyComponentProps> = ({
   hanldledisable,
+  user,
+  setUser,
 }) => {
   const ages: number[] = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
-  const [selected, setSelected] = useState<number>(0);
   useEffect(() => {
-    if (selected !== 0) {
-      hanldledisable();
-    }
-  }, [selected]);
+    if (user.age) hanldledisable();
+  }, [user]);
+
   return (
     <div className=" W-100 text-center">
       <h3>¿Cuál es tu edad?</h3>
@@ -23,9 +26,9 @@ export const CuestionarioParte1: React.FC<MyComponentProps> = ({
         {ages.map((a, i) => (
           <button
             key={i}
-            className={`btnEdad ${selected === a ? "btnSe" : "btnNoSE"}`}
+            className={`btnEdad ${user.age === a ? "btnSe" : "btnNoSE"}`}
             onClick={() => {
-              setSelected(a);
+              setUser("age", a);
             }}
           >
             <h5>{a}</h5>

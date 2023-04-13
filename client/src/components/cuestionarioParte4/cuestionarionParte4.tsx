@@ -8,13 +8,18 @@ import {
   OrientacionState,
 } from "../../reduxToolkit/reducers/orientacion";
 import { AppDispatch } from "../../reduxToolkit/store";
+import { UserAtributtes } from "../../interfaces";
 
 interface MyComponentProps {
   hanldledisable: () => void;
+  user: UserAtributtes;
+  setUser: (name: string, value: number) => void;
 }
 
 export const CuestionarioParte4: React.FC<MyComponentProps> = ({
   hanldledisable,
+  user,
+  setUser,
 }) => {
   const dispatch: AppDispatch = useDispatch();
   const { data, loading, error } = useSelector<RootState, OrientacionState>(

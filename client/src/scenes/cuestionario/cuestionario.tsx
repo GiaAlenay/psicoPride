@@ -6,18 +6,27 @@ import { CuestionarioParte2 } from "../../components/cuestionarioParte2/cuestion
 import { CuestionarioParte3 } from "../../components/cuestionarioParte3/cuestionarionParte3";
 import { CuestionarioParte4 } from "../../components/cuestionarioParte4/cuestionarionParte4";
 import { Stepper } from "../../components/stepper/stepper";
+import { UserAtributtes } from "../../interfaces";
 
 export const Cuestionario = () => {
   const [desbloqueados, setDesbloqueados] = useState<number[]>([1]);
   const [current, setCurrent] = useState<number>(1);
   const [disable, setdisable] = useState<boolean>(true);
   const navigate = useNavigate();
+  const [user, setUser] = useState<UserAtributtes>({});
 
   useEffect(() => {
     !desbloqueados.find((n) => n === current + 1) &&
       setDesbloqueados([...desbloqueados, current + 1]);
     console.log(desbloqueados);
   }, [current]);
+
+  const handleChangeUser = (name: string, value: number) => {
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
 
   const handleNext = () => {
     setdisable(true);
@@ -50,6 +59,10 @@ export const Cuestionario = () => {
 
       {current === 1 && (
         <CuestionarioParte1
+          user={user}
+          setUser={(name: string, value: number) => {
+            handleChangeUser(name, value);
+          }}
           hanldledisable={() => {
             setdisable(false);
           }}
@@ -57,6 +70,10 @@ export const Cuestionario = () => {
       )}
       {current === 2 && (
         <CuestionarioParte2
+          user={user}
+          setUser={(name: string, value: number) => {
+            handleChangeUser(name, value);
+          }}
           hanldledisable={() => {
             setdisable(false);
           }}
@@ -64,6 +81,10 @@ export const Cuestionario = () => {
       )}
       {current === 3 && (
         <CuestionarioParte3
+          user={user}
+          setUser={(name: string, value: number) => {
+            handleChangeUser(name, value);
+          }}
           hanldledisable={() => {
             setdisable(false);
           }}
@@ -71,6 +92,10 @@ export const Cuestionario = () => {
       )}
       {current === 4 && (
         <CuestionarioParte4
+          user={user}
+          setUser={(name: string, value: number) => {
+            handleChangeUser(name, value);
+          }}
           hanldledisable={() => {
             setdisable(false);
           }}

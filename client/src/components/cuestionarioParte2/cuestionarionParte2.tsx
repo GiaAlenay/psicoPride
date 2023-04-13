@@ -5,9 +5,12 @@ import { RootState } from "../../reduxToolkit/store";
 import { getSexos, SexoState } from "../../reduxToolkit/reducers/sexo";
 import { AppDispatch } from "../../reduxToolkit/store";
 import "./cuestionario2.css";
+import { UserAtributtes } from "../../interfaces";
 
 interface MyComponentProps {
   hanldledisable: () => void;
+  user: UserAtributtes;
+  setUser: (name: string, value: number) => void;
 }
 export const CuestionarioParte2: React.FC<MyComponentProps> = ({
   hanldledisable,
