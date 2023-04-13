@@ -1,0 +1,50 @@
+.aboutCont{
+    position: relative;
+    text-align: center;
+    color:rgb(255, 255, 255)
+}
+
+.socialNCont{
+    gap: 8px 16px;
+
+}
+.socialNBtn{
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgb(255, 254, 254);
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    transition: box-shadow 0.5s ,transform 0.5s linear;
+}
+.socialNBtn:hover{
+    transform: scale(1.1);
+    border: 0.5px solid rgb(255, 254, 254);
+    box-shadow: 0px 3px 10px rgba(233, 233, 233, 0.25); 
+}
+.btnInstagram:hover{   
+    background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  
+}
+
+.btnFacebook:hover{
+    background: linear-gradient(to bottom, #3A5795 0%, #2B4886 100%);
+}
+
+.btnLinkedin:hover{
+    background:linear-gradient(45deg, #181818, #000000, #313335, #3c3d3d, #171818, #535353);
+    }
+
+.socialNCont a{
+    all:unset;
+    cursor: pointer;
+    
+}
+.aboutContent{
+    width: 100%;    
+    position: absolute;
+    bottom: 5%;
+}
