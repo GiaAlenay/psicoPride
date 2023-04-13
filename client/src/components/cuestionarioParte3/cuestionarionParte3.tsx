@@ -22,13 +22,12 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
   const { data, loading, error } = useSelector<RootState, GenderState>(
     (state) => state.gender
   );
-  const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
-    if (selected !== "") {
+    if (user.GenderIdentityId) {
       hanldledisable();
     }
-  }, [selected]);
+  }, [user]);
 
   useEffect(() => {
     dispatch(getGenders());
@@ -49,9 +48,11 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
         {data.map((g: any) => (
           <button
             key={g.id}
-            className={`btnGenero ${selected === g.name && "selectedGen"}`}
+            className={`btnGenero ${
+              user.GenderIdentityId === g.id && "selectedGen"
+            }`}
             onClick={() => {
-              setSelected(g.name);
+              setUser("GenderIdentityId", g.id);
             }}
           >
             <h5>{g.name}</h5>

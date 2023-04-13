@@ -14,9 +14,9 @@ interface MyComponentProps {
 }
 export const CuestionarioParte2: React.FC<MyComponentProps> = ({
   hanldledisable,
+  user,
+  setUser,
 }) => {
-  const [selected, setSelected] = useState<boolean>(false);
-  const [sexoSelected, setSexo] = useState("");
   const dispatch: AppDispatch = useDispatch();
   const { data, loading, error } = useSelector<RootState, SexoState>(
     (state) => state.sexo
@@ -27,10 +27,10 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
   }, [dispatch]);
 
   useEffect(() => {
-    if (selected) {
+    if (user.SexoId) {
       hanldledisable();
     }
-  }, [selected]);
+  }, [user]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -57,11 +57,10 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
           <button
             key={sexo.id}
             className={`btnSexo btn${sexo.name} ${
-              sexoSelected === sexo.name && `sexoSe${sexo.name}`
+              user.SexoId === sexo.id && `sexoSe${sexo.name}`
             }`}
             onClick={() => {
-              setSelected(true);
-              setSexo(sexo.name);
+              setUser("SexoId", sexo.id);
             }}
           >
             {sexo.name === "mujer" ? (

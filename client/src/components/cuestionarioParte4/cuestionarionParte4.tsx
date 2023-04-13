@@ -25,21 +25,16 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
   const { data, loading, error } = useSelector<RootState, OrientacionState>(
     (state) => state.orientacion
   );
-  const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
-    if (selected !== "") {
+    if (user.SexualOrientationId) {
       hanldledisable();
     }
-  }, [selected]);
+  }, [user]);
 
   useEffect(() => {
     dispatch(getOrientacions());
   }, [dispatch]);
-
-  const handleChooseSexuality = (e: string) => {
-    setSelected(e);
-  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -57,10 +52,10 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
           <button
             key={o.id}
             className={`btnOrientacion ${
-              selected === o.name && "btnOriSel"
+              user.SexualOrientationId === o.id && "btnOriSel"
             } d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto`}
             onClick={() => {
-              handleChooseSexuality(o.name);
+              setUser("SexualOrientationId", o.id);
             }}
             name={o.name}
           >
@@ -69,7 +64,7 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
                 <input
                   type="checkbox"
                   className={``}
-                  checked={selected === o.name ? true : false}
+                  checked={user.SexualOrientationId === o.id ? true : false}
                 />
                 <h5 className="w-100">{o.name}</h5>
               </div>
