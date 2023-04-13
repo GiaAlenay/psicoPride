@@ -6,24 +6,23 @@ interface MyComponentProps {
   setCurrent: (e: number) => void;
   current: number;
   desbloqueados: number[];
+  hanldledisable: () => void;
 }
 
 export const Stepper: React.FC<MyComponentProps> = ({
   setCurrent,
   current,
   desbloqueados,
+  hanldledisable,
 }) => {
   const stepsArray: number[] = [1, 2, 3, 4];
-  const [steps, setSteps] = useState(1);
 
-  useEffect(() => {
-    setSteps(current);
-  }, [current]);
+  useEffect(() => {}, [current]);
 
   const handleMoveSteps = (s: number) => {
-    if (desbloqueados.find((n) => n > s)) {
+    if (desbloqueados.find((n) => n === s)) {
       setCurrent(s);
-      setSteps(s);
+      hanldledisable();
     } else {
       console.log("no entras");
       toast.warn("Completa el formaulario para avanzar.", {
@@ -38,7 +37,7 @@ export const Stepper: React.FC<MyComponentProps> = ({
         <div className="progresLineStep">
           <div
             className="progressDone "
-            style={{ width: `${(steps - 1) * 33.3}%` }}
+            style={{ width: `${(current - 1) * 33.3}%` }}
           ></div>
         </div>
         {stepsArray.map((s, i) => (

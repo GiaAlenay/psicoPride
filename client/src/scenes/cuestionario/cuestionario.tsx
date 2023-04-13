@@ -16,10 +16,11 @@ export const Cuestionario = () => {
   const [user, setUser] = useState<UserAtributtes>({});
 
   useEffect(() => {
-    !desbloqueados.find((n) => n === current + 1) &&
+    if (desbloqueados.find((n) => n === current + 1) || !disable) {
       setDesbloqueados([...desbloqueados, current + 1]);
-    console.log(desbloqueados);
-  }, [current]);
+      console.log(desbloqueados);
+    }
+  }, [current, disable]);
 
   const handleChangeUser = (name: string, value: number) => {
     setUser({
@@ -54,6 +55,9 @@ export const Cuestionario = () => {
         desbloqueados={desbloqueados}
         setCurrent={(e: number) => {
           setCurrent(e);
+        }}
+        hanldledisable={() => {
+          setdisable(true);
         }}
       />
 
