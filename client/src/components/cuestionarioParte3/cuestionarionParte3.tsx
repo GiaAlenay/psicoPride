@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { RootState } from "../../reduxToolkit/store";
-import { getGenders, GenderState } from "../../reduxToolkit/reducers/gender";
-import { AppDispatch } from "../../reduxToolkit/store";
+import { GenderState } from "../../reduxToolkit/reducers/gender";
 import "./cuestionario3.css";
 import { UserAtributtes } from "../../interfaces";
 
@@ -18,28 +16,13 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
   user,
   setUser,
 }) => {
-  const dispatch: AppDispatch = useDispatch();
-  const { data, loading, error } = useSelector<RootState, GenderState>(
-    (state) => state.gender
-  );
+  const { data } = useSelector<RootState, GenderState>((state) => state.gender);
 
   useEffect(() => {
     if (user.GenderIdentityId) {
       hanldledisable();
     }
   }, [user]);
-
-  useEffect(() => {
-    dispatch(getGenders());
-  }, [dispatch]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div className="W-100 text-center">

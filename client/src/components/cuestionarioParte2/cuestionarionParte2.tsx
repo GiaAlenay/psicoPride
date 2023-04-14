@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { RootState } from "../../reduxToolkit/store";
-import { getSexos, SexoState } from "../../reduxToolkit/reducers/sexo";
-import { AppDispatch } from "../../reduxToolkit/store";
+import { SexoState } from "../../reduxToolkit/reducers/sexo";
 import "./cuestionario2.css";
 import { UserAtributtes } from "../../interfaces";
 
@@ -17,28 +15,13 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
   user,
   setUser,
 }) => {
-  const dispatch: AppDispatch = useDispatch();
-  const { data, loading, error } = useSelector<RootState, SexoState>(
-    (state) => state.sexo
-  );
-
-  useEffect(() => {
-    dispatch(getSexos());
-  }, [dispatch]);
+  const { data } = useSelector<RootState, SexoState>((state) => state.sexo);
 
   useEffect(() => {
     if (user.SexoId) {
       hanldledisable();
     }
   }, [user]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div className="w-100 text-center">

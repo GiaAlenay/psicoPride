@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./chatBurbuja.css";
 import { DraggableCore, DraggableData, DraggableEvent } from "react-draggable";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../reduxToolkit/store";
+import { useDispatch } from "react-redux";
+import { getSexos } from "../../reduxToolkit/reducers/sexo";
+import { getGenders } from "../../reduxToolkit/reducers/gender";
+import { getOrientacions } from "../../reduxToolkit/reducers/orientacion";
 
 interface MyComponentProps {
   setLoader: () => void;
@@ -12,6 +18,17 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [x, setX] = useState(1150);
   const [y, setY] = useState(400);
+  const [clickChat, SetClickChat] = useState<boolean>(false);
+  const dispatch: AppDispatch = useDispatch();
+  const loadingSexo = useSelector<RootState>((state) => state.sexo.loading);
+  const loadingGender = useSelector<RootState>((state) => state.gender.loading);
+  const loadingOrientacion = useSelector<RootState>(
+    (state) => state.orientacion.loading
+  );
+  const sexo = localStorage.getItem("SexoId");
+  const edad = localStorage.getItem("age");
+  const orientacion = localStorage.getItem("SexualOrientationId");
+  const identidad = localStorage.getItem("GenderIdentityId");
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -32,21 +49,27 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
     setY(data.y);
   };
 
-  const handleChatOrQuest = () => {
-    const sexo = localStorage.getItem("SexoId");
-    const edad = localStorage.getItem("age");
-    const orientacion = localStorage.getItem("SexualOrientationId");
-    const identidad = localStorage.getItem("GenderIdentityId");
-    // console.log("///////////////");
-    // console.log(sexo, edad, orientacion, identidad);
-    setLoader();
-    setTimeout(() => {
-      if (!sexo || !edad || !orientacion || !identidad) {
-        navigate("/quest");
+  useEffect(() => {
+    if (clickChat) {
+      if (loadingSexo || loadingOrientacion || loadingGender) {
+        setLoader();
       } else {
-        navigate("/chat");
+        setTimeout(() => {
+          if (!sexo || !edad || !orientacion || !identidad) {
+            navigate("/quest");
+          } else {
+            navigate("/chat");
+          }
+        }, 1000);
       }
-    }, 3000);
+    }
+  }, [clickChat, loadingSexo, loadingGender, loadingOrientacion]);
+
+  const handleChatOrQuest = () => {
+    dispatch(getSexos());
+    dispatch(getGenders());
+    dispatch(getOrientacions());
+    SetClickChat(true);
   };
 
   return (

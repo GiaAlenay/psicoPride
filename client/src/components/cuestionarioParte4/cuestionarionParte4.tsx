@@ -1,13 +1,8 @@
-import React, { useState, MouseEvent } from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { RootState } from "../../reduxToolkit/store";
 import "./cuestionario4.css";
-import {
-  getOrientacions,
-  OrientacionState,
-} from "../../reduxToolkit/reducers/orientacion";
-import { AppDispatch } from "../../reduxToolkit/store";
+import { OrientacionState } from "../../reduxToolkit/reducers/orientacion";
 import { UserAtributtes } from "../../interfaces";
 
 interface MyComponentProps {
@@ -21,8 +16,7 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
   user,
   setUser,
 }) => {
-  const dispatch: AppDispatch = useDispatch();
-  const { data, loading, error } = useSelector<RootState, OrientacionState>(
+  const { data } = useSelector<RootState, OrientacionState>(
     (state) => state.orientacion
   );
 
@@ -31,18 +25,6 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
       hanldledisable();
     }
   }, [user]);
-
-  useEffect(() => {
-    dispatch(getOrientacions());
-  }, [dispatch]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div className="w-100 text-center">
