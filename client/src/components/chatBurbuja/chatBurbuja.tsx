@@ -3,7 +3,11 @@ import "./chatBurbuja.css";
 import { DraggableCore, DraggableData, DraggableEvent } from "react-draggable";
 import { useNavigate } from "react-router-dom";
 
-export const ChatBurbuja: React.FC = () => {
+interface MyComponentProps {
+  setLoader: () => void;
+}
+
+export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   const navigate = useNavigate();
   const [width, setWidth] = useState(window.innerWidth);
   const [x, setX] = useState(1150);
@@ -34,11 +38,14 @@ export const ChatBurbuja: React.FC = () => {
     const edad = localStorage.getItem("edad");
     const orientacion = localStorage.getItem("orientacion");
     const identidad = localStorage.getItem("identidad");
-    if (!sexo || !edad || !orientacion || !identidad) {
-      navigate("/quest");
-    } else {
-      navigate("/chat");
-    }
+    setLoader();
+    // setTimeout(() => {
+    //   if (!sexo || !edad || !orientacion || !identidad) {
+    //     navigate("/quest");
+    //   } else {
+    //     navigate("/chat");
+    //   }
+    // }, 3000);
   };
 
   return (
