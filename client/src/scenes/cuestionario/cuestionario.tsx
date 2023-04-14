@@ -39,6 +39,7 @@ export const Cuestionario = () => {
     }
     if (responseCreateUser.status === 201) {
       navigate("/chat");
+      console.log("mviendome");
     }
   }, [loadingCreateUser, responseCreateUser]);
 
@@ -68,10 +69,7 @@ export const Cuestionario = () => {
           setShow(false);
         }}
       />
-      <Modal
-        open={modal}
-        option={`${responseCreateUser.status === 201 ? "loader" : "error"}`}
-      />
+      <Modal open={modal} option={"loader"} />
       <img
         src={"logo.png"}
         alt={"psicoPride"}
