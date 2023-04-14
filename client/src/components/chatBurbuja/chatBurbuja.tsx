@@ -16,7 +16,6 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
-    console.log(width);
     if (width > 1100) {
       setX(width - 200);
     }
@@ -34,18 +33,20 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   };
 
   const handleChatOrQuest = () => {
-    const sexo = localStorage.getItem("sexo");
-    const edad = localStorage.getItem("edad");
-    const orientacion = localStorage.getItem("orientacion");
-    const identidad = localStorage.getItem("identidad");
+    const sexo = localStorage.getItem("SexoId");
+    const edad = localStorage.getItem("age");
+    const orientacion = localStorage.getItem("SexualOrientationId");
+    const identidad = localStorage.getItem("GenderIdentityId");
+    // console.log("///////////////");
+    // console.log(sexo, edad, orientacion, identidad);
     setLoader();
-    // setTimeout(() => {
-    //   if (!sexo || !edad || !orientacion || !identidad) {
-    //     navigate("/quest");
-    //   } else {
-    //     navigate("/chat");
-    //   }
-    // }, 3000);
+    setTimeout(() => {
+      if (!sexo || !edad || !orientacion || !identidad) {
+        navigate("/quest");
+      } else {
+        navigate("/chat");
+      }
+    }, 3000);
   };
 
   return (

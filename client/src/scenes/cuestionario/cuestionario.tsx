@@ -8,21 +8,39 @@ import { CuestionarioParte4 } from "../../components/cuestionarioParte4/cuestion
 import { Stepper } from "../../components/stepper/stepper";
 import { UserAtributtes } from "../../interfaces";
 import { Condiciones } from "../../components/condiciones/condicones";
+import { RootState, AppDispatch } from "../../reduxToolkit/store";
+import { createUser, UserGlobalState } from "../../reduxToolkit/reducers/user";
+import { useDispatch, useSelector } from "react-redux";
+import { Modal } from "../../components/loader/loaders";
 
 export const Cuestionario = () => {
+  const navigate = useNavigate();
+  const dispatch: AppDispatch = useDispatch();
+  const { responseCreateUser, loadingCreateUser } = useSelector<
+    RootState,
+    UserGlobalState
+  >((state) => state.user);
+  const [modal, setModal] = useState<boolean>(false);
   const [desbloqueados, setDesbloqueados] = useState<number[]>([1]);
   const [current, setCurrent] = useState<number>(1);
   const [disable, setdisable] = useState<boolean>(true);
-  const navigate = useNavigate();
   const [user, setUser] = useState<UserAtributtes>({});
   const [show, setShow] = useState<boolean>(true);
 
   useEffect(() => {
     if (desbloqueados.find((n) => n === current + 1) || !disable) {
       setDesbloqueados([...desbloqueados, current + 1]);
-      console.log(desbloqueados);
     }
   }, [current, disable]);
+
+  useEffect(() => {
+    if (loadingCreateUser) {
+      setModal(true);
+    }
+    if (responseCreateUser.status === 201) {
+      navigate("/chat");
+    }
+  }, [loadingCreateUser, responseCreateUser]);
 
   const handleChangeUser = (name: string, value: number) => {
     setUser({
@@ -36,7 +54,7 @@ export const Cuestionario = () => {
     if (current !== 4) {
       setCurrent(current + 1);
     } else {
-      navigate("/chat");
+      dispatch(createUser(user));
     }
   };
   return (
@@ -49,6 +67,10 @@ export const Cuestionario = () => {
         setShow={() => {
           setShow(false);
         }}
+      />
+      <Modal
+        open={modal}
+        option={`${responseCreateUser.status === 201 ? "loader" : "error"}`}
       />
       <img
         src={"logo.png"}

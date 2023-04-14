@@ -28,6 +28,7 @@ export const CuestionarioParte1: React.FC<MyComponentProps> = ({
             key={i}
             className={`btnEdad ${user.age === a ? "btnSe" : "btnNoSE"}`}
             onClick={() => {
+              localStorage.setItem("age", a.toString());
               setUser("age", a);
             }}
           >

@@ -52,6 +52,7 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
               user.GenderIdentityId === g.id && "selectedGen"
             }`}
             onClick={() => {
+              localStorage.setItem("GenderIdentityId", g.id.toString());
               setUser("GenderIdentityId", g.id);
             }}
           >

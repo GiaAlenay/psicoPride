@@ -10,19 +10,14 @@ import SexualOrientation from '../models/sexualOrientation'
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const {age,sexo,gender,orientation}=req.body
 
-    const findSexo = await Sexo.findOne({
-      where: { name: sexo },
-    });
+    const {age,SexoId,GenderIdentityId,SexualOrientationId}=req.body
 
-    const findGender = await GenderIdentity.findOne({
-      where: { name: gender },
-    });
+    const findSexo = await Sexo.findByPk(SexoId);
 
-    const findOrientation = await SexualOrientation.findOne({
-      where: { name: orientation },
-    });
+    const findGender = await GenderIdentity.findByPk(GenderIdentityId);
+
+    const findOrientation = await SexualOrientation.findByPk(SexualOrientationId);
 
     if (findGender && findSexo && findOrientation ) {
       const newUser = await User.create({
@@ -31,14 +26,18 @@ export const createUser = async (req: Request, res: Response) => {
         SexoId:findSexo.id,
         SexualOrientationId:findOrientation.id     
       });
-      res.status(201).json({ user: newUser });
+      if (newUser) {
+        res.status(201).json({ message: 'Usuario creado correctamente.' });
+      }else{
+        res.status(404).json({ message: 'Error creando usuario, intentelo otra vez.' });
+      }
    }else{
-      res.status(404).json({ msg: "Información incorrecta, itentelo otra vez." });  
+      res.status(404).json({ message: "Información incorrecta, itentelo otra vez." });  
    }
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Error creating user' });
+    res.status(500).json({ message: 'Error creando usuario, intentelo otra vez.' });
   }
 };
 
