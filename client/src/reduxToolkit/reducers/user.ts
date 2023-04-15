@@ -8,7 +8,6 @@ interface User {
   name: string;
   email: string;
 }
-
 interface Response{
   status?:number;
   message?:string;
@@ -34,19 +33,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // getUserStart: (state) => {
-    //   state.loadingUsers = true;
-    //   state.errorGetUsers = false;
-    // },
-    // getUserSuccess: (state, action: PayloadAction<any>) => {
-    //   state.users = action.payload;
-    //   state.loadingUsers = false;
-    //   state.errorGetUsers = false;
-    // },
-    // getUserError: (state) => {
-    //   state.loadingUsers = false;
-    //   state.errorGetUsers = true;
-    // },
+
     createUserLoad: (state) => {
       state.loadingCreateUser = true;
     },
@@ -63,15 +50,6 @@ const userSlice = createSlice({
 
 export const { createUserLoad, creatUserSuccess, createUserError } = userSlice.actions;
 
-// export const fetchUser = (): AppThunk => async (dispatch) => {
-//   dispatch(getUserStart());
-//   try {
-//     const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-//     dispatch(getUserSuccess(response.data));
-//   } catch (err) {
-//     dispatch(getUserError());
-//   }
-// };
 
 export const createUser=(data:UserAtributtes):AppThunk=>async(dispatch)=>{
   dispatch(createUserLoad())

@@ -4,3 +4,10 @@ export interface UserAtributtes{
     SexualOrientationId?:number;
     SexoId?:number;
 }
+
+export interface ChatPreguntaRespuesta{
+    id?:number;
+    pregunta?:string;
+    respuesta?:string;
+}
+
