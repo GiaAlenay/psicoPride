@@ -8,22 +8,15 @@ import TemaChatOrientacion from '../models/temaChatOrientacion';
 import Sexo from '../models/sexo';
 import GenderIdentity from '../models/genderIdentity';
 import SexualOrientation from '../models/sexualOrientation';
-import { TemaChatAttributes, TemaChatAttributesCrear,chatArray } from '../data';
+import { chatArray } from '../data';
 
 export const getTemasChatOrderByPriority=async(req:Request,res:Response)=>{
   try {
     interface JustId{
       id:number;
     }
-    interface Pregunta{
-      id:number;
-      pregunta:string;
-      Sexos:JustId[];
-      GenderIdentities:JustId[];
-      SexualOrientations:JustId[];
-    }
+
     const {sexo,genero,orientacion}=req.query
-    // const sexo = parseInt((req.query.sexo ?? '0') as string);
 
     chatArray.map(async(s)=>{
       const [newTema,created]=await TemaChat.findOrCreate({
@@ -99,32 +92,22 @@ export const getTemasChatOrderByPriority=async(req:Request,res:Response)=>{
       let compatibilidad = 0;
  
       if (pregunta.Sexos.length && pregunta.Sexos.find((s:JustId)=>s.id.toString()===sexo)) {
-
         compatibilidad++;
-     }
-     if (pregunta.GenderIdentities.length && pregunta.GenderIdentities.find((s:JustId)=>s.id.toString()===genero)) {
-
-      compatibilidad++;
-   }
-   if (pregunta.SexualOrientations.length && pregunta.SexualOrientations.find((s:JustId)=>s.id.toString()===orientacion)) {
-    compatibilidad++; }
-
-      
+      }
+      if (pregunta.GenderIdentities.length && pregunta.GenderIdentities.find((s:JustId)=>s.id.toString()===genero)) {
+        compatibilidad++;
+      }
+      if (pregunta.SexualOrientations.length && pregunta.SexualOrientations.find((s:JustId)=>s.id.toString()===orientacion)) {
+        compatibilidad++; }      
       return compatibilidad;
     }
     
   
-    Temas.sort(
+    const finalTemas=Temas.sort(
       (a, b) => calcularCompatibilidad(b) - calcularCompatibilidad(a)
-    );
-    
-   
-        
+    ).map((f)=>{return{id:f.id, pregunta:f.pregunta}});
 
-
-
-
-    res.status(201).json(Temas)
+    res.status(201).json(finalTemas)
   } catch (error) {
     res.status(500).json({message:'Error al obtener preguntas del chat, Intentelo de nuevo.'})
   }

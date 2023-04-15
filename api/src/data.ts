@@ -27,13 +27,7 @@ export interface TemaChatAttributes{
     generos?:number[];
     orientaciones?:number[]
 }
-export interface TemaChatAttributesCrear{
-    id?:number;
-    pregunta:string;
-    Sexos?: number[];
-    GenderIdentities?:number[];
-    SexualOrientations?:number[]
-}
+
 
 export interface TemaBibliotecaAttributes{
     id?:number;
