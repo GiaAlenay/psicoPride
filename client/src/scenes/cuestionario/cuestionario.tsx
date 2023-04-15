@@ -9,17 +9,20 @@ import { Stepper } from "../../components/stepper/stepper";
 import { UserAtributtes } from "../../interfaces";
 import { Condiciones } from "../../components/condiciones/condicones";
 import { RootState, AppDispatch } from "../../reduxToolkit/store";
-import { createUser, UserGlobalState } from "../../reduxToolkit/reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../components/loader/loaders";
+import {
+  getPreguntas,
+  ChatGlobalState,
+} from "../../reduxToolkit/reducers/chat";
 
 export const Cuestionario = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const { responseCreateUser, loadingCreateUser } = useSelector<
+  const { loadingPreguntas, preguntas } = useSelector<
     RootState,
-    UserGlobalState
-  >((state) => state.user);
+    ChatGlobalState
+  >((state) => state.chat);
   const [modal, setModal] = useState<boolean>(false);
   const [desbloqueados, setDesbloqueados] = useState<number[]>([1]);
   const [current, setCurrent] = useState<number>(1);
@@ -34,14 +37,14 @@ export const Cuestionario = () => {
   }, [current, disable]);
 
   useEffect(() => {
-    if (loadingCreateUser) {
+    if (loadingPreguntas) {
       setModal(true);
     }
-    if (responseCreateUser.status === 201) {
+    if (preguntas.status === 201) {
       navigate("/chat");
-      console.log("mviendome");
+      // console.log("mviendome");
     }
-  }, [loadingCreateUser, responseCreateUser]);
+  }, [loadingPreguntas, preguntas]);
 
   const handleChangeUser = (name: string, value: number) => {
     setUser({
@@ -55,7 +58,13 @@ export const Cuestionario = () => {
     if (current !== 4) {
       setCurrent(current + 1);
     } else {
-      dispatch(createUser(user));
+      dispatch(
+        getPreguntas({
+          SexoId: user.SexoId,
+          GenderIdentityId: user.GenderIdentityId,
+          SexualOrientationId: user.SexualOrientationId,
+        })
+      );
     }
   };
   return (

@@ -7,12 +7,12 @@ import { Modal } from "../../components/loader/loaders";
 
 export const Landing = () => {
   const [modal, setModal] = useState<boolean>(false);
-  useEffect(() => {
-    localStorage.removeItem("SexoId");
-    localStorage.removeItem("age");
-    localStorage.removeItem("SexualOrientationId");
-    localStorage.removeItem("GenderIdentityId");
-  }, []);
+  // useEffect(() => {
+  //   localStorage.removeItem("SexoId");
+  //   localStorage.removeItem("age");
+  //   localStorage.removeItem("SexualOrientationId");
+  //   localStorage.removeItem("GenderIdentityId");
+  // }, []);
   return (
     <div className="landingPag">
       <Modal open={modal} option={"loader"} />

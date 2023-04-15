@@ -11,11 +11,13 @@ import SexualOrientation from '../models/sexualOrientation';
 import { chatArray } from '../data';
 
 export const getTemasChatOrderByPriority=async(req:Request,res:Response)=>{
+  
   try {
     interface JustId{
       id:number;
     }
-
+    // console.log('////////////////////')
+    // console.log(req.query)
     const {sexo,genero,orientacion}=req.query
 
     chatArray.map(async(s)=>{

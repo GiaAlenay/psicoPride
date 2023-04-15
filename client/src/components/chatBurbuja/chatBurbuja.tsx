@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { getSexos } from "../../reduxToolkit/reducers/sexo";
 import { getGenders } from "../../reduxToolkit/reducers/gender";
 import { getOrientacions } from "../../reduxToolkit/reducers/orientacion";
+import { getPreguntas } from "../../reduxToolkit/reducers/chat";
 
 interface MyComponentProps {
   setLoader: () => void;
@@ -25,6 +26,10 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   const loadingOrientacion = useSelector<RootState>(
     (state) => state.orientacion.loading
   );
+  const loadingPreguntas = useSelector<RootState>(
+    (state) => state.chat.loadingPreguntas
+  );
+
   const sexo = localStorage.getItem("SexoId");
   const edad = localStorage.getItem("age");
   const orientacion = localStorage.getItem("SexualOrientationId");
@@ -51,7 +56,12 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
 
   useEffect(() => {
     if (clickChat) {
-      if (loadingSexo || loadingOrientacion || loadingGender) {
+      if (
+        loadingSexo ||
+        loadingOrientacion ||
+        loadingGender ||
+        loadingPreguntas
+      ) {
         setLoader();
       } else {
         setTimeout(() => {
@@ -63,12 +73,29 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
         }, 1000);
       }
     }
-  }, [clickChat, loadingSexo, loadingGender, loadingOrientacion]);
+  }, [
+    clickChat,
+    loadingSexo,
+    loadingGender,
+    loadingOrientacion,
+    loadingPreguntas,
+  ]);
 
   const handleChatOrQuest = () => {
-    dispatch(getSexos());
-    dispatch(getGenders());
-    dispatch(getOrientacions());
+    if (sexo && edad && orientacion && identidad) {
+      dispatch(
+        getPreguntas({
+          SexoId: parseInt(sexo),
+          GenderIdentityId: parseInt(identidad),
+          SexualOrientationId: parseInt(orientacion),
+        })
+      );
+    } else {
+      dispatch(getSexos());
+      dispatch(getGenders());
+      dispatch(getOrientacions());
+    }
+
     SetClickChat(true);
   };
 
