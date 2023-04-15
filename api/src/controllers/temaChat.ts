@@ -10,7 +10,14 @@ import { chatArray } from '../data';
 
 export const getRespuesta=async(req:Request,res:Response)=>{
     try {
-        res.status(201).json({msg:'oka'})
+        const {id}=req.params
+        const respuesta = await TemaChat.findByPk(id)
+        if (respuesta) {
+            res.status(201).json({respuesta:respuesta.respuesta})            
+        }
+        else{
+            res.status(404).json({respuesta:'Perdón no tengo una respuesta para esa pregunta.'})
+        }
     } catch (error) {
         res.status(500).json({msg:error})
     }
