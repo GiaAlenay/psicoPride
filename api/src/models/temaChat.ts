@@ -31,7 +31,8 @@ TemaChat.init(
         respuesta:{
             type:DataTypes.TEXT,
             allowNull:false
-        }
+        },
+
     },{
         sequelize,
         tableName:'temachat'

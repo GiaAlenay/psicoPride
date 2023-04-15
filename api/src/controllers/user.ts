@@ -1,9 +1,136 @@
 
 import { Request, Response } from 'express';
 import  User  from '../models/user'; 
-import GenderIdentity from '../models/genderIdentity';
+import TemaChat from '../models/temaChat';
+import TemaChatSexo from '../models/temaChatSexo';
+import TemaChatGenero from '../models/temaChatGenero';
+import TemaChatOrientacion from '../models/temaChatOrientacion';
 import Sexo from '../models/sexo';
-import SexualOrientation from '../models/sexualOrientation'
+import GenderIdentity from '../models/genderIdentity';
+import SexualOrientation from '../models/sexualOrientation';
+import { TemaChatAttributes, TemaChatAttributesCrear,chatArray } from '../data';
+
+export const getTemasChatOrderByPriority=async(req:Request,res:Response)=>{
+  try {
+    interface JustId{
+      id:number;
+    }
+    interface Pregunta{
+      id:number;
+      pregunta:string;
+      Sexos:JustId[];
+      GenderIdentities:JustId[];
+      SexualOrientations:JustId[];
+    }
+    const {sexo,genero,orientacion}=req.query
+    // const sexo = parseInt((req.query.sexo ?? '0') as string);
+
+    chatArray.map(async(s)=>{
+      const [newTema,created]=await TemaChat.findOrCreate({
+          where:{pregunta:s.pregunta },
+          defaults:{pregunta:s.pregunta,respuesta:s.respuesta},
+      })
+    
+      if (s.sexos && s.sexos.length>0) {
+          for (const sexoId of s.sexos) {
+              const sexo = await Sexo.findByPk(sexoId);
+              if (sexo) {
+                  await TemaChatSexo.findOrCreate({
+                      where:{TemaChatId: newTema.id,
+                          SexoId: sexo.id,}, 
+                          defaults:{TemaChatId: newTema.id,
+                      SexoId: sexo.id}
+                  });}                        
+              }
+          
+      }
+      if (s.generos && s.generos.length>0) {
+          for (const GeneroId of s.generos) {                    
+              const genero = await GenderIdentity.findByPk(GeneroId);
+              if (genero) {
+                  await TemaChatGenero.findOrCreate({
+                      where:{TemaChatId: newTema.id,
+                          GeneroId: genero.id,}, 
+                          defaults:{TemaChatId: newTema.id,
+                      GeneroId: genero.id}
+                  });}                        
+              }
+          
+      }
+      if (s.orientaciones && s.orientaciones.length>0) {
+          for (const OrientacionId of s.orientaciones) {                    
+              const orientacion = await SexualOrientation.findByPk(OrientacionId);
+              if (orientacion) {
+                  await TemaChatOrientacion.findOrCreate({
+                      where:{TemaChatId: newTema.id,
+                          OrientacionId: orientacion.id,}, 
+                          defaults:{TemaChatId: newTema.id,
+                      OrientacionId: orientacion.id}
+                  });}                        
+              }
+          
+      }
+  })
+
+  const Temas = await TemaChat.findAll({
+      attributes:['id','pregunta'],
+      include: [
+          { model: Sexo,
+      attributes:["id"],
+      through: {
+          attributes: [],
+        }, },
+        { model: GenderIdentity,
+          attributes:["id"],
+          through: {
+              attributes: [],
+            }, },
+          { model: SexualOrientation,
+          attributes:["id"],
+          through: {
+              attributes: [],
+            }, }
+
+      ]
+    });
+    
+   
+    function calcularCompatibilidad(pregunta:any): number {
+      let compatibilidad = 0;
+ 
+      if (pregunta.Sexos.length && pregunta.Sexos.find((s:JustId)=>s.id.toString()===sexo)) {
+
+        compatibilidad++;
+     }
+     if (pregunta.GenderIdentities.length && pregunta.GenderIdentities.find((s:JustId)=>s.id.toString()===genero)) {
+
+      compatibilidad++;
+   }
+   if (pregunta.SexualOrientations.length && pregunta.SexualOrientations.find((s:JustId)=>s.id.toString()===orientacion)) {
+    compatibilidad++; }
+
+      
+      return compatibilidad;
+    }
+    
+  
+    Temas.sort(
+      (a, b) => calcularCompatibilidad(b) - calcularCompatibilidad(a)
+    );
+    
+   
+        
+
+
+
+
+    res.status(201).json(Temas)
+  } catch (error) {
+    res.status(500).json({message:'Error al obtener preguntas del chat, Intentelo de nuevo.'})
+  }
+}
+
+
 
 
 
@@ -41,62 +168,3 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-export const getUsers = async (req: Request, res: Response) => {
-  try {
-    const users = await User.findAll();
-    res.status(200).json({ users });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error getting users' });
-  }
-
-    
-};
-
-
-export const getUserById = async (req: Request, res: Response) => {
-  try {
-    const user = await User.findByPk(req.params.id);
-    if (user) {
-      res.status(200).json({ user });
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error getting user' });
-  }
-};
-
-// Controlador para actualizar un usuario por ID
-// export const updateUserById = async (req: Request, res: Response) => {
-//   try {
-//     const [numUpdated, updatedUser] = await User.update(req.body, {
-//       where: { id: req.params.id },
-//       returning: true,
-//     });
-//     if (numUpdated) {
-//       res.status(200).json({ user: updatedUser[0] });
-//     } else {
-//       res.status(404).json({ message: 'User not found' });
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Error updating user' });
-//   }
-// };
-
-// // Controlador para eliminar un usuario por ID
-// export const deleteUserById = async (req: Request, res: Response) => {
-//   try {
-//     const numDeleted = await User.destroy({ where: { id: req.params.id } });
-//     if (numDeleted) {
-//       res.status(200).json({ message: 'User deleted' });
-//     } else {
-//       res.status(404).json({ message: 'User not found' });
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Error deleting user' });
-//   }
-// };

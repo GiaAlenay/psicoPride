@@ -8,6 +8,14 @@ import GenderIdentity from '../models/genderIdentity';
 import SexualOrientation from '../models/sexualOrientation';
 import { chatArray } from '../data';
 
+export const getRespuesta=async(req:Request,res:Response)=>{
+    try {
+        res.status(201).json({msg:'oka'})
+    } catch (error) {
+        res.status(500).json({msg:error})
+    }
+}
+
 export const findOrCreateTemasChat = async (req: Request, res: Response) => {    
     try {        
         chatArray.map(async(s)=>{
@@ -60,27 +68,28 @@ export const findOrCreateTemasChat = async (req: Request, res: Response) => {
             attributes:['id','pregunta'],
             include: [
                 { model: Sexo,
-            attributes:["id","name"],
+            attributes:["id"],
             through: {
                 attributes: [],
               }, },
               { model: GenderIdentity,
-                attributes:["id","name"],
+                attributes:["id"],
                 through: {
                     attributes: [],
                   }, },
                 { model: SexualOrientation,
-                attributes:["id","name"],
+                attributes:["id"],
                 through: {
                     attributes: [],
                   }, }
 
             ]
           });
+
+          
         
       res.status(201).json(Temas);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error });
+      res.status(500).json({ message:'Error al crear temas' });
     }
   };

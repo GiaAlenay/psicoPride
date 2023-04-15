@@ -20,12 +20,19 @@ export interface UserAttributes {
 }
 
 export interface TemaChatAttributes{
-    id?:number;
     pregunta:string;
     respuesta:string;
+    id?:number;
     sexos?: number[];
     generos?:number[];
     orientaciones?:number[]
+}
+export interface TemaChatAttributesCrear{
+    id?:number;
+    pregunta:string;
+    Sexos?: number[];
+    GenderIdentities?:number[];
+    SexualOrientations?:number[]
 }
 
 export interface TemaBibliotecaAttributes{

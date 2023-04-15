@@ -1,15 +1,13 @@
 import { Router } from 'express';
 import {
   createUser,
-  getUsers,
-  getUserById,
+  getTemasChatOrderByPriority
 
 } from '../controllers/user'; 
 
 const router = Router();
 
 router.post('/', createUser);
-router.get('/', getUsers);
-router.get('/:id', getUserById);
+router.get('/temaschat',getTemasChatOrderByPriority)
 
 export default router;
