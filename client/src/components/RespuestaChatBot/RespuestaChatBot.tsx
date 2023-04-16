@@ -2,7 +2,7 @@ import "./respuestaChatBot.css";
 import React, { useState, useEffect } from "react";
 interface MyComponentProps {
   saludo: string;
-  orden?: number;
+  orden: number;
   tiempo: number;
 }
 export const RespuestaChatBot: React.FC<MyComponentProps> = ({
@@ -25,19 +25,9 @@ export const RespuestaChatBot: React.FC<MyComponentProps> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setTexto(saludo);
-    }, 2000 + tiempo * 100);
+    }, 2000 + tiempo * 100 + orden * 700);
     return () => clearTimeout(timer);
   }, [saludo]);
-
-  //   useEffect(() => {
-  //     //console.log(orden);
-  //     const timer = setTimeout(() => {
-  //       if (indice < saludo.length) {
-  //         setIndice(indice + 1);
-  //       }
-  //     }, 100);
-  //     return () => clearTimeout(timer);
-  //   }, [indice, saludo]);
   return (
     <div className="respuestaChatBotCont">
       <div

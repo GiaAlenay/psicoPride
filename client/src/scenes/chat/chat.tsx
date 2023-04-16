@@ -24,7 +24,7 @@ export const Chat = () => {
   const orientacion = localStorage.getItem("SexualOrientationId");
   const identidad = localStorage.getItem("GenderIdentityId");
   const saludoArray: string[] = [
-    "Hola!",
+    "Hola! ❤️",
     "Soy Hanayome ,un Chatbot que contestara tus preguntas.",
     "Estos son los temas:",
     "-Diversidad Sexual.",
