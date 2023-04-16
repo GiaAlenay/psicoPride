@@ -71,7 +71,9 @@ export const Chat = () => {
             <div className="ChatActivo"></div>
           </div>
           <div className="ChatBoxMsgCont"></div>
-          <div className="ChatBoxInputCont"></div>
+          <div className="ChatBoxInputCont">
+            <input type="text" className="ChatInput" />
+          </div>
         </div>
       </div>
       <div className="d-flex w-100  justify-content-center align-items-center mx-auto ">

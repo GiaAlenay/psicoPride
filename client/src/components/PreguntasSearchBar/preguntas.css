@@ -1,4 +1,5 @@
 .preguntasSearchCont{
+
     width: 70%;
     min-height: 16%;
     max-height: 50%;
@@ -6,12 +7,12 @@
     background-color: rgb(236, 231, 231);
     border-radius: 20px;
     box-shadow: rgb(5, 5, 5) 0px 17px 20px -3px;
+    position: relative;
    }
    .AllPreguntasCont{
 
     display: block;
     width: 100%;
-    overflow-y: scroll;
     max-height: 200px;
     min-height: 90px;
    }
@@ -20,8 +21,10 @@
     padding: 10px 20px;
     box-shadow: rgba(17, 17, 26, 0.05) 0px 2px 0px;
     cursor: pointer;
-    transform: background-color 0.1s linear;
+    transform: background-color 0.1s linear, transform 0.1s linear;
 }
 .preguntaCont:hover{
+
     background-color: rgb(218, 218, 218);
+    transform: scale(0.9);
 }
