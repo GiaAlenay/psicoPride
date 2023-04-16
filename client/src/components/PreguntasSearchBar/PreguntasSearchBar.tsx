@@ -11,11 +11,15 @@ export const PreguntasSearchBar: React.FC = () => {
     (state) => state.chat.preguntas
   );
   return (
-    <div className="preguntasSearchCont">
+    <div className="preguntasSearchCont d-flex justify-content-center align-items-center mx-auto">
       <div className="AllPreguntasCont">
-        {/* {preguntas.data &&
+        {preguntas.data &&
           Array.isArray(preguntas.data) &&
-          preguntas.data.map((p) => <div key={p.id}>{p.pregunta}</div>)} */}
+          preguntas.data.map((p) => (
+            <div key={p.id} className={`preguntaCont`}>
+              {p.pregunta}
+            </div>
+          ))}
       </div>
     </div>
   );
