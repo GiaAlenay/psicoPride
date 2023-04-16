@@ -13,6 +13,12 @@
     height: 100%;
  
 }
+.avatarChat{
+    filter: drop-shadow(15px 5px 3px #030303);
+    position:fixed;
+    left: 20px;
+    bottom: 10px;
+}
 .chatboXCont{
     width: 100%;
     
@@ -31,12 +37,7 @@
     transform: scale(1.2);
 }
 
-.avatarChat{
-    filter: drop-shadow(15px 5px 3px #030303);
-    position:fixed;
-    left: 40px;
-    bottom: 10px;
-}
+
 
 .chatBox{
     width: 96% ;   

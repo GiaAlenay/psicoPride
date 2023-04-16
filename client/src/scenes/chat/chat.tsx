@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { RootState, AppDispatch } from "../../reduxToolkit/store";
 import "./chat.css";
@@ -13,6 +13,7 @@ import { PreguntasSearchBar } from "../../components/PreguntasSearchBar/Pregunta
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { IoSendSharp } from "react-icons/io5";
 import { RespuestaChatBot } from "../../components/RespuestaChatBot/RespuestaChatBot";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 export const Chat = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -43,7 +44,17 @@ export const Chat = () => {
   //     navigate("/", { replace: true });
   //   };
   // }, [location, navigate]);
+  const scrollbarsRef = useRef<Scrollbars>(null);
 
+  const thumbVerticalStyles = {
+    backgroundColor: "rgba(50, 50, 93, 0.25)",
+    borderRadius: 10,
+  };
+
+  const renderThumbVertical = ({ style, ...props }: any) => {
+    const finalStyle = { ...style, ...thumbVerticalStyles };
+    return <div style={finalStyle} {...props} />;
+  };
   useEffect(() => {
     if (!sexo || !edad || !orientacion || !identidad) {
       navigate("/");
@@ -80,7 +91,17 @@ export const Chat = () => {
             <div className="ChatActivo"></div>
           </div>
           <div className="ChatBoxMsgCont">
-            <RespuestaChatBot saludo={saludoArray} />
+            <Scrollbars
+              ref={scrollbarsRef}
+              style={{ width: "100%", height: "99.8%" }}
+              renderThumbVertical={renderThumbVertical}
+            >
+              <div style={{ paddingBottom: "30px" }}>
+                {saludoArray.map((s) => (
+                  <RespuestaChatBot saludo={s} />
+                ))}
+              </div>
+            </Scrollbars>
           </div>
           <div className="ChatBoxInputCont">
             <input type="text" className="ChatInput" />
