@@ -24,7 +24,7 @@
     left: 10px;
     cursor: pointer;
     color: rgb(222, 223, 224);
-    filter: drop-shadow(5px 2px 0.5px #6a6a6b);
+    filter: drop-shadow(5px 2px 0.5px #050505);
     transition: transform 0.3s linear;
 }
 .arrowBtn:hover{
@@ -114,6 +114,18 @@
     all:unset;
     background-color: transparent;
     border-radius: 0px 0px 10px 10px;
-    width: 90%;
-    padding: 24px 26px;
+    width: 76%;
+    padding: 24px 30px;
+}
+
+.sendBtn{    
+    cursor: pointer;
+    color: #7169ac;
+    font-size: 40px;
+    filter: drop-shadow(1px 2px 0.5px #131212);
+    transition: transform 0.2s linear;
+}
+.sendBtn:hover{
+    transform: scale(1.2);
+    transform: rotate(-20deg);
 }

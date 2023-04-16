@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { PreguntasSearchBar } from "../../components/PreguntasSearchBar/PreguntasSearchBar";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { IoSendSharp } from "react-icons/io5";
 
 export const Chat = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -73,6 +74,12 @@ export const Chat = () => {
           <div className="ChatBoxMsgCont"></div>
           <div className="ChatBoxInputCont">
             <input type="text" className="ChatInput" />
+            <IoSendSharp
+              className="sendBtn"
+              onClick={() => {
+                console.log("jaja");
+              }}
+            />
           </div>
         </div>
       </div>
