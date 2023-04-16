@@ -71,6 +71,20 @@ export const Chat = () => {
     }
   }, []);
 
+  const getTime = (indice: number): number => {
+    if (indice === 0) {
+      return 0;
+    } else {
+      let contador: number = 0;
+      saludoArray.map((s, i) => {
+        if (i < indice) {
+          contador = contador + s.length;
+        }
+      });
+      return contador;
+    }
+  };
+
   return (
     <div className="chatCont ">
       <div className="avatarContChat ">
@@ -97,8 +111,8 @@ export const Chat = () => {
               renderThumbVertical={renderThumbVertical}
             >
               <div style={{ paddingBottom: "30px" }}>
-                {saludoArray.map((s) => (
-                  <RespuestaChatBot saludo={s} />
+                {saludoArray.map((s, i) => (
+                  <RespuestaChatBot saludo={s} orden={i} tiempo={getTime(i)} />
                 ))}
               </div>
             </Scrollbars>
