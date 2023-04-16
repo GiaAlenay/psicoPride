@@ -83,9 +83,9 @@
 .ChatBoxNameCont{
     width: 100%;
     padding: 12px 0px;
-    text-shadow: 1.5px 1.2px black;
-    color: white;
-
+    text-shadow: 1.5px 1.2px rgb(26, 26, 26);
+    color: rgb(236, 231, 231);
+    font-weight: bolder;
     
 }
 

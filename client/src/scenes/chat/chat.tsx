@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { PreguntasSearchBar } from "../../components/PreguntasSearchBar/PreguntasSearchBar";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { IoSendSharp } from "react-icons/io5";
+import { RespuestaChatBot } from "../../components/RespuestaChatBot/RespuestaChatBot";
 
 export const Chat = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -21,7 +22,14 @@ export const Chat = () => {
   const edad = localStorage.getItem("age");
   const orientacion = localStorage.getItem("SexualOrientationId");
   const identidad = localStorage.getItem("GenderIdentityId");
-
+  const saludoArray: string[] = [
+    "Hola!",
+    "Soy Hanayome ,un Chatbot que contestara tus preguntas.",
+    "Estos son los temas:",
+    "-Diversidad Sexual.",
+    "Relaciones Sexuales",
+    "Sexo e Identidad de Genero",
+  ];
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
   );
@@ -71,7 +79,9 @@ export const Chat = () => {
             </div>
             <div className="ChatActivo"></div>
           </div>
-          <div className="ChatBoxMsgCont"></div>
+          <div className="ChatBoxMsgCont">
+            <RespuestaChatBot saludo={saludoArray} />
+          </div>
           <div className="ChatBoxInputCont">
             <input type="text" className="ChatInput" />
             <IoSendSharp
