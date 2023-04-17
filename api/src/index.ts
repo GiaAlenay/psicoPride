@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 app.use('/', allRoutes);
 
 sequelize.sync({ force: false}).then(() => {
-    app.listen(port, () => {
+    app.listen(3000, () => {
         console.log(`Server started on ${port}`);
     });
   });
