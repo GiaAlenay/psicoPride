@@ -47,7 +47,7 @@ export const { getOrientacionStart, getOrientacionSuccess, getOrientacionError }
 export const getOrientacions = (): AppThunk => async (dispatch) => {
   dispatch(getOrientacionStart());
   try {
-    const response = await axios.get('http://localhost:3000/orientaciones');
+    const response = await axios.get('/orientaciones');
     dispatch(getOrientacionSuccess(response.data));
   } catch (err) {
     dispatch(getOrientacionError());

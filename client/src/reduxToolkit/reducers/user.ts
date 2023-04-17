@@ -54,7 +54,7 @@ export const { createUserLoad, creatUserSuccess, createUserError } = userSlice.a
 export const createUser=(data:UserAtributtes):AppThunk=>async(dispatch)=>{
   dispatch(createUserLoad())
   try {
-    const response = await axios.post('http://localhost:3000/usuarios',data);
+    const response = await axios.post('/usuarios',data);
     dispatch(creatUserSuccess({status:response.status,message:response.data.message}))
   } catch (error:any) {
     dispatch(createUserError({status:error.response.status ,message:error.response.data.message}))

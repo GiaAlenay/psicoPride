@@ -46,7 +46,7 @@ export const { getSexoStart, getSexoSuccess, getSexoError } = sexoSlice.actions;
 export const getSexos = (): AppThunk => async (dispatch) => {
   dispatch(getSexoStart());
   try {
-    const response = await axios.get('http://localhost:3000/sexos');
+    const response = await axios.get('/sexos');
     dispatch(getSexoSuccess(response.data));
   } catch (err) {
     dispatch(getSexoError());

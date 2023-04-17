@@ -59,7 +59,7 @@ export const {getPreguntasError,getPreguntasSuccess,getPreguntasLoad,getRespuest
 export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
     dispatch(getPreguntasLoad())
     try {
-      const response = await axios.get(`http://localhost:3000/usuarios/temaschat?sexo=${query.SexoId}&genero=${query.GenderIdentityId}&orientacion=${query.SexualOrientationId}`);
+      const response = await axios.get(`/usuarios/temaschat?sexo=${query.SexoId}&genero=${query.GenderIdentityId}&orientacion=${query.SexualOrientationId}`);
       console.log(response.data)
       dispatch(getPreguntasSuccess({status:response.status,data:response.data}))
     } catch (error:any) {
@@ -69,7 +69,7 @@ export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
   export const getRespuesta=(id:number):AppThunk=>async(dispatch)=>{
     dispatch(getRespuestaLoad())
     try {
-      const response = await axios.get(`http://localhost:3000/temachat/respuesta/${id}`);
+      const response = await axios.get(`/temachat/respuesta/${id}`);
       console.log(response.data)
       dispatch(getRespuestaSuccess({status:response.status,data:response.data}))
     } catch (error:any) {

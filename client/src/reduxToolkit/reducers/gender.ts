@@ -46,7 +46,7 @@ export const { getGenderStart, getGenderData, getGenderError } = genderSlice.act
 export const getGenders = (): AppThunk => async (dispatch) => {
   dispatch(getGenderStart());
   try {
-    const response = await axios.get('http://localhost:3000/generos');
+    const response = await axios.get('/generos');
     dispatch(getGenderData(response.data));
   } catch (err) {
     dispatch(getGenderError());
