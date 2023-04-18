@@ -22,7 +22,13 @@ export const Mensajes: React.FC<MyComponentProps> = ({
           mensaje.tipo === "pregunta" ? "msgDerecha" : "msgIzquierda"
         }`}
       >
-        aaaaaagd l ls v
+        {escribiendo && (
+          <div className="loadingMsg">
+            <div className="dot"> </div>
+            <div className="dot"> </div>
+            <div className="dot"> </div>
+          </div>
+        )}
       </div>
     </div>
   );
