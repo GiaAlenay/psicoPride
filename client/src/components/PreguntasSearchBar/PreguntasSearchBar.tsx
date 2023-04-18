@@ -7,11 +7,13 @@ import { ChatPreguntaRespuesta } from "../../interfaces";
 interface MyComponentProps {
   matches: ChatPreguntaRespuesta[];
   pregunta: string;
+  setPregunta: (p: string) => void;
 }
 
 export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   matches,
   pregunta,
+  setPregunta,
 }) => {
   const [text, setText] = useState("");
   const [sugerencias, setSugerencias] = useState([]);
@@ -23,7 +25,9 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
   );
-
+  const handleElegirPregunta = (elegida: string) => {
+    setPregunta(elegida);
+  };
   return (
     <div className="preguntasSearchCont ">
       <div className="AllPreguntasCont">
@@ -32,13 +36,29 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
         preguntas.data &&
         Array.isArray(preguntas.data) ? (
           preguntas.data.map((p) => (
-            <div key={p.id} className={`preguntaCont`}>
+            <div
+              key={p.id}
+              className={`preguntaCont`}
+              onClick={() => {
+                if (p.pregunta) {
+                  handleElegirPregunta(p.pregunta);
+                }
+              }}
+            >
               {p.pregunta}
             </div>
           ))
         ) : matches.length && pregunta.length ? (
           matches.map((p) => (
-            <div key={p.id} className={`preguntaCont`}>
+            <div
+              key={p.id}
+              onClick={() => {
+                if (p.pregunta) {
+                  handleElegirPregunta(p.pregunta);
+                }
+              }}
+              className={`preguntaCont`}
+            >
               {p.pregunta}
             </div>
           ))

@@ -117,7 +117,13 @@ export const ChatandSugerencias: React.FC = () => {
         <div className="ChatLogoCont">
           <img src={"logo.png"} alt={"logo"} className="chatLogo" />
         </div>
-        <PreguntasSearchBar matches={matches} pregunta={pregunta} />
+        <PreguntasSearchBar
+          matches={matches}
+          pregunta={pregunta}
+          setPregunta={(e) => {
+            setPregunta(e);
+          }}
+        />
       </div>
     </div>
   );
