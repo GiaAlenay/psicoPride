@@ -11,3 +11,7 @@ export interface ChatPreguntaRespuesta{
     respuesta?:string;
 }
 
+export interface MensajeObj {
+    tipo: string;
+    contenido: string;
+  }

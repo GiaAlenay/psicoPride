@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import "./chat&sugerencias.css";
 import { IoSendSharp } from "react-icons/io5";
@@ -8,9 +8,11 @@ import { AppDispatch, RootState } from "../../reduxToolkit/store";
 import { useSelector } from "react-redux";
 import { Response } from "../../reduxToolkit/reducers/chat";
 import { ChatPreguntaRespuesta } from "../../interfaces";
+import { Conversacion } from "../conversacion/conversacion";
 
 interface MyComponentProps {}
 export const ChatandSugerencias: React.FC = () => {
+  const [escribiendo, setEscribiendo] = useState<boolean>(false);
   const [pregunta, setPregunta] = useState<string>("");
   let [matches, setMatches] = useState<ChatPreguntaRespuesta[]>([]);
   const preguntas: Response = useSelector<RootState, Response>(
@@ -50,7 +52,15 @@ export const ChatandSugerencias: React.FC = () => {
     return <div style={finalStyle} {...props} />;
   };
 
+  useEffect(() => {
+    const tiempo = setTimeout(() => {
+      setEscribiendo(false);
+    }, 2000);
+    return () => clearTimeout(tiempo);
+  }, [escribiendo]);
+
   const onChangeInput = (text: string) => {
+    setEscribiendo(true);
     if (Array.isArray(preguntas.data)) {
       if (text.length > 0) {
         setMatches(
@@ -63,9 +73,6 @@ export const ChatandSugerencias: React.FC = () => {
     }
 
     setPregunta(text);
-
-    console.log("ss  ", pregunta);
-    // console.log(matches);
   };
 
   return (
@@ -78,22 +85,30 @@ export const ChatandSugerencias: React.FC = () => {
             </div>
             <div className="ChatActivo"></div>
           </div>
-          <div className="ChatBoxMsgCont">
+          <div className="ChatBoxMsgCont" style={{}}>
             <Scrollbars
               ref={scrollbarsRef}
               style={{ width: "100%", height: "99.8%" }}
               renderThumbVertical={renderThumbVertical}
             >
-              <div style={{ paddingBottom: "30px" }}>
+              <div>
                 {saludoArray.map((s, i) => (
                   <RespuestaChatBot saludo={s} orden={i} tiempo={getTime(i)} />
                 ))}
               </div>
+              <Conversacion
+                mensaje={{ tipo: "pregunta", contenido: pregunta }}
+                escribiendo={escribiendo}
+              />
             </Scrollbars>
           </div>
           <div className="ChatBoxInputCont">
             <input
+              value={pregunta}
               type="text"
+              onBlur={() => {
+                setEscribiendo(false);
+              }}
               onChange={(e) => {
                 onChangeInput(e.target.value);
               }}
