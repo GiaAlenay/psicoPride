@@ -94,7 +94,9 @@ export const Chat = () => {
             navigate("/");
           }}
         />
-        <img src={"avatar.png"} alt="avatar" className="avatarChat " />
+        <div className="avatarImgCont">
+          <img src={"avatar.png"} alt="avatar" className="avatarChat " />
+        </div>
       </div>
       <div className="chatboXCont d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
         <div className="chatBox  ">
