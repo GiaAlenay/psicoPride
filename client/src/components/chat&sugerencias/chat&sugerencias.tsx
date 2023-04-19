@@ -51,7 +51,7 @@ export const ChatandSugerencias: React.FC = () => {
   }
   useEffect(() => {
     updateScrollPosition();
-  }, [mensajes]);
+  }, [mensajes, escribiendo]);
 
   const thumbVerticalStyles = {
     backgroundColor: "rgba(50, 50, 93, 0.25)",

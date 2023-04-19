@@ -27,16 +27,23 @@ export const Mensajes: React.FC<MyComponentProps> = ({
             }`}
           >
             {m.contenido}
-            {/* {escribiendo ? (
+          </div>
+        </div>
+      ))}
+      <div
+        style={{ display: `${escribiendo ? "flex" : "none"}` }}
+        className={`msgCont ${"msgContDerecha"}`}
+      >
+        <div className={`msg ${"msgDerecha"}`}>
+          {escribiendo && (
             <div className="loadingMsg">
               <div className="dot"> </div>
               <div className="dot"> </div>
               <div className="dot"> </div>
             </div>
-          ):} */}
-          </div>
+          )}
         </div>
-      ))}
+      </div>
     </>
   );
 };
