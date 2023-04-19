@@ -92,7 +92,6 @@ export const ChatandSugerencias: React.FC = () => {
       respuesta.message &&
       !loadingRespuesta
     ) {
-      console.log("entre dondeee");
       setStr(respuesta.message);
     }
   }, [respuesta, loadingRespuesta]);
@@ -171,7 +170,12 @@ export const ChatandSugerencias: React.FC = () => {
             >
               <div>
                 {saludoArray.map((s, i) => (
-                  <RespuestaChatBot saludo={s} orden={i} tiempo={getTime(i)} />
+                  <RespuestaChatBot
+                    key={i}
+                    saludo={s}
+                    orden={i}
+                    tiempo={getTime(i)}
+                  />
                 ))}
               </div>
               <Conversacion

@@ -71,8 +71,6 @@ export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
       const response = await axios.get(`/temachat/respuesta/${id}`);
       dispatch(getRespuestaSuccess({status:response.status,data:response.data}))
     } catch (error:any) {
-      console.log('estoy en catch')
-      console.log(error.response.data)
       dispatch(getRespuestaError({status:error.response.status ,message:error.response.data}))
     }
   }
