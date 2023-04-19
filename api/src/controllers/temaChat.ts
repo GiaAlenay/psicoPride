@@ -16,10 +16,10 @@ export const getRespuesta=async(req:Request,res:Response)=>{
             res.status(201).json({respuesta:respuesta.respuesta})            
         }
         else{
-            res.status(404).send('Perdón no tengo una respuesta para esa pregunta.')
+            res.status(404).send('Perdón no tengo una respuesta para esa pregunta 😔.')
         }
     } catch (error) {
-        res.status(500).send('Perdón no tengo una respuesta para esa pregunta.')
+        res.status(500).send('Perdón no tengo una respuesta para esa pregunta 😔.')
     }
 }
 

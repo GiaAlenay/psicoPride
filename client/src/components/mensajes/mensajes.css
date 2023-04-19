@@ -1,6 +1,4 @@
-.msgCont{
-    display: flex;
-}
+
 .msg{
     background-color:  rgb(231, 231, 231);    
     padding: 16px 20px;   
@@ -21,9 +19,6 @@
 
 .msgContDerecha{
     justify-content: end;
-}
-
-.loadingMsg{
 }
 
 

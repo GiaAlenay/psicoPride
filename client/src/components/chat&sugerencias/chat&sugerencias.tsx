@@ -17,6 +17,7 @@ export const ChatandSugerencias: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const [mensajes, setMensajes] = useState<MensajeObj[]>([]);
   const [escribiendo, setEscribiendo] = useState<boolean>(false);
+  const [loadingSaludo, SetLoadingSaludo] = useState(true);
   const [pregunta, setPregunta] = useState<string>("");
   let [matches, setMatches] = useState<ChatPreguntaRespuesta[]>([]);
   const loadingRespuesta: boolean = useSelector<RootState, boolean>(
@@ -59,6 +60,11 @@ export const ChatandSugerencias: React.FC = () => {
       scrollbars.scrollTop(maxScrollTop);
     }
   }
+  useEffect(() => {
+    setTimeout(() => {
+      SetLoadingSaludo(false);
+    }, 1900);
+  }, []);
   useEffect(() => {
     updateScrollPosition();
   }, [mensajes, escribiendo]);
@@ -169,6 +175,20 @@ export const ChatandSugerencias: React.FC = () => {
               renderThumbVertical={renderThumbVertical}
             >
               <div>
+                <div
+                  style={{ display: `${loadingSaludo ? "flex" : "none"}` }}
+                  className={`msgCont ${"msgContIzquierda"}`}
+                >
+                  <div className={`msg ${"msgIzquierda"}`}>
+                    {loadingSaludo && (
+                      <div className="loadingMsg">
+                        <div className="dot"> </div>
+                        <div className="dot"> </div>
+                        <div className="dot"> </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
                 {saludoArray.map((s, i) => (
                   <RespuestaChatBot
                     key={i}
