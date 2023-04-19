@@ -9,12 +9,22 @@ import { useSelector } from "react-redux";
 import { Response } from "../../reduxToolkit/reducers/chat";
 import { ChatPreguntaRespuesta, MensajeObj } from "../../interfaces";
 import { Conversacion } from "../conversacion/conversacion";
+import { useDispatch } from "react-redux";
+import { getRespuesta } from "../../reduxToolkit/reducers/chat";
 
 export const ChatandSugerencias: React.FC = () => {
+  const [str, setStr] = useState<string>("");
+  const dispatch: AppDispatch = useDispatch();
   const [mensajes, setMensajes] = useState<MensajeObj[]>([]);
   const [escribiendo, setEscribiendo] = useState<boolean>(false);
   const [pregunta, setPregunta] = useState<string>("");
   let [matches, setMatches] = useState<ChatPreguntaRespuesta[]>([]);
+  const loadingRespuesta: boolean = useSelector<RootState, boolean>(
+    (state) => state.chat.loadingRespuesta
+  );
+  const respuesta: Response = useSelector<RootState, Response>(
+    (state) => state.chat.respuesta
+  );
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
   );
@@ -26,6 +36,7 @@ export const ChatandSugerencias: React.FC = () => {
     "Relaciones Sexuales",
     "Sexo e Identidad de Genero",
   ];
+  const scrollbarsRef = useRef<Scrollbars>(null);
 
   const getTime = (indice: number): number => {
     if (indice === 0) {
@@ -40,7 +51,6 @@ export const ChatandSugerencias: React.FC = () => {
       return contador;
     }
   };
-  const scrollbarsRef = useRef<Scrollbars>(null);
   function updateScrollPosition() {
     const scrollbars = scrollbarsRef.current;
     if (scrollbars) {
@@ -62,6 +72,30 @@ export const ChatandSugerencias: React.FC = () => {
     const finalStyle = { ...style, ...thumbVerticalStyles };
     return <div style={finalStyle} {...props} />;
   };
+  useEffect(() => {
+    if (
+      typeof respuesta.data === "object" &&
+      !Array.isArray(respuesta.data) &&
+      respuesta.status &&
+      respuesta.status === 201 &&
+      respuesta.data &&
+      respuesta.data.respuesta &&
+      !loadingRespuesta
+    ) {
+      setStr(respuesta.data.respuesta);
+    }
+  }, [respuesta, loadingRespuesta]);
+  useEffect(() => {
+    if (str.length) {
+      setMensajes((prevMsg) =>
+        prevMsg.concat({
+          tipo: "respuesta",
+          contenido: str,
+        })
+      );
+      setStr("");
+    }
+  }, [str]);
 
   useEffect(() => {
     const tiempo = setTimeout(() => {
@@ -84,6 +118,14 @@ export const ChatandSugerencias: React.FC = () => {
     }
 
     setPregunta(text);
+  };
+
+  const handleSetPregunta = (e: string, id: number) => {
+    setMensajes((prevMsg) =>
+      prevMsg.concat({ tipo: "pregunta", contenido: e })
+    );
+    setPregunta(e);
+    dispatch(getRespuesta(id));
   };
 
   return (
@@ -124,9 +166,9 @@ export const ChatandSugerencias: React.FC = () => {
                 onChangeInput(e.target.value);
               }}
               className="ChatInput"
-              onKeyDown={(e) => {
-                console.log("key down");
-              }}
+              //   onKeyDown={(e) => {
+              //     console.log("key down");
+              //   }}
             />
             <div className="d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
               <IoSendSharp
@@ -146,11 +188,8 @@ export const ChatandSugerencias: React.FC = () => {
         <PreguntasSearchBar
           matches={matches}
           pregunta={pregunta}
-          setPregunta={(e) => {
-            setMensajes((prevMsg) =>
-              prevMsg.concat({ tipo: "pregunta", contenido: e })
-            );
-            setPregunta(e);
+          setPregunta={(e, id) => {
+            handleSetPregunta(e, id);
           }}
         />
       </div>

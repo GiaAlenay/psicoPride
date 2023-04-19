@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import { MensajeObj } from "../../interfaces";
 import "./mensajes.css";
 import React from "react";
+import { RootState } from "../../reduxToolkit/store";
 
 interface MyComponentProps {
   mensajesArray: MensajeObj[];
@@ -10,7 +12,9 @@ export const Mensajes: React.FC<MyComponentProps> = ({
   mensajesArray,
   escribiendo,
 }) => {
-  console.log(mensajesArray);
+  const loadingRespuesta: boolean = useSelector<RootState, boolean>(
+    (state) => state.chat.loadingRespuesta
+  );
   return (
     <>
       {mensajesArray.map((m, i) => (

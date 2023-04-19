@@ -7,7 +7,7 @@ import { ChatPreguntaRespuesta } from "../../interfaces";
 interface MyComponentProps {
   matches: ChatPreguntaRespuesta[];
   pregunta: string;
-  setPregunta: (p: string) => void;
+  setPregunta: (p: string, id: number) => void;
 }
 
 export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
@@ -18,15 +18,15 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   const [text, setText] = useState("");
   const [sugerencias, setSugerencias] = useState([]);
 
-  useEffect(() => {
-    console.log(matches);
-  }, [matches]);
+  // useEffect(() => {
+  //   console.log(matches);
+  // }, [matches]);
 
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
   );
-  const handleElegirPregunta = (elegida: string) => {
-    setPregunta(elegida);
+  const handleElegirPregunta = (elegida: string, id: number) => {
+    setPregunta(elegida, id);
   };
   return (
     <div className="preguntasSearchCont ">
@@ -41,7 +41,7 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
               className={`preguntaCont`}
               onClick={() => {
                 if (p.pregunta) {
-                  handleElegirPregunta(p.pregunta);
+                  handleElegirPregunta(p.pregunta, p.id ? p.id : 1);
                 }
               }}
             >
@@ -54,7 +54,7 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
               key={p.id}
               onClick={() => {
                 if (p.pregunta) {
-                  handleElegirPregunta(p.pregunta);
+                  handleElegirPregunta(p.pregunta, p.id ? p.id : 1);
                 }
               }}
               className={`preguntaCont`}

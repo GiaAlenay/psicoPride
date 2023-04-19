@@ -60,7 +60,6 @@ export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
     dispatch(getPreguntasLoad())
     try {
       const response = await axios.get(`/usuarios/temaschat?sexo=${query.SexoId}&genero=${query.GenderIdentityId}&orientacion=${query.SexualOrientationId}`);
-      console.log(response.data)
       dispatch(getPreguntasSuccess({status:response.status,data:response.data}))
     } catch (error:any) {
       dispatch(getPreguntasError({status:error.response.status ,message:error.response.data.message}))
@@ -70,7 +69,6 @@ export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
     dispatch(getRespuestaLoad())
     try {
       const response = await axios.get(`/temachat/respuesta/${id}`);
-      console.log(response.data)
       dispatch(getRespuestaSuccess({status:response.status,data:response.data}))
     } catch (error:any) {
       dispatch(getRespuestaError({status:error.response.status ,message:error.response.data.message}))
