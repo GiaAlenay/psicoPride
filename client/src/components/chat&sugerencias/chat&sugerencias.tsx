@@ -19,7 +19,9 @@ export const ChatandSugerencias: React.FC = () => {
   const [escribiendo, setEscribiendo] = useState<boolean>(false);
   const [loadingSaludo, SetLoadingSaludo] = useState(true);
   const [pregunta, setPregunta] = useState<string>("");
-  let [matches, setMatches] = useState<ChatPreguntaRespuesta[]>([]);
+  const [matches, setMatches] = useState<ChatPreguntaRespuesta[]>([]);
+  const scrollbarsRef = useRef<Scrollbars>(null);
+  const [posiblePregunta, setposiblePregunta] = useState<string>("");
   const loadingRespuesta: boolean = useSelector<RootState, boolean>(
     (state) => state.chat.loadingRespuesta
   );
@@ -31,13 +33,12 @@ export const ChatandSugerencias: React.FC = () => {
   );
   const saludoArray: string[] = [
     "Hola! ❤️",
-    "Soy Hanayome ,un Chatbot que contestara tus preguntas.",
-    "Estos son los temas:",
-    "-Diversidad Sexual.",
-    "Relaciones Sexuales",
-    "Sexo e Identidad de Genero",
+    // "Soy Hanayome ,un Chatbot que contestara tus preguntas.",
+    // "Estos son los temas:",
+    // "-Diversidad Sexual.",
+    // "Relaciones Sexuales",
+    // "Sexo e Identidad de Genero",
   ];
-  const scrollbarsRef = useRef<Scrollbars>(null);
 
   const getTime = (indice: number): number => {
     if (indice === 0) {
@@ -52,6 +53,16 @@ export const ChatandSugerencias: React.FC = () => {
       return contador;
     }
   };
+
+  useEffect(() => {
+    if (matches.length > 0 && matches[0].pregunta) {
+      setIndexPRegunta(0);
+      setposiblePregunta(matches[0].pregunta);
+    } else {
+      setposiblePregunta("");
+    }
+  }, [matches]);
+
   function updateScrollPosition() {
     const scrollbars = scrollbarsRef.current;
     if (scrollbars) {
@@ -144,14 +155,25 @@ export const ChatandSugerencias: React.FC = () => {
     dispatch(getRespuesta(id));
   };
 
-  const handleSendPregunta = () => {
+  const handleSendPregunta = (setPosibleAPregunta?: string) => {
+    let findPregunta;
     setMensajes((prevMsg) =>
-      prevMsg.concat({ tipo: "pregunta", contenido: pregunta })
+      prevMsg.concat({
+        tipo: "pregunta",
+        contenido: setPosibleAPregunta ? setPosibleAPregunta : pregunta,
+      })
     );
-    const findPregunta =
-      Array.isArray(preguntas.data) &&
-      preguntas.data.find((p) => p.pregunta === pregunta);
 
+    if (setPosibleAPregunta) {
+      findPregunta =
+        Array.isArray(preguntas.data) &&
+        preguntas.data.find((p) => p.pregunta === posiblePregunta);
+    } else {
+      findPregunta =
+        Array.isArray(preguntas.data) &&
+        preguntas.data.find((p) => p.pregunta === pregunta);
+    }
+    console.log("llega pregunta:", findPregunta);
     if (findPregunta && findPregunta.id) {
       dispatch(getRespuesta(findPregunta.id));
     } else {
@@ -159,10 +181,31 @@ export const ChatandSugerencias: React.FC = () => {
     }
   };
 
+  let [indexPregunta, setIndexPRegunta] = useState<number>(0);
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      handleSendPregunta();
+      if (posiblePregunta !== "") {
+        setPregunta(posiblePregunta);
+      }
+      handleSendPregunta(posiblePregunta);
       event.preventDefault();
+    }
+    if (event.key === "ArrowUp") {
+      console.log("arriba");
+      const prevMatch = matches[indexPregunta - 1];
+      if (prevMatch && prevMatch.pregunta) {
+        setIndexPRegunta(indexPregunta - 1);
+        setposiblePregunta(prevMatch.pregunta);
+      }
+    }
+    if (event.key === "ArrowDown") {
+      console.log("abajo");
+
+      const prevMatch = matches[indexPregunta + 1];
+      if (prevMatch && prevMatch.pregunta) {
+        setIndexPRegunta(indexPregunta + 1);
+        setposiblePregunta(prevMatch.pregunta);
+      }
     }
   };
 
@@ -227,7 +270,7 @@ export const ChatandSugerencias: React.FC = () => {
                 handleKeyDown(e);
               }}
             />
-            <div className="d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
+            <div className="d-flex w-100 h-100 justify-content-center align-items-center mx-auto ">
               <IoSendSharp
                 className="sendBtn"
                 onClick={() => {
@@ -243,6 +286,7 @@ export const ChatandSugerencias: React.FC = () => {
           <img src={"logo.png"} alt={"logo"} className="chatLogo" />
         </div>
         <PreguntasSearchBar
+          posiblePregunta={posiblePregunta}
           matches={matches}
           pregunta={pregunta}
           setPregunta={(e, id) => {

@@ -7,17 +7,16 @@ import { ChatPreguntaRespuesta } from "../../interfaces";
 interface MyComponentProps {
   matches: ChatPreguntaRespuesta[];
   pregunta: string;
+  posiblePregunta: string;
   setPregunta: (p: string, id: number) => void;
 }
 
 export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   matches,
   pregunta,
+  posiblePregunta,
   setPregunta,
 }) => {
-  const [text, setText] = useState("");
-  const [sugerencias, setSugerencias] = useState([]);
-
   // useEffect(() => {
   //   console.log(matches);
   // }, [matches]);
@@ -38,7 +37,9 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
           preguntas.data.map((p) => (
             <div
               key={p.id}
-              className={`preguntaCont`}
+              className={`preguntaCont ${
+                posiblePregunta === p.pregunta && "currentPregSelected"
+              }`}
               onClick={() => {
                 if (p.pregunta) {
                   handleElegirPregunta(p.pregunta, p.id ? p.id : 1);
@@ -57,7 +58,9 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
                   handleElegirPregunta(p.pregunta, p.id ? p.id : 1);
                 }
               }}
-              className={`preguntaCont`}
+              className={`preguntaCont ${
+                posiblePregunta === p.pregunta && "currentPregSelected"
+              }`}
             >
               {p.pregunta}
             </div>
