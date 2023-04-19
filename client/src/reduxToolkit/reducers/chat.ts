@@ -65,13 +65,15 @@ export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
       dispatch(getPreguntasError({status:error.response.status ,message:error.response.data.message}))
     }
   }
-  export const getRespuesta=(id:number):AppThunk=>async(dispatch)=>{
+  export const getRespuesta=(id:number|string):AppThunk=>async(dispatch)=>{
     dispatch(getRespuestaLoad())
     try {
       const response = await axios.get(`/temachat/respuesta/${id}`);
       dispatch(getRespuestaSuccess({status:response.status,data:response.data}))
     } catch (error:any) {
-      dispatch(getRespuestaError({status:error.response.status ,message:error.response.data.message}))
+      console.log('estoy en catch')
+      console.log(error.response.data)
+      dispatch(getRespuestaError({status:error.response.status ,message:error.response.data}))
     }
   }
 

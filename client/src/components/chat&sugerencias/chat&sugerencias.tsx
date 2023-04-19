@@ -84,6 +84,17 @@ export const ChatandSugerencias: React.FC = () => {
     ) {
       setStr(respuesta.data.respuesta);
     }
+    if (
+      typeof respuesta === "object" &&
+      !Array.isArray(respuesta) &&
+      respuesta.status &&
+      respuesta.status > 400 &&
+      respuesta.message &&
+      !loadingRespuesta
+    ) {
+      console.log("entre dondeee");
+      setStr(respuesta.message);
+    }
   }, [respuesta, loadingRespuesta]);
   useEffect(() => {
     if (str.length) {
@@ -128,6 +139,20 @@ export const ChatandSugerencias: React.FC = () => {
     dispatch(getRespuesta(id));
   };
 
+  const handleSendPregunta = () => {
+    setMensajes((prevMsg) =>
+      prevMsg.concat({ tipo: "pregunta", contenido: pregunta })
+    );
+    const findPregunta =
+      Array.isArray(preguntas.data) &&
+      preguntas.data.find((p) => p.pregunta === pregunta);
+
+    if (findPregunta && findPregunta.id) {
+      dispatch(getRespuesta(findPregunta.id));
+    } else {
+      dispatch(getRespuesta("x"));
+    }
+  };
   return (
     <div className="chatandsuggCont">
       <div className="chatboXCont d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
@@ -174,7 +199,7 @@ export const ChatandSugerencias: React.FC = () => {
               <IoSendSharp
                 className="sendBtn"
                 onClick={() => {
-                  console.log("jaja");
+                  handleSendPregunta();
                 }}
               />
             </div>
