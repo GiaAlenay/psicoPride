@@ -158,6 +158,14 @@ export const ChatandSugerencias: React.FC = () => {
       dispatch(getRespuesta("x"));
     }
   };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSendPregunta();
+      event.preventDefault();
+    }
+  };
+
   return (
     <div className="chatandsuggCont">
       <div className="chatboXCont d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
@@ -215,9 +223,9 @@ export const ChatandSugerencias: React.FC = () => {
                 onChangeInput(e.target.value);
               }}
               className="ChatInput"
-              //   onKeyDown={(e) => {
-              //     console.log("key down");
-              //   }}
+              onKeyDown={(e) => {
+                handleKeyDown(e);
+              }}
             />
             <div className="d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
               <IoSendSharp
