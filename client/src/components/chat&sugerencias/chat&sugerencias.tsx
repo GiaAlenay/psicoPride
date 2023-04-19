@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import "./chat&sugerencias.css";
-import { IoSendSharp } from "react-icons/io5";
+import { IoSendSharp, IoClose } from "react-icons/io5";
 import { RespuestaChatBot } from "../RespuestaChatBot/RespuestaChatBot";
 import { PreguntasSearchBar } from "../PreguntasSearchBar/PreguntasSearchBar";
 import { AppDispatch, RootState } from "../../reduxToolkit/store";
@@ -191,7 +191,6 @@ export const ChatandSugerencias: React.FC = () => {
       event.preventDefault();
     }
     if (event.key === "ArrowUp") {
-      console.log("arriba");
       const prevMatch = matches[indexPregunta - 1];
       if (prevMatch && prevMatch.pregunta) {
         setIndexPRegunta(indexPregunta - 1);
@@ -199,13 +198,14 @@ export const ChatandSugerencias: React.FC = () => {
       }
     }
     if (event.key === "ArrowDown") {
-      console.log("abajo");
-
       const prevMatch = matches[indexPregunta + 1];
       if (prevMatch && prevMatch.pregunta) {
         setIndexPRegunta(indexPregunta + 1);
         setposiblePregunta(prevMatch.pregunta);
       }
+    }
+    if (event.keyCode === 27) {
+      setPregunta("");
     }
   };
 
@@ -257,6 +257,7 @@ export const ChatandSugerencias: React.FC = () => {
           </div>
           <div className="ChatBoxInputCont">
             <input
+              placeholder="Escribe una pregunta..."
               value={pregunta}
               type="text"
               onBlur={() => {
@@ -271,6 +272,14 @@ export const ChatandSugerencias: React.FC = () => {
               }}
             />
             <div className="d-flex w-100 h-100 justify-content-center align-items-center mx-auto ">
+              {pregunta && (
+                <IoClose
+                  className="closeBtnChat"
+                  onClick={() => {
+                    setPregunta("");
+                  }}
+                />
+              )}
               <IoSendSharp
                 className="sendBtn"
                 onClick={() => {

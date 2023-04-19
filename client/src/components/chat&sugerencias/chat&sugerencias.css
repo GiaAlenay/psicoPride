@@ -100,3 +100,13 @@
     transform: scale(1.2);
     transform: rotate(-20deg);
 }
+
+.closeBtnChat{
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.2s linear;
+}
+
+.closeBtnChat:hover{
+    transform: scale(1.2);
+}
