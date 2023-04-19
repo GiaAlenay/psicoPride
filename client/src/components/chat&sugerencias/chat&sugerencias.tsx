@@ -7,11 +7,11 @@ import { PreguntasSearchBar } from "../PreguntasSearchBar/PreguntasSearchBar";
 import { AppDispatch, RootState } from "../../reduxToolkit/store";
 import { useSelector } from "react-redux";
 import { Response } from "../../reduxToolkit/reducers/chat";
-import { ChatPreguntaRespuesta } from "../../interfaces";
+import { ChatPreguntaRespuesta, MensajeObj } from "../../interfaces";
 import { Conversacion } from "../conversacion/conversacion";
 
-interface MyComponentProps {}
 export const ChatandSugerencias: React.FC = () => {
+  const [mensajes, setMensajes] = useState<MensajeObj[]>([]);
   const [escribiendo, setEscribiendo] = useState<boolean>(false);
   const [pregunta, setPregunta] = useState<string>("");
   let [matches, setMatches] = useState<ChatPreguntaRespuesta[]>([]);
@@ -41,6 +41,17 @@ export const ChatandSugerencias: React.FC = () => {
     }
   };
   const scrollbarsRef = useRef<Scrollbars>(null);
+  function updateScrollPosition() {
+    const scrollbars = scrollbarsRef.current;
+    if (scrollbars) {
+      const { scrollHeight, clientHeight } = scrollbars.getValues();
+      const maxScrollTop = scrollHeight - clientHeight;
+      scrollbars.scrollTop(maxScrollTop);
+    }
+  }
+  useEffect(() => {
+    updateScrollPosition();
+  }, [mensajes]);
 
   const thumbVerticalStyles = {
     backgroundColor: "rgba(50, 50, 93, 0.25)",
@@ -97,7 +108,7 @@ export const ChatandSugerencias: React.FC = () => {
                 ))}
               </div>
               <Conversacion
-                mensaje={{ tipo: "pregunta", contenido: pregunta }}
+                mensajesArray={mensajes}
                 escribiendo={escribiendo}
               />
             </Scrollbars>
@@ -136,6 +147,9 @@ export const ChatandSugerencias: React.FC = () => {
           matches={matches}
           pregunta={pregunta}
           setPregunta={(e) => {
+            setMensajes((prevMsg) =>
+              prevMsg.concat({ tipo: "pregunta", contenido: e })
+            );
             setPregunta(e);
           }}
         />

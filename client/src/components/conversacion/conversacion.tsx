@@ -4,16 +4,16 @@ import "./conversacion.css";
 import React from "react";
 
 interface MyComponentProps {
-  mensaje: MensajeObj;
+  mensajesArray: MensajeObj[];
   escribiendo: boolean;
 }
 export const Conversacion: React.FC<MyComponentProps> = ({
-  mensaje,
+  mensajesArray,
   escribiendo,
 }) => {
   return (
     <div>
-      <Mensajes mensaje={mensaje} escribiendo={escribiendo} />
+      <Mensajes mensajesArray={mensajesArray} escribiendo={escribiendo} />
     </div>
   );
 };

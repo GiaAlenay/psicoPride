@@ -3,33 +3,40 @@ import "./mensajes.css";
 import React from "react";
 
 interface MyComponentProps {
-  mensaje: MensajeObj;
+  mensajesArray: MensajeObj[];
   escribiendo: boolean;
 }
 export const Mensajes: React.FC<MyComponentProps> = ({
-  mensaje,
+  mensajesArray,
   escribiendo,
 }) => {
+  console.log(mensajesArray);
   return (
-    <div
-      style={{ display: `${escribiendo ? "flex" : "none"}` }}
-      className={`msgCont ${
-        mensaje.tipo === "pregunta" ? "msgContDerecha" : "msgContIzquierda"
-      }`}
-    >
-      <div
-        className={`msg ${
-          mensaje.tipo === "pregunta" ? "msgDerecha" : "msgIzquierda"
-        }`}
-      >
-        {escribiendo && (
-          <div className="loadingMsg">
-            <div className="dot"> </div>
-            <div className="dot"> </div>
-            <div className="dot"> </div>
+    <>
+      {mensajesArray.map((m, i) => (
+        <div
+          key={i}
+          style={{ display: `${m ? "flex" : "none"}` }}
+          className={`msgCont ${
+            m.tipo === "pregunta" ? "msgContDerecha" : "msgContIzquierda"
+          }`}
+        >
+          <div
+            className={`msg ${
+              m.tipo === "pregunta" ? "msgDerecha" : "msgIzquierda"
+            }`}
+          >
+            {m.contenido}
+            {/* {escribiendo ? (
+            <div className="loadingMsg">
+              <div className="dot"> </div>
+              <div className="dot"> </div>
+              <div className="dot"> </div>
+            </div>
+          ):} */}
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      ))}
+    </>
   );
 };
