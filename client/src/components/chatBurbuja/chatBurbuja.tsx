@@ -100,12 +100,8 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   };
 
   return (
-    <DraggableCore onDrag={handleDrag}>
-      <div
-        onClick={handleChatOrQuest}
-        className="box"
-        style={{ position: "absolute", left: x, top: y }}
-      ></div>
-    </DraggableCore>
+    <button className="button-75" onClick={handleChatOrQuest}>
+      <span className="text">Chate Conmigo</span>
+    </button>
   );
 };

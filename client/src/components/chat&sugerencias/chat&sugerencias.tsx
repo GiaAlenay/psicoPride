@@ -10,7 +10,7 @@ import { Response, vaciarRespuesta } from "../../reduxToolkit/reducers/chat";
 import { ChatPreguntaRespuesta, MensajeObj } from "../../interfaces";
 import { Conversacion } from "../conversacion/conversacion";
 import { useDispatch } from "react-redux";
-import { getRespuesta, emptyRespuesta } from "../../reduxToolkit/reducers/chat";
+import { getRespuesta } from "../../reduxToolkit/reducers/chat";
 
 export const ChatandSugerencias: React.FC = () => {
   const [str, setStr] = useState<string>("");

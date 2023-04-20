@@ -34,12 +34,16 @@ export const Landing = () => {
         renderThumbVertical={renderThumbVertical}
       >
         <Modal open={modal} option={"loader"} />
-        <ChatPresentation />
-        <ChatBurbuja
+        <ChatPresentation
           setLoader={() => {
             setModal(true);
           }}
         />
+        {/* <ChatBurbuja
+          setLoader={() => {
+            setModal(true);
+          }}
+        /> */}
         <About />
       </Scrollbars>
     </div>
