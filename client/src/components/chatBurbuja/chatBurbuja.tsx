@@ -101,7 +101,7 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
 
   return (
     <button className="button-75" onClick={handleChatOrQuest}>
-      <span className="text">Chate Conmigo</span>
+      <span className="text">Chatea Conmigo</span>
     </button>
   );
 };

@@ -32,7 +32,7 @@ export const Stepper: React.FC<MyComponentProps> = ({
   };
 
   return (
-    <div className=" d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
+    <div className=" d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto py-3">
       <div className="stepperCont d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
         <div className="progresLineStep">
           <div
