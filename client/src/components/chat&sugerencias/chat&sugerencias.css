@@ -1,7 +1,15 @@
+.ChatLogoSeacrhPregCont{
+    display: flex;
+}
+.ChatLogoContHide{
+    display: none;
+}
+
 .chatandsuggCont{
     width: 100%;
     display: grid;
     grid-template-columns: 57.1% 42.9%;
+
 }
 .chatboXCont{
     width: 100%;    
@@ -109,4 +117,50 @@
 
 .closeBtnChat:hover{
     transform: scale(1.2);
+}
+
+@media (max-width: 1000px) {
+    .chatandsuggCont{
+        grid-template-columns: 64,87% 35,13%;
+    }
+}
+@media (max-width: 800px) {
+}
+
+@media (max-width: 700px) {
+    .chatandsuggCont{
+    
+        font-size: 90%;
+    }
+
+}
+@media (max-width: 600px) {
+    .chatandsuggCont{
+        display: block;
+    }
+    .chatandsuggCont{    
+        font-size: 80%;
+    }
+    .ChatLogoSeacrhPregCont{
+        display: none;
+        background-color: #7169ac;
+    }
+    .ChatLogoContHide{
+        display: block;
+    }    
+    
+}
+@media (max-width: 400px) {
+    .ChatLogoContHide{
+        display: none;
+    } 
+    .chatboXCont{
+        height: 100%;
+    }
+    .chatandsuggCont{
+        height: 100%;
+    }
+}
+@media (max-width: 300px) {
+
 }

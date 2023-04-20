@@ -218,6 +218,9 @@ export const ChatandSugerencias: React.FC = () => {
 
   return (
     <div className="chatandsuggCont">
+      <div className="ChatLogoContHide">
+        <img src={"logo.png"} alt={"logo"} className="chatLogo" />
+      </div>
       <div className="chatboXCont d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
         <div className="chatBox">
           <div className="ChatBoxEstadoCont text-center d-flex ">
@@ -297,7 +300,7 @@ export const ChatandSugerencias: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="d-flex w-100  justify-content-center align-items-center mx-auto ">
+      <div className="ChatLogoSeacrhPregCont  w-100  justify-content-center align-items-center mx-auto ">
         <div className="ChatLogoCont">
           <img src={"logo.png"} alt={"logo"} className="chatLogo" />
         </div>

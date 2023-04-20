@@ -2,11 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { RootState, AppDispatch } from "../../reduxToolkit/store";
 import "./chat.css";
-import {
-  ChatGlobalState,
-  Response,
-  getPreguntas,
-} from "../../reduxToolkit/reducers/chat";
+import { Response, getPreguntas } from "../../reduxToolkit/reducers/chat";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -23,10 +19,6 @@ export const Chat = () => {
 
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
-  );
-
-  const loadingPreguntas: boolean = useSelector<RootState, boolean>(
-    (state) => state.chat.loadingPreguntas
   );
 
   // useEffect(() => {
