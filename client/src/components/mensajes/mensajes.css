@@ -53,3 +53,22 @@
       transform: translate3d(0, -15, 0);
     }
   }
+
+  @media (max-width: 700px) {
+    .msg{   
+      padding: 16px 20px;   
+      width:  fit-content;
+      max-width: 60%;
+      
+  }
+}
+
+@media (max-width: 300px) {
+  .msg{   
+    padding: 20px 20px;   
+    width:  fit-content;
+    max-width: 70%;
+    font-size: 90%;
+    
+}
+}

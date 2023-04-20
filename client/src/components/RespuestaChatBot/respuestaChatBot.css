@@ -1,6 +1,5 @@
 .respuestaChatBotCont{
     max-width: 50%;
-    /* min-width: 100px; */
 }
 
 .respuestaChatBot{
@@ -13,3 +12,14 @@
     box-shadow: rgba(255, 255, 255, 0.8) 1px 1.5px 0px 0px inset, rgba(50, 50, 93, 0.25) 0px 2px 1.1px , rgba(0, 0, 0, 0.3) 0px 3px 1px ;
 }
 
+@media (max-width: 700px) {
+    .respuestaChatBotCont{
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 300px) {
+    .respuestaChatBotCont{
+        max-width: 80%;
+    }
+}

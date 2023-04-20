@@ -160,7 +160,14 @@
     .chatandsuggCont{
         height: 100%;
     }
+    .chatBox{
+        width: 100% ;   
+        height: 100%;
+        border-radius: 0px;
+         }
 }
 @media (max-width: 300px) {
-
+    .chatandsuggCont{
+        font-size: 74%;
+    }
 }
