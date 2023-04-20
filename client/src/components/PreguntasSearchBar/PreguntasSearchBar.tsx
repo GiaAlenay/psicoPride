@@ -32,15 +32,7 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   const loadingPreguntas: boolean = useSelector<RootState, boolean>(
     (state) => state.chat.loadingPreguntas
   );
-  useEffect(() => {
-    console.log(matches.length);
-    console.log(pregunta.length);
-    if (!matches.length && !pregunta.length) {
-      console.log("no hay");
-    } else {
-      console.log("si hay");
-    }
-  }, [matches, pregunta]);
+
   const handleReLoadPreguntas = () => {
     if (sexo && edad && orientacion && identidad) {
       dispatch(
@@ -86,10 +78,7 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   return (
     <div className="preguntasSearchCont ">
       <div className="AllPreguntasCont">
-        {matches.length &&
-        !pregunta.length &&
-        preguntas.data &&
-        Array.isArray(preguntas.data) ? (
+        {!pregunta.length && preguntas.data && Array.isArray(preguntas.data) ? (
           preguntas.data.map((p) => (
             <div
               key={p.id}

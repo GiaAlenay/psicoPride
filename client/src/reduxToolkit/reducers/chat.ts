@@ -51,10 +51,13 @@ const chatSlice=createSlice({
         state.loadingRespuesta = false;
         state.respuesta = action.payload;
       },
+      vaciarRespuesta:(state)=>{
+        state.respuesta={}
+      }
     },
   })
 
-export const {getPreguntasError,getPreguntasSuccess,getPreguntasLoad,getRespuestaError,getRespuestaLoad,getRespuestaSuccess}=chatSlice.actions
+export const {getPreguntasError,vaciarRespuesta,getPreguntasSuccess,getPreguntasLoad,getRespuestaError,getRespuestaLoad,getRespuestaSuccess}=chatSlice.actions
 
 export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
     dispatch(getPreguntasLoad())
@@ -75,4 +78,7 @@ export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
     }
   }
 
+  export const emptyRespuesta=()=>{
+    vaciarRespuesta()
+  }
 export default chatSlice.reducer

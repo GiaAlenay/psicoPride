@@ -6,11 +6,11 @@ import { RespuestaChatBot } from "../RespuestaChatBot/RespuestaChatBot";
 import { PreguntasSearchBar } from "../PreguntasSearchBar/PreguntasSearchBar";
 import { AppDispatch, RootState } from "../../reduxToolkit/store";
 import { useSelector } from "react-redux";
-import { Response } from "../../reduxToolkit/reducers/chat";
+import { Response, vaciarRespuesta } from "../../reduxToolkit/reducers/chat";
 import { ChatPreguntaRespuesta, MensajeObj } from "../../interfaces";
 import { Conversacion } from "../conversacion/conversacion";
 import { useDispatch } from "react-redux";
-import { getRespuesta } from "../../reduxToolkit/reducers/chat";
+import { getRespuesta, emptyRespuesta } from "../../reduxToolkit/reducers/chat";
 
 export const ChatandSugerencias: React.FC = () => {
   const [str, setStr] = useState<string>("");
@@ -39,6 +39,13 @@ export const ChatandSugerencias: React.FC = () => {
     // "Relaciones Sexuales",
     // "Sexo e Identidad de Genero",
   ];
+
+  useEffect(() => {
+    return () => {
+      setMensajes([]);
+      dispatch(vaciarRespuesta());
+    };
+  }, []);
 
   const getTime = (indice: number): number => {
     if (indice === 0) {
