@@ -8,9 +8,11 @@ export const ChatPresentation: React.FC<MyComponentProps> = ({ setLoader }) => {
   return (
     <div className="chatPrePag">
       <div className="centerCPP ">
-        <img src={"./logo.png"} alt={"logo"} className="logoPsicoPride" />
+        <div className="logpCPCOnt">
+          <img src={"./logo.png"} alt={"logo"} className="logoPsicoPride" />
+        </div>
         <div className="promptCont">
-          <div className="">
+          <div className="centerPromts">
             <h2 className="bienvenidos">¡Bienvenid@ a Dilo Sin Paltas!</h2>
             <h3 className="moreinf">
               Un lugar donde tus preguntas sobre sexualidad encontrarán las
