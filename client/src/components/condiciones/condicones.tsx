@@ -36,6 +36,15 @@ export const Condiciones: React.FC<MyComponentProps> = ({ show, setShow }) => {
               </div>
               <div className="pointer"></div>
             </div>
+            <div className="avatarContModalHidden">
+              <div>
+                <img
+                  src={"avatar.png"}
+                  alt={"avatar"}
+                  className="avatrModalHidden"
+                />
+              </div>
+            </div>
             <div className="w-100 d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
               <button onClick={setShow} className="closeModalBtn">
                 Aceptar

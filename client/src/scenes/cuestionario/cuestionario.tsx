@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./cuestionario.css";
 import { CuestionarioParte1 } from "../../components/cuestionarioParte1/cuestionarionParte1";
@@ -42,7 +42,6 @@ export const Cuestionario = () => {
     }
     if (preguntas.status === 201) {
       navigate("/chat");
-      // console.log("mviendome");
     }
   }, [loadingPreguntas, preguntas]);
 

@@ -1,15 +1,14 @@
-
+.avatarContModalHidden{
+    display: none;
+}
 .condicionesCont{
    background-color: rgb(0, 0, 0,0.88);
    position: relative;
-    height: 400px;
     display: flex;
     color: rgb(248,249,250);
    
 }
-.avatrModal{
-    position: absolute;
-   top: 0%;
+.avatrModal{    
    filter: drop-shadow(15px 5px 2px #121213);
 }
 
@@ -94,3 +93,59 @@
         transform: scale(1.0);
       }
 }
+
+
+@media (max-width: 990px) {
+    .avatarContModal{
+        height:auto;
+        display: grid;
+        vertical-align: middle;
+        justify-content: center;
+        align-items: center;
+    }
+    .avatarContModal img{
+        width: 100%;
+        ;
+      
+    }
+  }
+
+  @media (max-width: 580px) {
+    .modalPrompCont {
+        font-size: 80%;
+    }
+  }
+  @media (max-width: 400px) {
+    .modalPrompCont{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .modalPrompCont h5{
+        font-size: 120%;
+    }
+    .modalPrompCont h4{
+        font-size: 150%;
+    }
+    .avatarContModal{
+        display: none;
+    }
+    .avatarContModalHidden{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        vertical-align: middle;
+    }
+    .avatarContModalHidden div{
+        width: 180px;
+    }
+    .avatrModalHidden{
+        width: 100%;
+    }
+  }
+  @media (max-width: 300px) {
+    .modalPrompCont{
+        width: 100%;
+        margin-left: 0%;
+    }
+  }

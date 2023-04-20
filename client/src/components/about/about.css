@@ -1,7 +1,8 @@
 .aboutCont{
     position: relative;
     text-align: center;
-    color:rgb(255, 255, 255)
+    color:rgb(255, 255, 255);
+    height: 30vh;
 }
 
 .socialNCont{
