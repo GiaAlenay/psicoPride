@@ -50,3 +50,13 @@
   .currentPregSelected{
     background-color: rgb(218, 218, 218);
   }
+
+  .loadingPregCont{
+    box-sizing: content-box;
+    width: 90%;
+    padding: 0px 5%;
+  }
+
+  .loadingLine{
+    border-radius: 15px;
+  }

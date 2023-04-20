@@ -4,6 +4,10 @@ import { AppDispatch, RootState } from "../../reduxToolkit/store";
 import { useSelector } from "react-redux";
 import { Response } from "../../reduxToolkit/reducers/chat";
 import { ChatPreguntaRespuesta } from "../../interfaces";
+import Placeholder from "react-bootstrap/Placeholder";
+import { AiOutlineReload } from "react-icons/ai";
+import { getPreguntas } from "../../reduxToolkit/reducers/chat";
+import { useDispatch } from "react-redux";
 interface MyComponentProps {
   matches: ChatPreguntaRespuesta[];
   pregunta: string;
@@ -17,20 +21,72 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   posiblePregunta,
   setPregunta,
 }) => {
-  // useEffect(() => {
-  //   console.log(matches);
-  // }, [matches]);
-
+  const sexo = localStorage.getItem("SexoId");
+  const edad = localStorage.getItem("age");
+  const orientacion = localStorage.getItem("SexualOrientationId");
+  const identidad = localStorage.getItem("GenderIdentityId");
+  const dispatch: AppDispatch = useDispatch();
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
   );
+  const loadingPreguntas: boolean = useSelector<RootState, boolean>(
+    (state) => state.chat.loadingPreguntas
+  );
+  useEffect(() => {
+    console.log(matches.length);
+    console.log(pregunta.length);
+    if (!matches.length && !pregunta.length) {
+      console.log("no hay");
+    } else {
+      console.log("si hay");
+    }
+  }, [matches, pregunta]);
+  const handleReLoadPreguntas = () => {
+    if (sexo && edad && orientacion && identidad) {
+      dispatch(
+        getPreguntas({
+          SexoId: parseInt(sexo),
+          GenderIdentityId: parseInt(identidad),
+          SexualOrientationId: parseInt(orientacion),
+        })
+      );
+    }
+  };
+
   const handleElegirPregunta = (elegida: string, id: number) => {
     setPregunta(elegida, id);
   };
+  if (loadingPreguntas) {
+    return (
+      <div className="preguntasSearchCont ">
+        <div className="AllPreguntasCont">
+          <div className="loadingPregCont">
+            <Placeholder as="p" animation="glow">
+              <Placeholder xs={12} bg="secondary" className={"loadingLine"} />
+              <Placeholder xs={12} bg="secondary" className={"loadingLine"} />
+              <Placeholder xs={12} bg="secondary" className={"loadingLine"} />
+            </Placeholder>
+          </div>
+        </div>
+      </div>
+    );
+  } else if (preguntas.status && preguntas.status >= 400) {
+    return (
+      <div className="preguntasSearchCont ">
+        <div className="AllPreguntasCont" style={{ height: "100px" }}>
+          <div className="w-100 d-flex h-100 justify-content-center align-items-center mx-auto">
+            <button onClick={handleReLoadPreguntas}>
+              Reintentar <AiOutlineReload />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="preguntasSearchCont ">
       <div className="AllPreguntasCont">
-        {!matches.length &&
+        {matches.length &&
         !pregunta.length &&
         preguntas.data &&
         Array.isArray(preguntas.data) ? (
