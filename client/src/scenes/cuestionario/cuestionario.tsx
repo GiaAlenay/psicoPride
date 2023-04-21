@@ -11,10 +11,16 @@ import { Condiciones } from "../../components/condiciones/condicones";
 import { RootState, AppDispatch } from "../../reduxToolkit/store";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../components/loader/loaders";
+import { Sexo } from "../../reduxToolkit/reducers/sexo";
+import { Gender } from "../../reduxToolkit/reducers/gender";
+import { Orientacion } from "../../reduxToolkit/reducers/orientacion";
 import {
   getPreguntas,
   ChatGlobalState,
 } from "../../reduxToolkit/reducers/chat";
+import { getSexos } from "../../reduxToolkit/reducers/sexo";
+import { getGenders } from "../../reduxToolkit/reducers/gender";
+import { getOrientacions } from "../../reduxToolkit/reducers/orientacion";
 
 export const Cuestionario = () => {
   const navigate = useNavigate();
@@ -23,12 +29,37 @@ export const Cuestionario = () => {
     RootState,
     ChatGlobalState
   >((state) => state.chat);
+  const sexos: Sexo[] = useSelector<RootState, Sexo[]>(
+    (state) => state.sexo.data
+  );
+  const generos: Gender[] = useSelector<RootState, Gender[]>(
+    (state) => state.gender.data
+  );
+  const orientaciones: Orientacion[] = useSelector<RootState, Orientacion[]>(
+    (state) => state.orientacion.data
+  );
   const [modal, setModal] = useState<boolean>(false);
   const [desbloqueados, setDesbloqueados] = useState<number[]>([1]);
   const [current, setCurrent] = useState<number>(1);
   const [disable, setdisable] = useState<boolean>(true);
   const [user, setUser] = useState<UserAtributtes>({});
   const [show, setShow] = useState<boolean>(true);
+  const sexo = localStorage.getItem("SexoId");
+  const edad = localStorage.getItem("age");
+  const orientacion = localStorage.getItem("SexualOrientationId");
+  const identidad = localStorage.getItem("GenderIdentityId");
+
+  useEffect(() => {
+    if (sexo && edad && orientacion && identidad) {
+      navigate("/chat");
+    } else {
+      if (!sexos.length || !generos.length || !orientaciones.length) {
+        dispatch(getSexos());
+        dispatch(getGenders());
+        dispatch(getOrientacions());
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (desbloqueados.find((n) => n === current + 1) || !disable) {

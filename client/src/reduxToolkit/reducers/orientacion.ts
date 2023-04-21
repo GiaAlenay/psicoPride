@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../store';
 import axios  from 'axios';
 
-interface Orientacion {
+export interface Orientacion {
   id: number;
   name: string;
   flag:string;

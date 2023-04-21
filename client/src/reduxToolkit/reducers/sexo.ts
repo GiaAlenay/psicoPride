@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../store';
 import axios  from 'axios';
 
-interface Sexo {
+export interface Sexo {
   id: number;
   name: string;
   createdAt?:Date;
