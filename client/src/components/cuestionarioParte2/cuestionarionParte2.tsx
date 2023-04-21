@@ -24,7 +24,7 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
   }, [user]);
 
   return (
-    <div className="w-100 text-center">
+    <div className="w-100 text-center" data-aos="flip-left">
       <h3>¿Cuál es tu sexo?</h3>
       <div
         className="cardSexo d-flex

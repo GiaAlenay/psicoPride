@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
 import "./cuestionario.css";
 import { CuestionarioParte1 } from "../../components/cuestionarioParte1/cuestionarionParte1";
 import { CuestionarioParte2 } from "../../components/cuestionarioParte2/cuestionarionParte2";
@@ -84,6 +85,7 @@ export const Cuestionario = () => {
   };
 
   const handleNext = () => {
+    AOS.init();
     setdisable(true);
     if (current !== 4) {
       setCurrent(current + 1);

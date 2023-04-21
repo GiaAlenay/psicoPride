@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { ChatandSugerencias } from "../../components/chat&sugerencias/chat&sugerencias";
+import AOS from "aos";
 
 export const Chat = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -21,13 +22,8 @@ export const Chat = () => {
     (state) => state.chat.preguntas
   );
 
-  // useEffect(() => {
-  //   return () => {
-  //     navigate("/", { replace: true });
-  //   };
-  // }, [location, navigate]);
-
   useEffect(() => {
+    AOS.init();
     if (!sexo || !edad || !orientacion || !identidad) {
       navigate("/");
     } else {
@@ -45,7 +41,7 @@ export const Chat = () => {
 
   return (
     <div className="chatCont ">
-      <div className="avatarContChat ">
+      <div className="avatarContChat " data-aos="fade-right">
         <AiOutlineArrowLeft
           className="arrowBtn"
           onClick={() => {

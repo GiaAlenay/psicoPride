@@ -253,7 +253,10 @@ export const ChatandSugerencias: React.FC = () => {
       <div className="ChatLogoContHide">
         <img src={"logo.png"} alt={"logo"} className="chatLogo" />
       </div>
-      <div className="chatboXCont d-flex w-100 h-100 justify-content-center align-items-center mx-auto">
+      <div
+        className="chatboXCont d-flex w-100 h-100 justify-content-center align-items-center mx-auto"
+        data-aos="flip-down"
+      >
         <div className="chatBox">
           <div className="ChatBoxEstadoCont text-center d-flex ">
             <div className="ChatBoxNameCont">

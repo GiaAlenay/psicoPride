@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./chatBurbuja.css";
-import { DraggableCore, DraggableData, DraggableEvent } from "react-draggable";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../reduxToolkit/store";
@@ -16,9 +15,6 @@ interface MyComponentProps {
 
 export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   const navigate = useNavigate();
-  const [width, setWidth] = useState(window.innerWidth);
-  const [x, setX] = useState(1150);
-  const [y, setY] = useState(400);
   const [clickChat, SetClickChat] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
   const loadingSexo = useSelector<RootState>((state) => state.sexo.loading);
@@ -34,20 +30,6 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
   const edad = localStorage.getItem("age");
   const orientacion = localStorage.getItem("SexualOrientationId");
   const identidad = localStorage.getItem("GenderIdentityId");
-
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    if (width > 1100) {
-      setX(width - 200);
-    }
-    if (width < 1100) {
-      setX(width - 150);
-    }
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [width]);
 
   useEffect(() => {
     if (clickChat) {
@@ -96,7 +78,7 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
 
   return (
     <button className="button-75" onClick={handleChatOrQuest}>
-      <span className="text">Chatea Conmigo</span>
+      <span className="text">Chatear con X</span>
     </button>
   );
 };

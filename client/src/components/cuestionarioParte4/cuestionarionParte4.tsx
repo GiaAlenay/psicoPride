@@ -27,7 +27,7 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
   }, [user]);
 
   return (
-    <div className="w-100 text-center">
+    <div className="w-100 text-center " data-aos="flip-left">
       <h3>¿Cuál es tu orientación sexual?</h3>
       <div className="cardsOrientaciones d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
         {data.map((o: any) => (

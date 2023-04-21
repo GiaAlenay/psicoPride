@@ -76,7 +76,7 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
     );
   }
   return (
-    <div className="preguntasSearchCont ">
+    <div className="preguntasSearchCont " data-aos="fade-left">
       <div className="AllPreguntasCont">
         {!pregunta.length && preguntas.data && Array.isArray(preguntas.data) ? (
           preguntas.data.map((p) => (

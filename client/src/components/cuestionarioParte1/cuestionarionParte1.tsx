@@ -20,7 +20,7 @@ export const CuestionarioParte1: React.FC<MyComponentProps> = ({
   }, [user]);
 
   return (
-    <div className=" W-100 text-center">
+    <div className=" W-100 text-center " data-aos="flip-left">
       <h3>¿Cuál es tu edad?</h3>
       <div className="cards   d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
         {ages.map((a, i) => (

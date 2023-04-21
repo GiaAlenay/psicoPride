@@ -25,7 +25,7 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
   }, [user]);
 
   return (
-    <div className="W-100 text-center">
+    <div className="W-100 text-center" data-aos="flip-left">
       <h3>¿Cuál es tu identidad de genero?</h3>
       <div className="cardsGenero d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
         {data.map((g: any) => (
