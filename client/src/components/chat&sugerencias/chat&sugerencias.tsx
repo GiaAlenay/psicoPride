@@ -11,6 +11,7 @@ import { ChatPreguntaRespuesta, MensajeObj } from "../../interfaces";
 import { Conversacion } from "../conversacion/conversacion";
 import { useDispatch } from "react-redux";
 import { getRespuesta } from "../../reduxToolkit/reducers/chat";
+import { ModalSugerencias } from "../modalSugerencias/modalSugerencias";
 
 export const ChatandSugerencias: React.FC = () => {
   const [str, setStr] = useState<string>("");
@@ -22,6 +23,8 @@ export const ChatandSugerencias: React.FC = () => {
   const [matches, setMatches] = useState<ChatPreguntaRespuesta[]>([]);
   const scrollbarsRef = useRef<Scrollbars>(null);
   const [posiblePregunta, setposiblePregunta] = useState<string>("");
+  const [modalSug, setModalSug] = useState<boolean>(false);
+  const [width, setWidth] = useState(window.innerWidth);
   const loadingRespuesta: boolean = useSelector<RootState, boolean>(
     (state) => state.chat.loadingRespuesta
   );
@@ -39,6 +42,20 @@ export const ChatandSugerencias: React.FC = () => {
     // "Relaciones Sexuales",
     // "Sexo e Identidad de Genero",
   ];
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
+  const handleOnClickInput = () => {
+    if (width <= 600) {
+      setModalSug(true);
+    }
+  };
 
   useEffect(() => {
     return () => {
@@ -160,31 +177,36 @@ export const ChatandSugerencias: React.FC = () => {
     );
     setPregunta(e);
     dispatch(getRespuesta(id));
+    if (modalSug === true) {
+      setModalSug(false);
+    }
   };
 
   const handleSendPregunta = (setPosibleAPregunta?: string) => {
-    let findPregunta;
-    setMensajes((prevMsg) =>
-      prevMsg.concat({
-        tipo: "pregunta",
-        contenido: setPosibleAPregunta ? setPosibleAPregunta : pregunta,
-      })
-    );
+    if (pregunta !== "") {
+      let findPregunta;
+      setMensajes((prevMsg) =>
+        prevMsg.concat({
+          tipo: "pregunta",
+          contenido: setPosibleAPregunta ? setPosibleAPregunta : pregunta,
+        })
+      );
 
-    if (setPosibleAPregunta) {
-      findPregunta =
-        Array.isArray(preguntas.data) &&
-        preguntas.data.find((p) => p.pregunta === posiblePregunta);
-    } else {
-      findPregunta =
-        Array.isArray(preguntas.data) &&
-        preguntas.data.find((p) => p.pregunta === pregunta);
-    }
-    console.log("llega pregunta:", findPregunta);
-    if (findPregunta && findPregunta.id) {
-      dispatch(getRespuesta(findPregunta.id));
-    } else {
-      dispatch(getRespuesta("x"));
+      if (setPosibleAPregunta) {
+        findPregunta =
+          Array.isArray(preguntas.data) &&
+          preguntas.data.find((p) => p.pregunta === posiblePregunta);
+      } else {
+        findPregunta =
+          Array.isArray(preguntas.data) &&
+          preguntas.data.find((p) => p.pregunta === pregunta);
+      }
+      console.log("llega pregunta:", findPregunta);
+      if (findPregunta && findPregunta.id) {
+        dispatch(getRespuesta(findPregunta.id));
+      } else {
+        dispatch(getRespuesta("x"));
+      }
     }
   };
 
@@ -218,6 +240,16 @@ export const ChatandSugerencias: React.FC = () => {
 
   return (
     <div className="chatandsuggCont">
+      <ModalSugerencias
+        show={modalSug}
+        handleClose={() => {
+          setModalSug(false);
+        }}
+        mensajes={mensajes}
+        setMensajes={(e, id) => {
+          handleSetPregunta(e, id);
+        }}
+      />
       <div className="ChatLogoContHide">
         <img src={"logo.png"} alt={"logo"} className="chatLogo" />
       </div>
@@ -280,6 +312,7 @@ export const ChatandSugerencias: React.FC = () => {
               onKeyDown={(e) => {
                 handleKeyDown(e);
               }}
+              onClick={handleOnClickInput}
             />
             <div className="d-flex w-100 h-100 justify-content-center align-items-center mx-auto ">
               {pregunta && (

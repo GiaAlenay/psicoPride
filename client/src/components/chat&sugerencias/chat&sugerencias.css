@@ -124,8 +124,7 @@
         grid-template-columns: 64,87% 35,13%;
     }
 }
-@media (max-width: 800px) {
-}
+
 
 @media (max-width: 700px) {
     .chatandsuggCont{

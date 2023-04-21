@@ -49,11 +49,6 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
     };
   }, [width]);
 
-  const handleDrag = (e: DraggableEvent, data: DraggableData) => {
-    setX(data.x);
-    setY(data.y);
-  };
-
   useEffect(() => {
     if (clickChat) {
       if (
