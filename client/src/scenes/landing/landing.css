@@ -2,7 +2,7 @@
     height: 100vh ;
     width: 100%;    
     position: relative;
-    background-image: url('https://i.pinimg.com/564x/39/45/29/394529973a8ad6d1bc702af56d55ec11.jpg');
+    background-image: url('./background.png');
     overflow:auto;
     background-repeat:no-repeat;
     background-size: cover;
