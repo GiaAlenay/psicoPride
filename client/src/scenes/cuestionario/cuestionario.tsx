@@ -51,6 +51,7 @@ export const Cuestionario = () => {
   const identidad = localStorage.getItem("GenderIdentityId");
 
   useEffect(() => {
+    AOS.init();
     if (sexo && edad && orientacion && identidad) {
       navigate("/chat");
     } else {
