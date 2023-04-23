@@ -1,5 +1,5 @@
 import "./preguntas.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { AppDispatch, RootState } from "../../reduxToolkit/store";
 import { useSelector } from "react-redux";
 import { Response } from "../../reduxToolkit/reducers/chat";
