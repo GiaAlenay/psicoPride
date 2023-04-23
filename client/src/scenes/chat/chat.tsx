@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { RootState, AppDispatch } from "../../reduxToolkit/store";
 import "./chat.css";
 import { Response, getPreguntas } from "../../reduxToolkit/reducers/chat";
@@ -11,7 +11,6 @@ import AOS from "aos";
 
 export const Chat = () => {
   const dispatch: AppDispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
   const sexo = localStorage.getItem("SexoId");
   const edad = localStorage.getItem("age");
