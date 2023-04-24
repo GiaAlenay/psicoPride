@@ -1,0 +1,31 @@
+.slick-slide {
+    /* margin: 0 10px;  */
+    /* width: 100px;*/
+    height: 600px;
+    
+     
+  }
+  .contBiblioteca{
+    height: 100vh;
+    
+  }
+  /* .slide{
+    width: 200px;
+    background-color: aqua;
+  } */
+.slick-slide div{
+    align-self: center;
+    background-color: black;
+    height: 400px;
+    width: 400px;
+}
+  .centerContBiblioteca{
+    margin-top: 15%;
+    padding: 20px 40px;
+  }
+    
+  
+  
+  .slick-slide img {
+    margin: auto;
+  }
