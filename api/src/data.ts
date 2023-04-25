@@ -136,10 +136,10 @@ export const chatArray:TemaChatAttributes[]=[
 ]
 
 export const sexArray:SexoAttributes[]=[
-    {name:'mujer'},{name:'hombre'},{name:'intersex'}
+    {name:'Sí'},{name:'No'},{name:'Lo estoy cuestionando'},{name:'Prefiero no decirlo'}
 ]
 export const genderArray:GenderIdentityAttributes[]=[
-    {name:'Mujer trans'},{name:'Mujer cisgénero'},{name:'Hombre trans'},{name:'Hombre cisgénero'},{name:'Otro'},
+    {name:'Mujer trans'},{name:'Mujer cis'},{name:'Hombre trans'},{name:'Hombre cis'},{name:'Otro'},
 ]
 
 export const orientationArray:SexualOrientationAttributes[]=[
@@ -163,7 +163,11 @@ export const orientationArray:SexualOrientationAttributes[]=[
         name:'Asexual',
         flag:'https://64.media.tumblr.com/08e721bc63d7ab06b2ebb17511ff9767/tumblr_inline_nxrxs1vTU11tbdzcw_400.png'
     },
-    {   name:'Queer',
-        flag:'https://studentaffairs.unl.edu/images/news-article/lgbtqa_flag_Progress.png'
+    {   name:'Heterosexual',
+        flag:''
+    },
+    {   name:'Otro',
+        flag:''
     }
+    
 ]   
