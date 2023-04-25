@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./cuestionario1.css";
 import React from "react";
 import { UserAtributtes } from "../../interfaces";
@@ -6,7 +6,7 @@ import { UserAtributtes } from "../../interfaces";
 interface MyComponentProps {
   hanldledisable: () => void;
   user: UserAtributtes;
-  setUser: (name: string, value: number) => void;
+  setUser: (name: string, value: string) => void;
 }
 
 export const CuestionarioParte1: React.FC<MyComponentProps> = ({
@@ -14,7 +14,18 @@ export const CuestionarioParte1: React.FC<MyComponentProps> = ({
   user,
   setUser,
 }) => {
-  const ages: number[] = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+  const ages: string[] = [
+    "-14",
+    "15",
+    "16",
+    "17",
+    "18–24",
+    "25–29",
+    "30–39",
+    "40–49",
+    "50–59",
+    "60+",
+  ];
   useEffect(() => {
     if (user.age) hanldledisable();
   }, [user]);

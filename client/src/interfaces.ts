@@ -1,5 +1,5 @@
 export interface UserAtributtes{
-    age?: number;
+    age?: string;
     GenderIdentityId?:number;
     SexualOrientationId?:number;
     SexoId?:number;

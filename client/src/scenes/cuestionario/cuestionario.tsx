@@ -78,7 +78,7 @@ export const Cuestionario = () => {
     }
   }, [loadingPreguntas, preguntas]);
 
-  const handleChangeUser = (name: string, value: number) => {
+  const handleChangeUser = (name: string, value: number | string) => {
     setUser({
       ...user,
       [name]: value,
@@ -134,7 +134,7 @@ export const Cuestionario = () => {
       {current === 1 && (
         <CuestionarioParte1
           user={user}
-          setUser={(name: string, value: number) => {
+          setUser={(name: string, value: string) => {
             handleChangeUser(name, value);
           }}
           hanldledisable={() => {
