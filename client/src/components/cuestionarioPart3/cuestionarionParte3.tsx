@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reduxToolkit/store";
-import "./cuestionario4.css";
+import "./cuestionario3.css";
 import { OrientacionState } from "../../reduxToolkit/reducers/orientacion";
 import { UserAtributtes } from "../../interfaces";
 
@@ -11,7 +11,7 @@ interface MyComponentProps {
   setUser: (name: string, value: number) => void;
 }
 
-export const CuestionarioParte4: React.FC<MyComponentProps> = ({
+export const CuestionarioParte3: React.FC<MyComponentProps> = ({
   hanldledisable,
   user,
   setUser,

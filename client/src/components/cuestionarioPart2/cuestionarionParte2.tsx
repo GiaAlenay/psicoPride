@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reduxToolkit/store";
 import { GenderState } from "../../reduxToolkit/reducers/gender";
-import "./cuestionario3.css";
+import "./cuestionario2.css";
 import { UserAtributtes } from "../../interfaces";
 
 interface MyComponentProps {
@@ -11,7 +11,7 @@ interface MyComponentProps {
   setUser: (name: string, value: number) => void;
 }
 
-export const CuestionarioParte3: React.FC<MyComponentProps> = ({
+export const CuestionarioParte2: React.FC<MyComponentProps> = ({
   hanldledisable,
   user,
   setUser,
