@@ -29,7 +29,7 @@ export const Biblioteca = () => {
     dispatch(getTemas());
   };
   const settings: CustomSettings = {
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2000,
     dots: false,
     infinite: true,

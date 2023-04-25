@@ -38,11 +38,17 @@
     text-transform:capitalize;
     text-align: center;      
     color: rgb(29, 29, 29); 
-    width: 84%;
+    width: 76%;
     height: 4rem;
     max-height: 4rem;
-    margin: 2% 7%;
+    margin: 2% 12%;
+    place-items: center;
+    display: grid;
 }
+/* .contitleSlider div{
+    background-color: aqua;
+    
+} */
 .contSliceCenter:hover{
     
 }
