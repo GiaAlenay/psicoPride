@@ -1,7 +1,7 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../store";
 import axios from "axios";
-import { ChatPreguntaRespuesta,UserAtributtes } from "../../interfaces";
+import { ChatPreguntaRespuesta,sendUserAttributes } from "../../interfaces";
 
 export interface Response{
     status?:number;
@@ -59,7 +59,7 @@ const chatSlice=createSlice({
 
 export const {getPreguntasError,vaciarRespuesta,getPreguntasSuccess,getPreguntasLoad,getRespuestaError,getRespuestaLoad,getRespuestaSuccess}=chatSlice.actions
 
-export const getPreguntas=(query:UserAtributtes):AppThunk=>async(dispatch)=>{
+export const getPreguntas=(query:sendUserAttributes):AppThunk=>async(dispatch)=>{
     dispatch(getPreguntasLoad())
     try {
       const response = await axios.get(`/usuarios/temaschat?sexo=${query.SexoId}&genero=${query.GenderIdentityId}&orientacion=${query.SexualOrientationId}`);

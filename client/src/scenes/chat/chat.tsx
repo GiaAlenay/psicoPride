@@ -8,35 +8,35 @@ import { useDispatch } from "react-redux";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { ChatandSugerencias } from "../../components/chat&sugerencias/chat&sugerencias";
 import AOS from "aos";
-
+// import { sexo, edad, orientacion, identidad } from "../../localStorage";
 export const Chat = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const sexo = localStorage.getItem("SexoId");
-  const edad = localStorage.getItem("age");
-  const orientacion = localStorage.getItem("SexualOrientationId");
-  const identidad = localStorage.getItem("GenderIdentityId");
 
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
   );
 
   useEffect(() => {
+    const sexo = localStorage.getItem("SexoId");
+    const edad = localStorage.getItem("age");
+    const orientacion = localStorage.getItem("SexualOrientationId");
+    const identidad = localStorage.getItem("GenderIdentityId");
     console.log("de:", sexo, " ", edad, " ", orientacion, " ", identidad);
     AOS.init();
-    if (!sexo || !edad || !orientacion || !identidad) {
-      navigate("/");
-    } else {
-      // if (!Object.entries(preguntas).length) {
-      //   dispatch(
-      //     getPreguntas({
-      //       SexoId: [1],
-      //       GenderIdentityId: [1],
-      //       SexualOrientationId: [1],
-      //     })
-      //   );
-      // }
-    }
+    // if (!sexo || !edad || !orientacion || !identidad) {
+    //   // navigate("/");
+    // } else {
+    //   if (!Object.entries(preguntas).length) {
+    //     dispatch(
+    //       getPreguntas({
+    //         SexoId: sexo,
+    //         GenderIdentityId: identidad,
+    //         SexualOrientationId: orientacion,
+    //       })
+    //     );
+    //   }
+    // }
   }, []);
 
   return (

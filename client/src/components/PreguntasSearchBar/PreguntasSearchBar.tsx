@@ -8,6 +8,7 @@ import Placeholder from "react-bootstrap/Placeholder";
 import { AiOutlineReload } from "react-icons/ai";
 import { getPreguntas } from "../../reduxToolkit/reducers/chat";
 import { useDispatch } from "react-redux";
+//import { sexo, edad, orientacion, identidad } from "../../localStorage";
 interface MyComponentProps {
   matches: ChatPreguntaRespuesta[];
   pregunta: string;
@@ -21,10 +22,6 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   posiblePregunta,
   setPregunta,
 }) => {
-  const sexo = localStorage.getItem("SexoId");
-  const edad = localStorage.getItem("age");
-  const orientacion = localStorage.getItem("SexualOrientationId");
-  const identidad = localStorage.getItem("GenderIdentityId");
   const dispatch: AppDispatch = useDispatch();
   const preguntas: Response = useSelector<RootState, Response>(
     (state) => state.chat.preguntas
@@ -32,17 +29,20 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   const loadingPreguntas: boolean = useSelector<RootState, boolean>(
     (state) => state.chat.loadingPreguntas
   );
-
+  const sexo = localStorage.getItem("SexoId");
+  const edad = localStorage.getItem("age");
+  const orientacion = localStorage.getItem("SexualOrientationId");
+  const identidad = localStorage.getItem("GenderIdentityId");
   const handleReLoadPreguntas = () => {
-    // if (sexo && edad && orientacion && identidad) {
-    //   dispatch(
-    //     getPreguntas({
-    //       SexoId: [1],
-    //       GenderIdentityId: [1],
-    //       SexualOrientationId: [1],
-    //     })
-    //   );
-    // }
+    if (sexo && edad && orientacion && identidad) {
+      dispatch(
+        getPreguntas({
+          SexoId: sexo,
+          GenderIdentityId: identidad,
+          SexualOrientationId: orientacion,
+        })
+      );
+    }
   };
 
   const handleElegirPregunta = (elegida: string, id: number) => {

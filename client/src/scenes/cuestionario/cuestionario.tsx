@@ -22,7 +22,7 @@ import {
 import { getSexos } from "../../reduxToolkit/reducers/sexo";
 import { getGenders } from "../../reduxToolkit/reducers/gender";
 import { getOrientacions } from "../../reduxToolkit/reducers/orientacion";
-import { sexo, identidad, orientacion, edad } from "../../localStorage";
+//import { sexo, identidad, orientacion, edad } from "../../localStorage";
 export const Cuestionario = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
@@ -45,12 +45,16 @@ export const Cuestionario = () => {
   const [disable, setdisable] = useState<boolean>(true);
   const [user, setUser] = useState<UserAtributtes>({});
   const [show, setShow] = useState<boolean>(true);
-
+  const sexo = localStorage.getItem("SexoId");
+  const edad = localStorage.getItem("age");
+  const orientacion = localStorage.getItem("SexualOrientationId");
+  const identidad = localStorage.getItem("GenderIdentityId");
   const [otro, setOtro] = useState<string>("");
   const [otroOrientacion, setOtroOrientacion] = useState<string>("");
   useEffect(() => {
     AOS.init();
     if (sexo && edad && orientacion && identidad) {
+      console.log("lol:", sexo, " ", edad, " ", orientacion, " ", identidad);
       navigate("/chat");
     } else {
       if (!sexos.length || !generos.length || !orientaciones.length) {
@@ -88,6 +92,7 @@ export const Cuestionario = () => {
         localStorage.setItem(`${property}`, user[property].toString());
       }
     }
+    console.log("na:", sexo, " ", edad, " ", orientacion, " ", identidad);
   }, [user]);
 
   const handleChangeUser = (
@@ -125,9 +130,9 @@ export const Cuestionario = () => {
     } else {
       dispatch(
         getPreguntas({
-          SexoId: user.SexoId,
-          GenderIdentityId: user.GenderIdentityId,
-          SexualOrientationId: user.SexualOrientationId,
+          SexoId: user.SexoId?.toString(),
+          GenderIdentityId: user.GenderIdentityId?.join("-"),
+          SexualOrientationId: user.SexualOrientationId?.join("-"),
         })
       );
     }

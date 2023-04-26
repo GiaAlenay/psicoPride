@@ -79,7 +79,7 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
             "btnOriSel"
           } d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto`}
           onClick={() => {
-            localStorage.setItem("SexualOrientationId", "7");
+            // localStorage.setItem("SexualOrientationId", "7");
             setUser("SexualOrientationId", 7, true);
             setTimeout(() => {
               if (miInput.current) {

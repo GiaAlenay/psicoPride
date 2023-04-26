@@ -6,6 +6,12 @@ export interface UserAtributtes{
     [key: string]: any;
 }
 
+export interface sendUserAttributes{
+  GenderIdentityId?:string;
+    SexualOrientationId?:string;
+    SexoId?:string;
+}
+
 export interface ChatPreguntaRespuesta{
     id?:number;
     pregunta?:string;

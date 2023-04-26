@@ -67,7 +67,7 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
                 : "notselectedGenOtro"
             }`}
             onClick={() => {
-              localStorage.setItem("GenderIdentityId", "5");
+              // localStorage.setItem("GenderIdentityId", "5");
               setUser("GenderIdentityId", 5, true);
               setTimeout(() => {
                 if (miInput.current) {
