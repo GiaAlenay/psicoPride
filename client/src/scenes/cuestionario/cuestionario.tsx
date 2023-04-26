@@ -50,15 +50,15 @@ export const Cuestionario = () => {
   const [otroOrientacion, setOtroOrientacion] = useState<string>("");
   useEffect(() => {
     AOS.init();
-    // if (sexo && edad && orientacion && identidad) {
-    //   navigate("/chat");
-    // } else {
-    //   if (!sexos.length || !generos.length || !orientaciones.length) {
-    dispatch(getSexos());
-    dispatch(getGenders());
-    dispatch(getOrientacions());
-    //   }
-    // }
+    if (sexo && edad && orientacion && identidad) {
+      navigate("/chat");
+    } else {
+      if (!sexos.length || !generos.length || !orientaciones.length) {
+        dispatch(getSexos());
+        dispatch(getGenders());
+        dispatch(getOrientacions());
+      }
+    }
   }, []);
 
   useEffect(() => {
