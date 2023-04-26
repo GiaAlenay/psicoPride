@@ -54,7 +54,6 @@ export const Cuestionario = () => {
   useEffect(() => {
     AOS.init();
     if (sexo && edad && orientacion && identidad) {
-      console.log("lol:", sexo, " ", edad, " ", orientacion, " ", identidad);
       navigate("/chat");
     } else {
       if (!sexos.length || !generos.length || !orientaciones.length) {
@@ -82,7 +81,6 @@ export const Cuestionario = () => {
 
   useEffect(() => {
     for (const property in user) {
-      console.log(user[property]);
       if (Array.isArray(user[property])) {
         localStorage.setItem(
           `${property}`,
@@ -92,7 +90,6 @@ export const Cuestionario = () => {
         localStorage.setItem(`${property}`, user[property].toString());
       }
     }
-    console.log("na:", sexo, " ", edad, " ", orientacion, " ", identidad);
   }, [user]);
 
   const handleChangeUser = (

@@ -22,21 +22,21 @@ export const Chat = () => {
     const edad = localStorage.getItem("age");
     const orientacion = localStorage.getItem("SexualOrientationId");
     const identidad = localStorage.getItem("GenderIdentityId");
-    console.log("de:", sexo, " ", edad, " ", orientacion, " ", identidad);
+
     AOS.init();
-    // if (!sexo || !edad || !orientacion || !identidad) {
-    //   // navigate("/");
-    // } else {
-    //   if (!Object.entries(preguntas).length) {
-    //     dispatch(
-    //       getPreguntas({
-    //         SexoId: sexo,
-    //         GenderIdentityId: identidad,
-    //         SexualOrientationId: orientacion,
-    //       })
-    //     );
-    //   }
-    // }
+    if (!sexo || !edad || !orientacion || !identidad) {
+      navigate("/");
+    } else {
+      if (!Object.entries(preguntas).length) {
+        dispatch(
+          getPreguntas({
+            SexoId: sexo,
+            GenderIdentityId: identidad,
+            SexualOrientationId: orientacion,
+          })
+        );
+      }
+    }
   }, []);
 
   return (

@@ -43,16 +43,6 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
         setTimeout(() => {
           if (!sexo || !edad || !orientacion || !identidad) {
             navigate("/quest");
-            console.log(
-              "njaja:",
-              sexo,
-              " ",
-              edad,
-              " ",
-              orientacion,
-              " ",
-              identidad
-            );
           } else {
             navigate("/chat");
           }
@@ -69,7 +59,6 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
 
   const handleChatOrQuest = () => {
     if (sexo && edad && orientacion && identidad) {
-      console.log("uwuu");
       dispatch(
         getPreguntas({
           SexoId: sexo,
@@ -78,7 +67,6 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
         })
       );
     } else {
-      console.log("nel");
       dispatch(getSexos());
       dispatch(getGenders());
       dispatch(getOrientacions());

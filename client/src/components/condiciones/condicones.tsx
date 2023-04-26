@@ -27,11 +27,20 @@ export const Condiciones: React.FC<MyComponentProps> = ({ show, setShow }) => {
             <div>
               <div className="bubble text-left">
                 <div className="promptsModalCondi">
-                  <h4>Hola soy BlaBla </h4>
-                  <h5>
-                    Antes de comenzar me gustaria conocer algunas cosas acerca
-                    de ti.
-                  </h5>
+                  <h4>Hola soy X </h4>
+                  <h6>
+                    Te acompañaré mientras navegas tus dudas sobre sexualidad.
+                  </h6>
+                  <h6>
+                    Quiero conocerte un poco mejor para ayudarte. ¡Y no te
+                    preocupes! Nuestra conversación es completamente
+                    confidencial.
+                  </h6>
+                  <div className="w-100 d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
+                    <button onClick={setShow} className="closeModalBtn">
+                      Aceptar
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="pointer"></div>
@@ -44,11 +53,6 @@ export const Condiciones: React.FC<MyComponentProps> = ({ show, setShow }) => {
                   className="avatrModalHidden"
                 />
               </div>
-            </div>
-            <div className="w-100 d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto p-3">
-              <button onClick={setShow} className="closeModalBtn">
-                Aceptar
-              </button>
             </div>
           </div>
         </div>
