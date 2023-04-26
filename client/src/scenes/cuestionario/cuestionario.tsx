@@ -174,9 +174,13 @@ export const Cuestionario = () => {
             handleChangeUser(name, value, isArray);
           }}
           hanldledisable={() => {
-            user.GenderIdentityId && user.GenderIdentityId?.length > 0
-              ? setdisable(false)
-              : setdisable(true);
+            if (user.GenderIdentityId && user.GenderIdentityId?.length === 0) {
+              setdisable(true);
+              setDesbloqueados(desbloqueados.filter((d) => d !== 3));
+            } else {
+              setdisable(false);
+              setDesbloqueados([...desbloqueados, 3]);
+            }
           }}
         />
       )}
@@ -191,9 +195,16 @@ export const Cuestionario = () => {
             handleChangeUser(name, value, isArray);
           }}
           hanldledisable={() => {
-            user.SexualOrientationId && user.SexualOrientationId?.length > 0
-              ? setdisable(false)
-              : setdisable(true);
+            if (
+              user.SexualOrientationId &&
+              user.SexualOrientationId?.length === 0
+            ) {
+              setdisable(true);
+              setDesbloqueados(desbloqueados.filter((d) => d !== 4));
+            } else {
+              setdisable(false);
+              setDesbloqueados([...desbloqueados, 4]);
+            }
           }}
         />
       )}

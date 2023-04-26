@@ -25,7 +25,6 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
   );
   const miInput = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    console.log(user.SexualOrientationId);
     if (user.SexualOrientationId) {
       hanldledisable();
     }

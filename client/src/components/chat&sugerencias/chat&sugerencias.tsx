@@ -201,7 +201,7 @@ export const ChatandSugerencias: React.FC = () => {
           Array.isArray(preguntas.data) &&
           preguntas.data.find((p) => p.pregunta === pregunta);
       }
-      console.log("llega pregunta:", findPregunta);
+
       if (findPregunta && findPregunta.id) {
         dispatch(getRespuesta(findPregunta.id));
       } else {

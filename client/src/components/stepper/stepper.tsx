@@ -24,7 +24,6 @@ export const Stepper: React.FC<MyComponentProps> = ({
       setCurrent(s);
       hanldledisable();
     } else {
-      console.log("no entras");
       toast.warn("Completa el formaulario para avanzar.", {
         position: toast.POSITION.BOTTOM_LEFT,
       });
