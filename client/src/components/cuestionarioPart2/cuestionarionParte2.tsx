@@ -48,7 +48,7 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
                   "selectedGen"
                 }`}
                 onClick={() => {
-                  localStorage.setItem("GenderIdentityId", g.id.toString());
+                  // localStorage.setItem("GenderIdentityId", g.id.toString());
                   setUser("GenderIdentityId", g.id, true);
                 }}
               >

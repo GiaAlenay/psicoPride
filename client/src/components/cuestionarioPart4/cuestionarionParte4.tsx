@@ -43,7 +43,7 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
               user.SexoId === sexo.id ? `btnSexoSelected` : `btnSexoNotSelected`
             }`}
             onClick={() => {
-              localStorage.setItem("SexoId", sexo.id.toString());
+              // localStorage.setItem("SexoId", sexo.id.toString());
               setUser("SexoId", sexo.id, false);
             }}
           >

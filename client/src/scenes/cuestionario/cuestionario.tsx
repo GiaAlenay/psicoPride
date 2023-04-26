@@ -22,7 +22,7 @@ import {
 import { getSexos } from "../../reduxToolkit/reducers/sexo";
 import { getGenders } from "../../reduxToolkit/reducers/gender";
 import { getOrientacions } from "../../reduxToolkit/reducers/orientacion";
-
+import { sexo, identidad, orientacion, edad } from "../../localStorage";
 export const Cuestionario = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
@@ -45,10 +45,7 @@ export const Cuestionario = () => {
   const [disable, setdisable] = useState<boolean>(true);
   const [user, setUser] = useState<UserAtributtes>({});
   const [show, setShow] = useState<boolean>(true);
-  const sexo = localStorage.getItem("SexoId");
-  const edad = localStorage.getItem("age");
-  const orientacion = localStorage.getItem("SexualOrientationId");
-  const identidad = localStorage.getItem("GenderIdentityId");
+
   const [otro, setOtro] = useState<string>("");
   const [otroOrientacion, setOtroOrientacion] = useState<string>("");
   useEffect(() => {
@@ -78,6 +75,20 @@ export const Cuestionario = () => {
       navigate("/chat");
     }
   }, [loadingPreguntas, preguntas]);
+
+  useEffect(() => {
+    for (const property in user) {
+      console.log(user[property]);
+      if (Array.isArray(user[property])) {
+        localStorage.setItem(
+          `${property}`,
+          Array.isArray(user[property]) && user[property].join("-")
+        );
+      } else {
+        localStorage.setItem(`${property}`, user[property].toString());
+      }
+    }
+  }, [user]);
 
   const handleChangeUser = (
     name: string,

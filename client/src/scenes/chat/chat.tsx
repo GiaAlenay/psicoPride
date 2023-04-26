@@ -22,6 +22,7 @@ export const Chat = () => {
   );
 
   useEffect(() => {
+    console.log("de:", sexo, " ", edad, " ", orientacion, " ", identidad);
     AOS.init();
     if (!sexo || !edad || !orientacion || !identidad) {
       navigate("/");

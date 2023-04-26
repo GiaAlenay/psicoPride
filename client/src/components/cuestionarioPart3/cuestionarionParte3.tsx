@@ -45,7 +45,7 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
                   "btnOriSel"
                 } d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto`}
                 onClick={() => {
-                  localStorage.setItem("SexualOrientationId", o.id.toString());
+                  // localStorage.setItem("SexualOrientationId", o.id.toString());
                   setUser("SexualOrientationId", o.id, true);
                 }}
                 name={o.name}
