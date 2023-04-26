@@ -49,18 +49,19 @@ export const Cuestionario = () => {
   const edad = localStorage.getItem("age");
   const orientacion = localStorage.getItem("SexualOrientationId");
   const identidad = localStorage.getItem("GenderIdentityId");
-
+  const [otro, setOtro] = useState<string>("");
+  const [otroOrientacion, setOtroOrientacion] = useState<string>("");
   useEffect(() => {
     AOS.init();
-    if (sexo && edad && orientacion && identidad) {
-      navigate("/chat");
-    } else {
-      if (!sexos.length || !generos.length || !orientaciones.length) {
-        dispatch(getSexos());
-        dispatch(getGenders());
-        dispatch(getOrientacions());
-      }
-    }
+    // if (sexo && edad && orientacion && identidad) {
+    //   navigate("/chat");
+    // } else {
+    //   if (!sexos.length || !generos.length || !orientaciones.length) {
+    dispatch(getSexos());
+    dispatch(getGenders());
+    dispatch(getOrientacions());
+    //   }
+    // }
   }, []);
 
   useEffect(() => {
@@ -78,11 +79,31 @@ export const Cuestionario = () => {
     }
   }, [loadingPreguntas, preguntas]);
 
-  const handleChangeUser = (name: string, value: number | string) => {
-    setUser({
-      ...user,
-      [name]: value,
-    });
+  const handleChangeUser = (
+    name: string,
+    value: number | string,
+    isArray: boolean
+  ) => {
+    if (isArray) {
+      if (Array.isArray(user[name]) && user[name].includes(value)) {
+        setUser({
+          ...user,
+          [name]: Array.isArray(user[name])
+            ? user[name].filter((u: number) => u !== value)
+            : [value],
+        });
+      } else {
+        setUser({
+          ...user,
+          [name]: Array.isArray(user[name]) ? [...user[name], value] : [value],
+        });
+      }
+    } else {
+      setUser({
+        ...user,
+        [name]: value,
+      });
+    }
   };
 
   const handleNext = () => {
@@ -134,8 +155,8 @@ export const Cuestionario = () => {
       {current === 1 && (
         <CuestionarioParte1
           user={user}
-          setUser={(name: string, value: string) => {
-            handleChangeUser(name, value);
+          setUser={(name: string, value: string, isArray: boolean) => {
+            handleChangeUser(name, value, isArray);
           }}
           hanldledisable={() => {
             setdisable(false);
@@ -145,19 +166,29 @@ export const Cuestionario = () => {
       {current === 2 && (
         <CuestionarioParte2
           user={user}
-          setUser={(name: string, value: number) => {
-            handleChangeUser(name, value);
+          otro={otro}
+          setOtro={(value: string) => {
+            setOtro(value);
+          }}
+          setUser={(name: string, value: number, isArray: boolean) => {
+            handleChangeUser(name, value, isArray);
           }}
           hanldledisable={() => {
-            setdisable(false);
+            user.GenderIdentityId && user.GenderIdentityId?.length > 0
+              ? setdisable(false)
+              : setdisable(true);
           }}
         />
       )}
       {current === 3 && (
         <CuestionarioParte3
           user={user}
-          setUser={(name: string, value: number) => {
-            handleChangeUser(name, value);
+          otro={otroOrientacion}
+          setOtro={(value: string) => {
+            setOtroOrientacion(value);
+          }}
+          setUser={(name: string, value: number, isArray: boolean) => {
+            handleChangeUser(name, value, isArray);
           }}
           hanldledisable={() => {
             setdisable(false);
@@ -167,8 +198,8 @@ export const Cuestionario = () => {
       {current === 4 && (
         <CuestionarioParte4
           user={user}
-          setUser={(name: string, value: number) => {
-            handleChangeUser(name, value);
+          setUser={(name: string, value: number, isArray: boolean) => {
+            handleChangeUser(name, value, isArray);
           }}
           hanldledisable={() => {
             setdisable(false);

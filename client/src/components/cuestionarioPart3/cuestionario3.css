@@ -1,6 +1,6 @@
 .cardsOrientaciones{
-    max-width: 620px;
-    gap: 24px 10px;
+    max-width: 660px;
+    gap: 24px 30px;
 }
 
 .flagImg{
@@ -15,7 +15,7 @@
 
 .btnOrientacion{    
     border-radius: 8px;
-    width: 160px ;
+    width: 170px ;
     height: 130px;
     box-shadow: rgba(0, 0, 0, 0.35) 3px 8px 15px;
     transition: transform 0.6s,border 0.2s linear;
@@ -35,7 +35,7 @@
   
     width: 100%;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 14% 86%;
 }
 input[type="checkbox"] {
     /* Add if not using autoprefixer */

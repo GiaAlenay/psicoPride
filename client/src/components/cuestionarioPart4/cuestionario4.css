@@ -21,19 +21,19 @@ background: linear-gradient(rgb(54, 51, 252) 0%, rgb(71, 159, 241) 70%, rgb(160,
 }
 
 .btnintersex::before{
-background: linear-gradient(rgb(137, 1, 190) 0%, rgb(101, 28, 236) 70%, rgb(238, 104, 250) 100%);
+    background: linear-gradient(rgb(137, 1, 190) 0%, rgb(137, 28, 236) 100%);
 
 }
-
+/* 
 .sexoSemujer{
     background: linear-gradient(rgb(255, 131, 193) 0%, rgb(250, 153, 83) 70%, rgb(160, 123, 182) 100%);
 }
 .sexoSehombre{
 background: linear-gradient(rgb(54, 51, 252) 0%, rgb(71, 159, 241) 70%, rgb(160, 123, 182) 100%);
-}
+} */
 
 .sexoSeintersex{
-background: linear-gradient(rgb(137, 1, 190) 0%, rgb(101, 28, 236) 70%, rgb(238, 104, 250) 100%);
+background: linear-gradient(rgb(137, 1, 190) 0%, rgb(137, 28, 236) 100%);
 
 }
 

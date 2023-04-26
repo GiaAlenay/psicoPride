@@ -34,15 +34,15 @@ export const PreguntasSearchBar: React.FC<MyComponentProps> = ({
   );
 
   const handleReLoadPreguntas = () => {
-    if (sexo && edad && orientacion && identidad) {
-      dispatch(
-        getPreguntas({
-          SexoId: parseInt(sexo),
-          GenderIdentityId: parseInt(identidad),
-          SexualOrientationId: parseInt(orientacion),
-        })
-      );
-    }
+    // if (sexo && edad && orientacion && identidad) {
+    //   dispatch(
+    //     getPreguntas({
+    //       SexoId: [1],
+    //       GenderIdentityId: [1],
+    //       SexualOrientationId: [1],
+    //     })
+    //   );
+    // }
   };
 
   const handleElegirPregunta = (elegida: string, id: number) => {

@@ -6,7 +6,7 @@ import { UserAtributtes } from "../../interfaces";
 interface MyComponentProps {
   hanldledisable: () => void;
   user: UserAtributtes;
-  setUser: (name: string, value: string) => void;
+  setUser: (name: string, value: string, isArray: boolean) => void;
 }
 
 export const CuestionarioParte1: React.FC<MyComponentProps> = ({
@@ -40,7 +40,7 @@ export const CuestionarioParte1: React.FC<MyComponentProps> = ({
             className={`btnEdad ${user.age === a ? "btnSe" : "btnNoSE"}`}
             onClick={() => {
               localStorage.setItem("age", a.toString());
-              setUser("age", a);
+              setUser("age", a, false);
             }}
           >
             <h5>{a}</h5>

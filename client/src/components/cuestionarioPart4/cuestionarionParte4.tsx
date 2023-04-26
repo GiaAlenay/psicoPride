@@ -8,7 +8,7 @@ import { UserAtributtes } from "../../interfaces";
 interface MyComponentProps {
   hanldledisable: () => void;
   user: UserAtributtes;
-  setUser: (name: string, value: number) => void;
+  setUser: (name: string, value: number, isArray: boolean) => void;
 }
 export const CuestionarioParte4: React.FC<MyComponentProps> = ({
   hanldledisable,
@@ -25,7 +25,7 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
 
   return (
     <div className="w-100 text-center" data-aos="flip-left">
-      <h3>¿Cuál es tu sexo?</h3>
+      <h3>¿Eres intersexual?</h3>
       <div
         className="cardSexo d-flex
         flex-row
@@ -39,30 +39,14 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
         {data.map((sexo: any) => (
           <button
             key={sexo.id}
-            className={`btnSexo btn${sexo.name} ${
-              user.SexoId === sexo.id && `sexoSe${sexo.name}`
+            className={`btnSexo btnintersex ${
+              user.SexoId === sexo.id && `sexoSeintersex`
             }`}
             onClick={() => {
               localStorage.setItem("SexoId", sexo.id.toString());
-              setUser("SexoId", sexo.id);
+              setUser("SexoId", sexo.id, false);
             }}
           >
-            {sexo.name === "mujer" ? (
-              <i
-                className="bi bi-gender-female fa"
-                style={{ fontSize: "100px" }}
-              ></i>
-            ) : sexo.name === "hombre" ? (
-              <i
-                className="bi bi-gender-male fa"
-                style={{ fontSize: "100px" }}
-              ></i>
-            ) : (
-              <i
-                className="bi bi-gender-ambiguous fa"
-                style={{ fontSize: "100px" }}
-              ></i>
-            )}
             <h5>{sexo.name}</h5>
           </button>
         ))}

@@ -60,13 +60,13 @@ export const ChatBurbuja: React.FC<MyComponentProps> = ({ setLoader }) => {
 
   const handleChatOrQuest = () => {
     if (sexo && edad && orientacion && identidad) {
-      dispatch(
-        getPreguntas({
-          SexoId: parseInt(sexo),
-          GenderIdentityId: parseInt(identidad),
-          SexualOrientationId: parseInt(orientacion),
-        })
-      );
+      // dispatch(
+      //   getPreguntas({
+      //     SexoId: [1],
+      //     GenderIdentityId: [1],
+      //     SexualOrientationId: [1],
+      //   })
+      // );
     } else {
       dispatch(getSexos());
       dispatch(getGenders());

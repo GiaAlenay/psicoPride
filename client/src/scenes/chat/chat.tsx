@@ -26,15 +26,15 @@ export const Chat = () => {
     if (!sexo || !edad || !orientacion || !identidad) {
       navigate("/");
     } else {
-      if (!Object.entries(preguntas).length) {
-        dispatch(
-          getPreguntas({
-            SexoId: parseInt(sexo),
-            GenderIdentityId: parseInt(identidad),
-            SexualOrientationId: parseInt(orientacion),
-          })
-        );
-      }
+      // if (!Object.entries(preguntas).length) {
+      //   dispatch(
+      //     getPreguntas({
+      //       SexoId: [1],
+      //       GenderIdentityId: [1],
+      //       SexualOrientationId: [1],
+      //     })
+      //   );
+      // }
     }
   }, []);
 

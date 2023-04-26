@@ -1,14 +1,29 @@
 .cardsGenero{
-    max-width: 360px;
+    max-width: 460px;
     gap: 12px 10px;
 }
 
 .btnGenero{
-    padding: 4px 20px;
+    width: 200px;
+    padding: 8px 0px;
     border: 3px solid white;
-    border-radius: 25px;
+    border-radius: 0%;
     box-shadow: rgba(241, 241, 241, 0.2) 0px 2px 8px 0px;
     transition: background-color 1s,color 1s linear;
+    /* min-height: 56px; */
+}
+.btnGeneroOtro{
+    width: 200px;
+    padding: 8px 0px;
+    border: 3px solid white;
+    border-radius: 0%;
+    box-shadow: rgba(241, 241, 241, 0.2) 0px 2px 8px 0px;
+    transition: background-color 1s,color 1s linear;
+}
+.notselectedGenOtro:hover{
+    background-color:rgb(223, 219, 219);
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 }
 .btnGenero:hover{
@@ -21,4 +36,55 @@
     background-color: rgb(231, 231, 231);
     color: black;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.contOtroInput{
+    padding: 2rem 0%;
+}
+
+.inputOtroGenero{
+    all:unset;
+}
+
+
+.OtroContArriba h5{
+    font-size: 80%;
+}
+.ContBtnOtro{
+    width: 220px;
+    height: 70px;
+    place-items: center;
+    display: grid;
+ 
+}
+
+.otroContGen{
+    transition: color 3s linear;
+    transition: transform 120ms ease-in;
+    transition:left 1s linear;
+}
+.OtroContCentro{
+    position: static;
+}
+
+.OtroContArriba{
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    position: absolute;
+    background-color: #212529;
+    padding: 0px 4px;
+    left: 14px;
+    top: 0px;
+    color:rgb(255, 255, 255);
+    
+}
+.OtroinputArriba{
+    all: unset;
+    display: block;
+    height: 32px;
+}
+
+
+.OtroinputDebajo{
+    display: none;
 }

@@ -1,8 +1,9 @@
 export interface UserAtributtes{
     age?: string;
-    GenderIdentityId?:number;
-    SexualOrientationId?:number;
-    SexoId?:number;
+    GenderIdentityId?:number[];
+    SexualOrientationId?:number[];
+    SexoId?:number[];
+    [key: string]: any;
 }
 
 export interface ChatPreguntaRespuesta{
