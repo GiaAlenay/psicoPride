@@ -39,8 +39,8 @@ export const CuestionarioParte4: React.FC<MyComponentProps> = ({
         {data.map((sexo: any) => (
           <button
             key={sexo.id}
-            className={`btnSexo btnintersex ${
-              user.SexoId === sexo.id && `sexoSeintersex`
+            className={`btnSexo big-button ${
+              user.SexoId === sexo.id ? `btnSexoSelected` : `btnSexoNotSelected`
             }`}
             onClick={() => {
               localStorage.setItem("SexoId", sexo.id.toString());
