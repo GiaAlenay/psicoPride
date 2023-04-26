@@ -191,7 +191,9 @@ export const Cuestionario = () => {
             handleChangeUser(name, value, isArray);
           }}
           hanldledisable={() => {
-            setdisable(false);
+            user.SexualOrientationId && user.SexualOrientationId?.length > 0
+              ? setdisable(false)
+              : setdisable(true);
           }}
         />
       )}
