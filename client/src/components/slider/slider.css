@@ -5,19 +5,19 @@
     border-radius: 2px;
     box-shadow:  -2px -1px 6px -4px rgb(73, 73, 73),0.6px -1px 3px rgb(110, 110, 110);
 }
-.contMainImg div{
+/* .contMainImg div{
     width: 90%;
     height: 90%;
     border-radius: 2px;
     box-shadow: inset 1px 1px 2px black;
-}
-.contMainImg{
+} */
+/* .contMainImg{
     width: 100%;
     height: 230px;
     place-items: center;
     display: grid;
     
-}
+} */
 .contSlider{
     position: relative;
     place-items: center;
@@ -27,13 +27,12 @@
 .contSliceCenter{
     position: relative;
     border-radius: 4px;
-    background-color: rgb(255, 254, 251);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 90%;
-    height: 100%;
+    width: 96%;
+    height: 60%;
     
 }
-.contitleSlider{
+/* .contitleSlider{
     font-size: 120%;
     text-transform:capitalize;
     text-align: center;      
@@ -44,15 +43,13 @@
     margin: 2% 12%;
     place-items: center;
     display: grid;
-}
+} */
 /* .contitleSlider div{
     background-color: aqua;
     
 } */
-.contSliceCenter:hover{
-    
-}
-.buttonMoreSlider{
+
+/* .buttonMoreSlider{
     background-color: white;
     padding: 15px;
     box-shadow:  0.6px 0.6px 2px rgb(48, 48, 48),-0.3px 0.3px 2px rgb(48, 48, 48);
@@ -66,4 +63,4 @@
 .buttonMoreSlider:active{
     padding: 15px;
     box-shadow:  inset 0.6px 0.6px 2px rgb(48, 48, 48);
-}
+} */
