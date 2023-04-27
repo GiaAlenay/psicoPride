@@ -16,9 +16,18 @@ export const getTemasChatOrderByPriority=async(req:Request,res:Response)=>{
     interface JustId{
       id:number;
     }
-    console.log('////////////////////')
-    console.log(req.query)
+   
+  
     const {sexo,genero,orientacion}=req.query
+    let generoArray: string[] | undefined;
+    let orientacionArray:string[]|undefined
+    if (typeof genero === 'string') {
+      generoArray = genero.split('-');
+    } 
+    if (typeof orientacion === 'string') {
+      orientacionArray = orientacion.split('-');
+    } 
+   
 
     chatArray.map(async(s)=>{
       const [newTema,created]=await TemaChat.findOrCreate({
@@ -96,11 +105,17 @@ export const getTemasChatOrderByPriority=async(req:Request,res:Response)=>{
       if (pregunta.Sexos.length && pregunta.Sexos.find((s:JustId)=>s.id.toString()===sexo)) {
         compatibilidad++;
       }
-      if (pregunta.GenderIdentities.length && pregunta.GenderIdentities.find((s:JustId)=>s.id.toString()===genero)) {
-        compatibilidad++;
-      }
-      if (pregunta.SexualOrientations.length && pregunta.SexualOrientations.find((s:JustId)=>s.id.toString()===orientacion)) {
-        compatibilidad++; }      
+      generoArray?.map((g:string)=>{
+        if (pregunta.GenderIdentities.length && pregunta.GenderIdentities.find((s:JustId)=>s.id.toString()===g)) {
+          compatibilidad++;
+        }
+      })
+      orientacionArray?.map((o:string)=>{
+        if (pregunta.SexualOrientations.length && pregunta.SexualOrientations.find((s:JustId)=>s.id.toString()===o)) {
+          compatibilidad++; }      
+      })
+      // console.log('////////////////////')
+      // console.log(compatibilidad)
       return compatibilidad;
     }
     
