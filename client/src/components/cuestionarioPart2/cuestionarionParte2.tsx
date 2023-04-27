@@ -56,19 +56,17 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
             )}
           </>
         ))}
-      </div>
-      <div className="d-flex w-100 justify-content-center align-items-center ">
         <div className="ContBtnOtro" style={{ position: "relative" }}>
           <button
-            key={5}
+            key={data[data.length - 1].id}
             className={`btnGeneroOtro ${
-              user.GenderIdentityId && user.GenderIdentityId.includes(5)
+              user.GenderIdentityId &&
+              user.GenderIdentityId.includes(data[data.length - 1].id)
                 ? "selectedGenOtro"
                 : "notselectedGenOtro"
             }`}
             onClick={() => {
-              // localStorage.setItem("GenderIdentityId", "5");
-              setUser("GenderIdentityId", 5, true);
+              setUser("GenderIdentityId", data[data.length - 1].id, true);
               setTimeout(() => {
                 if (miInput.current) {
                   miInput.current.focus();
@@ -78,7 +76,8 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
           >
             <div
               className={`otroContGen ${
-                user.GenderIdentityId && user.GenderIdentityId.includes(5)
+                user.GenderIdentityId &&
+                user.GenderIdentityId.includes(data[data.length - 1].id)
                   ? "OtroContArriba"
                   : "OtroContCentro"
               }`}
@@ -94,7 +93,8 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
               }}
               type="text"
               className={`${
-                user.GenderIdentityId && user.GenderIdentityId.includes(5)
+                user.GenderIdentityId &&
+                user.GenderIdentityId.includes(data[data.length - 1].id)
                   ? "OtroinputArriba"
                   : "OtroinputDebajo"
               }`}
@@ -102,6 +102,9 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
           </button>
         </div>
       </div>
+      {/* <div className="d-flex w-100 justify-content-center align-items-center ">
+        
+      </div> */}
     </div>
   );
 };
