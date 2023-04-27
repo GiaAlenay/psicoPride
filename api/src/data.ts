@@ -96,44 +96,85 @@ export const BibliotecaArray:TemaBibliotecaAttributes[]=[
 
 
 export const chatArray:TemaChatAttributes[]=[
-    {pregunta:'¿Por qué no tengo ganas de sexo?',
-        sexos:[1],generos:[1],orientaciones:[1,2,4],
-        respuesta:'lala'},
+    {pregunta:'Mi entorno no acepta que sea LGBT+. ¿ Qué puedo hacer ?',
+        sexos:[1,3],generos:[1,3,5,6],orientaciones:[1,2,3,4,5,7],
+        respuesta:'Descubrir nuestra identidad es un proceso para cada unx, y también lo puede ser para las personas en nuestra vida. Debemos ser empáticxs y respetar los tiempos de aprendizaje de todxs, pero no permitamos los actos agresivos. Si tu seguridad no está en peligro, puedes ayudarles a entenderte mejor con fuentes confiables sobre la diversidad, invitándoles a participar de talleres o asistir a grupos de apoyo de familiares LGBT+.'
+    },
+    {pregunta:'¿ Tengo que salir del clóset para ser LGBT+ ?',
+    sexos:[1,3],generos:[1,3,5,6],orientaciones:[1,2,3,4,5,7],
+    respuesta:'Si eres LGBT+, lo eres independientemente de si otras personas conocen tu identidad sexual o no. Hay muchas razones por las que algunas personas LGBT+ no salen del clóset, como vivir en un contexto violento. Si bien tener personas que te validen es beneficioso para tu salud mental, salir del clóset no es el punto de inicio de tu diversidad, ¡naciste así!'
+    },
+    {pregunta:'¿ Cómo puedo decirle a mi familia que soy LGBT+ ?',
+    sexos:[1,3],generos:[1,3,5,6],orientaciones:[1,2,3,4,5,7],
+    respuesta:'Antes de tener la conversación, piensa en los posibles escenarios que ocurrirían si les compartes tu identidad: ¿cómo reaccionarían ellxs? ¿Qué emociones sentirías tú? Imagínate teniendo la conversación, ensaya en tu mente cómo afrontarlo asertivamente y practica relajarte después del ejercicio. Considera siempre tu seguridad y condiciones actuales cuando decidas compartirles tu identidad sexual.'
+    },
+    {pregunta:'¿ Cómo sé qué pronombres debo usar cuando conozco a alguien ?',
+    generos:[1,3,5,6],
+    respuesta:'El primer paso es no asumir su pronombre, así que vas por buen camino :) Lo siguiente que puedes hacer es presentarte con tus pronombres, y así invitarle a que pueda compartirlo contigo. Recuerda, algunas personas pueden estar en el proceso de descubrir los pronombres con los que se sientan más cómodxs, o ¡tal vez no usan ninguno!'
+    },
+    {pregunta:'¿ Las personas asexuales no pueden tener sexo ?',
+    orientaciones:[5,7],
+    respuesta:'La asexualidad es una orientación tan diversa como las demás, y abarca un gran espectro de vivencias, desde la total asexualidad y la sexualidad normativa. Entonces, puede haber asexuales que disfrutan las caricias físicas, sin un encuentro sexual; practicar la masturbación o no; desear tener relaciones sexuales en algunos momentos, etc.'
+    },
+    {pregunta:'¿ Cómo puedo saber mi orientación sexual si no soy sexualmente activx ?',
+    orientaciones:[1,2,3,4,5,7],
+    respuesta:'No necesitas tener relaciones sexuales para descubrir quién eres. La orientación sexual comprende un conjunto de atracciones físicas, sexuales y emocionales hacia uno o más géneros. Para descubrir el tuyo, podrías empezar preguntándote: ¿de quiénes me he sentido atraídx en el pasado? ¿Qué personas me atraen ahora? ¿Con quién me veo en un futuro?'
+    },
+    {pregunta:'¿ Si soy un hombre trans me pueden gustar los hombres ?',
+    generos:[3,6],orientaciones:[1],
+    respuesta:'¡Sí! Tu identidad de género no restringe la atracción que puedas sentir por alguien.'
+    },
+    {pregunta:'¿ Tengo que odiar mi cuerpo para ser trans ?',
+    generos:[1,3,5,6],
+    respuesta:'Algunas personas trans sienten angustia, incomodidad o desconexión con las características sexuales (genitales, vello, senos, etc.) relacionadas al género que les asignaron al nacer, pero no es una experiencia universal. Las vivencias trans no deben partir del odio a sí mismas para ser válidas.'
+    },
+    {pregunta:'¿ Qué es ser no binarie ? ',
+    generos:[5,6],
+    respuesta:'Una persona no binarie es alguien cuya identidad de género se encuentra fuera del binario tradicional hombre-mujer. Tal vez es un término nuevo para algunxs, pero muchas culturas han reconocido la diversidad de género a lo largo de la historia. Por ejemplo, lxs Qariwarmi en el Imperio Incaico, y lxs Muxe en el pueblo zapoteco de México.'
+    },
+    {pregunta:'¿ Qué puedo hacer si estoy cuestionando ser intersexual ?',
+    sexos:[1,3],
+    respuesta:'Si sospechas que alguna característica sexual tuya no encaja por completo en lo tradicionalmente catalogado como masculino o femenino, podrías consultar tu historia clínica, realizar exámenes médicos, leer investigaciones sobre esta diversidad corporal y seguir a organizaciones intersexuales. Pregúntale a tu familia siempre y cuando tu seguridad no esté en peligro.'
+    },
+    {pregunta:'¿ Si soy intersexual tengo que identificarme así ?',
+    sexos:[1,3],
+    respuesta:'La intersexualidad es una condición natural del cuerpo, y reconocerte como tal puede ayudarte a conectar con una comunidad que comparte tus vivencias. Pero no es una identidad, una orientación ni un tercer sexo. Ellxs pueden tener una identidad de género u orientación sexual específica como cualquier otra persona. Por ejemplo, puede identificarse como cisgénero y sentirse más cómodx usando la etiqueta pansexual.'
+    },
     ]
 
 export const sexArray:SexoAttributes[]=[
-    // {name:'Sí'},{name:'No'},{name:'Lo estoy cuestionando'},{name:'Prefiero no decirlo'}
+    {name:'Sí'},{name:'No'},{name:'Lo estoy cuestionando'},{name:'Prefiero no decirlo'}
 ]
 export const genderArray:GenderIdentityAttributes[]=[
-    // {name:'Mujer trans'},{name:'Mujer cis'},{name:'Hombre trans'},{name:'Hombre cis'},{name:'Otro'},
+    {name:'Mujer trans'},{name:'Mujer cis'},{name:'Hombre trans'},{name:'Hombre cis'},{name:'No binarie'},{name:'Otro'},
 ]
 
 export const orientationArray:SexualOrientationAttributes[]=[
-    // {
-    //     name:'Gay',
-    //     flag:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Trans-inclusive_Gay_Men%27s_Flag.png/1200px-Trans-inclusive_Gay_Men%27s_Flag.png'
-    // },
-    // {
-    //     name:'Lesbiana',
-    //     flag:'https://plumasatomicas.com/wp-content/uploads/2021/06/Bandera-Lesbi-2021-Como-es-y-que-significan-sus-colores-1.jpg'
-    // },
-    // {
-    //     name:'Bisexual',
-    //     flag:'https://flags-world.com/wp-content/uploads/2021/08/bisexual-pride_2.png'
-    // },
-    // {
-    //     name:'Pansexual',
-    //     flag:'https://www.banderasvdk.com/blog/wp-content/uploads/Bandera-orgullo-pansexual.jpg'
-    // },
-    // {
-    //     name:'Asexual',
-    //     flag:'https://64.media.tumblr.com/08e721bc63d7ab06b2ebb17511ff9767/tumblr_inline_nxrxs1vTU11tbdzcw_400.png'
-    // },
-    // {   name:'Heterosexual',
-    //     flag:''
-    // },
-    // {   name:'Otro',
-    //     flag:''
-    // }
+    {
+        name:'Gay',
+        flag:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Trans-inclusive_Gay_Men%27s_Flag.png/1200px-Trans-inclusive_Gay_Men%27s_Flag.png'
+    },
+    {
+        name:'Lesbiana',
+        flag:'https://plumasatomicas.com/wp-content/uploads/2021/06/Bandera-Lesbi-2021-Como-es-y-que-significan-sus-colores-1.jpg'
+    },
+    {
+        name:'Bisexual',
+        flag:'https://flags-world.com/wp-content/uploads/2021/08/bisexual-pride_2.png'
+    },
+    {
+        name:'Pansexual',
+        flag:'https://www.banderasvdk.com/blog/wp-content/uploads/Bandera-orgullo-pansexual.jpg'
+    },
+    {
+        name:'Asexual',
+        flag:'https://64.media.tumblr.com/08e721bc63d7ab06b2ebb17511ff9767/tumblr_inline_nxrxs1vTU11tbdzcw_400.png'
+    },
+    {   name:'Heterosexual',
+        flag:''
+    },
+    {   name:'Otro',
+        flag:''
+    }
     
 ]   
