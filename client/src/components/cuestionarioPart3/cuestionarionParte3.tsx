@@ -75,12 +75,11 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
         <button
           className={`btnOrientacion ${
             user.SexualOrientationId &&
-            user.SexualOrientationId.includes(7) &&
+            user.SexualOrientationId.includes(data[data.length - 1].id) &&
             "btnOriSel"
           } d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto`}
           onClick={() => {
-            // localStorage.setItem("SexualOrientationId", "7");
-            setUser("SexualOrientationId", 7, true);
+            setUser("SexualOrientationId", data[data.length - 1].id, true);
             setTimeout(() => {
               if (miInput.current) {
                 miInput.current.focus();
@@ -96,7 +95,7 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
                 className={``}
                 checked={
                   user.SexualOrientationId &&
-                  user.SexualOrientationId.includes(7)
+                  user.SexualOrientationId.includes(data[data.length - 1].id)
                     ? true
                     : false
                 }
@@ -112,7 +111,8 @@ export const CuestionarioParte3: React.FC<MyComponentProps> = ({
               }}
               type="text"
               className={`flagImg ${
-                user.SexualOrientationId && user.SexualOrientationId.includes(7)
+                user.SexualOrientationId &&
+                user.SexualOrientationId.includes(data[data.length - 1].id)
                   ? "OtroinputArriba"
                   : "OtroinputDebajo"
               }`}
