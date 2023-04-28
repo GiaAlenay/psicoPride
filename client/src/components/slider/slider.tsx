@@ -1,7 +1,8 @@
 import "./slider.css";
-import React, { useEffect } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import { MdExpandMore } from "react-icons/md";
 import { BibliotecaTema } from "../../interfaces";
+import { DetalleTema } from "../DetalleTemaBiblioteca/detalleTema";
 interface MyProps {
   id: number;
   titulo: string;
@@ -16,22 +17,64 @@ export const SliderBiblioteca: React.FC<MyProps> = ({
   setShow,
   setAtributeSlice,
 }) => {
-  // useEffect(() => {
-  //   console.log(titulo);
-  // }, []);
+  const [showFullDetail, setShowFullDetail] = useState<boolean>(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
   return (
-    <div
-      className="contSlider"
-      key={id}
-      onMouseEnter={() => {
-        setShow(true);
-        setAtributeSlice({ id, titulo, mainImagen });
-      }}
-      onMouseLeave={() => setShow(false)}
-    >
-      <div className="contSliceCenter">
-        <img src={mainImagen} alt={titulo} className="mainImgSlider" />
-      </div>
-    </div>
+    <>
+      {width > 800 ? (
+        <div
+          className="contSlider"
+          key={id}
+          onMouseEnter={() => {
+            setShow(true);
+            setAtributeSlice({ id, titulo, mainImagen });
+          }}
+          onMouseLeave={() => setShow(false)}
+        >
+          <div className="contSliceCenter">
+            <img src={mainImagen} alt={titulo} className="mainImgSlider" />
+          </div>
+        </div>
+      ) : (
+        <div className="contSlider " key={id}>
+          <div className=" contSliceCenterSmall bg-dark ">
+            <img src={mainImagen} alt={titulo} className="mainImgSliderSmall" />
+            <div className="infoContSliderDe">
+              <div className="tituloMoreBTnCont">
+                <div>
+                  <h3>{titulo}</h3>
+                </div>
+                <div>
+                  <MdExpandMore
+                    className="moreDetalleBtn"
+                    onClick={() => {
+                      console.log(id);
+                      setShowFullDetail(true);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <DetalleTema
+        id={id}
+        show={showFullDetail}
+        setShow={() => {
+          setShowFullDetail(false);
+        }}
+      />
+    </>
   );
 };

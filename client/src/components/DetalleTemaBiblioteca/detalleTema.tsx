@@ -32,10 +32,11 @@ export const DetalleTema: React.FC<MyComponentProps> = ({
     TemaGlobalState
   >((state) => state.biblioteca);
   useEffect(() => {
+    console.log("este es el id:", id);
     if (id) {
       dispatch(getContenido(id));
     }
-  }, [id]);
+  }, [id, show]);
 
   useEffect(() => {
     if (contenido.data && !Array.isArray(contenido.data)) {

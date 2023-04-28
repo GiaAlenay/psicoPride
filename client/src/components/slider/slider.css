@@ -32,3 +32,18 @@
     transform: scale(1.02);
 }
 
+.contSliceCenterSmall{
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 96%;
+    height: 80%;
+    color: aliceblue;
+}
+
+.mainImgSliderSmall{
+    width: 100%;
+    height: 70%;
+    object-fit: cover;    
+    border-radius: 2px;
+    box-shadow:  -2px -1px 6px -4px rgb(73, 73, 73),0.6px -1px 3px rgb(110, 110, 110);
+}
