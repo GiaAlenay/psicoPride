@@ -1,6 +1,10 @@
 .avatarContModalHidden{
     display: none;
 }
+.notDisplayAcepBtn{
+    display: flex;
+    padding: 9%;
+}
 .condicionesCont{
    background-color: rgb(0, 0, 0,0.88);
    position: relative;
@@ -25,7 +29,7 @@
 
 .bubble {
     border: 4px dotted rgb(248,249,250);
-	height: 300px;
+	height: 200px;
 	width: 90%;
 	min-width: 200px;
 	margin: 0 auto;
@@ -134,6 +138,9 @@
     }
   }
   @media (max-width: 400px) {
+    .notDisplayAcepBtn{
+        display: none;
+    }
     .modalPrompCont{
         width: 90%;
         margin-left: 5%;
