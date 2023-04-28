@@ -35,12 +35,8 @@ export const ChatandSugerencias: React.FC = () => {
     (state) => state.chat.preguntas
   );
   const saludoArray: string[] = [
-    "Hola! ❤️",
-    // "Soy Hanayome ,un Chatbot que contestara tus preguntas.",
-    // "Estos son los temas:",
-    // "-Diversidad Sexual.",
-    // "Relaciones Sexuales",
-    // "Sexo e Identidad de Genero",
+    "Hola! Soy Coni ❤️",
+    "Un Chatbot que contestara tus preguntas.",
   ];
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -260,7 +256,7 @@ export const ChatandSugerencias: React.FC = () => {
         <div className="chatBox">
           <div className="ChatBoxEstadoCont text-center d-flex ">
             <div className="ChatBoxNameCont">
-              <h4>Hanayome</h4>
+              <h4>Coni</h4>
             </div>
             <div className="ChatActivo"></div>
           </div>
