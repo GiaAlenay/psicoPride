@@ -26,6 +26,7 @@ export const ChatandSugerencias: React.FC = () => {
   const [posiblePregunta, setposiblePregunta] = useState<string>("");
   const [modalSug, setModalSug] = useState<boolean>(false);
   const [width, setWidth] = useState(window.innerWidth);
+
   const loadingRespuesta: boolean = useSelector<RootState, boolean>(
     (state) => state.chat.loadingRespuesta
   );
