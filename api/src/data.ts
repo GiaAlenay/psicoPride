@@ -55,9 +55,9 @@ export const BibliotecaArray:TemaBibliotecaAttributes[]=[
     contenido:`La higiene sexual es un aspecto importante para mantener una buena salud sexual y prevenir infecciones de transmisión sexual (ITS). <hr/> A continuación, se presentan algunos consejos para una buena higiene sexual: <hr/>
     	Para practicar sexo seguro, hay que utilizar preservativos o barreras de látex durante el sexo vaginal, anal y oral. <s>
     	Lavarse las manos y los genitales con agua y jabón antes y después de tener relaciones sexuales. <s>
-    	se utilizan juguetes sexuales, es importante limpiarlos antes y después de cada uso con agua y jabón, o utilizar productos específicos para su limpieza. <s>
+    	Si se utilizan juguetes sexuales, es importante limpiarlos antes y después de cada uso con agua y jabón, o utilizar productos específicos para su limpieza. <s>
     	Orinar después de tener relaciones sexuales ayuda a limpiar la uretra y eliminar cualquier bacteria que pueda haber ingresado al cuerpo. <s>
-    	adecuadamente la zona genital, evitar el uso de jabones perfumados, y usar ropa interior de algodón pueden ayudar a prevenir infecciones vaginales y urinarias. <s>
+    	Limpiar adecuadamente la zona genital, evitar el uso de jabones perfumados, y usar ropa interior de algodón pueden ayudar a prevenir infecciones vaginales y urinarias. <s>
     	Realizar chequeos médicos regulares para detectar y tratar cualquier ITS o problema de salud sexual. <hr/>
     Es importante recordar que la higiene sexual no sólo implica prevenir las ITS, sino también mantener una buena salud sexual y mejorar la calidad de vida sexual. Hablar abierta y honestamente con la pareja sobre la higiene sexual y cualquier preocupación relacionada con la salud sexual puede ayudar a tener relaciones sexuales más seguras y satisfactorias.
     `,
