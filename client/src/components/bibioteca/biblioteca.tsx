@@ -86,19 +86,23 @@ export const Biblioteca = () => {
   }, [width]);
 
   const handlePrevClick = () => {
-    SetSlideOrder((prevState) => ({
-      primero: prevState.primero === 1 ? 5 : prevState.primero - 1,
-      segundo: prevState.primero,
-      tercero: prevState.segundo,
-    }));
+    if (!loadingTemas) {
+      SetSlideOrder((prevState) => ({
+        primero: prevState.primero === 1 ? 5 : prevState.primero - 1,
+        segundo: prevState.primero,
+        tercero: prevState.segundo,
+      }));
+    }
   };
 
   const handleNextClick = () => {
-    SetSlideOrder((prevState) => ({
-      primero: prevState.segundo,
-      segundo: prevState.tercero,
-      tercero: prevState.tercero === 5 ? 1 : prevState.tercero + 1,
-    }));
+    if (!loadingTemas) {
+      SetSlideOrder((prevState) => ({
+        primero: prevState.segundo,
+        segundo: prevState.tercero,
+        tercero: prevState.tercero === 5 ? 1 : prevState.tercero + 1,
+      }));
+    }
   };
 
   const settings: CustomSettings = {
