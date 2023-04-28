@@ -13,10 +13,10 @@ export const ChatPresentation: React.FC<MyComponentProps> = ({ setLoader }) => {
         </div>
         <div className="promptCont">
           <div className="centerPromts">
-            <h2 className="bienvenidos">¡Bienvenidx a Z!</h2>
+            <h2 className="bienvenidos">¡Bienvenidx!</h2>
             <h3 className="moreinf">
-              Un espacio seguro donde podrás resolver tus dudas sobre sexualidad
-              y diversidad .
+              Soy Coni, un chatbot que te ayudará a resolver tus dudas sobre
+              sexualidad y diversidad.
             </h3>
             <div className="w-100  d-flex justify-content-center align-items-center mx-auto p-4">
               <ChatBurbuja
