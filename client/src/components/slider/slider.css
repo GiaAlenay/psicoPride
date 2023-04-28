@@ -1,50 +1,4 @@
 
-/* .contMainImg div{
-    width: 90%;
-    height: 90%;
-    border-radius: 2px;
-    box-shadow: inset 1px 1px 2px black;
-} */
-/* .contMainImg{
-    width: 100%;
-    height: 230px;
-    place-items: center;
-    display: grid;
-    
-} */
-
-/* .contitleSlider{
-    font-size: 120%;
-    text-transform:capitalize;
-    text-align: center;      
-    color: rgb(29, 29, 29); 
-    width: 76%;
-    height: 4rem;
-    max-height: 4rem;
-    margin: 2% 12%;
-    place-items: center;
-    display: grid;
-} */
-/* .contitleSlider div{
-    background-color: aqua;
-    
-} */
-
-/* .buttonMoreSlider{
-    background-color: white;
-    padding: 15px;
-    box-shadow:  0.6px 0.6px 2px rgb(48, 48, 48),-0.3px 0.3px 2px rgb(48, 48, 48);
-    transition: box-shadow 0.2s linear ;
-}
-.moreIconSlider{
-    filter: drop-shadow(0.6px 0.6px 1px rgb(46, 46, 46));
-    color: rgb(68, 67, 67);
-}
-
-.buttonMoreSlider:active{
-    padding: 15px;
-    box-shadow:  inset 0.6px 0.6px 2px rgb(48, 48, 48);
-} */
 
 .slick-slide .contSlider{  
     height: 400px;
@@ -78,6 +32,3 @@
     transform: scale(1.02);
 }
 
-/* .contSliceCenter:hover {
-
-} */

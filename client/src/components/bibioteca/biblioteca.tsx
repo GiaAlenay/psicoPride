@@ -48,7 +48,7 @@ export const Biblioteca = () => {
   const { loadingTemas, temas } = useSelector<RootState, TemaGlobalState>(
     (state) => state.biblioteca
   );
-
+  const [width, setWidth] = useState(window.innerWidth);
   const [slidesToShow, setSlideToShow] = useState<number>(3);
   const [slideOrder, SetSlideOrder] = useState<SlideOrderAttributes>({
     primero: 1,
@@ -67,6 +67,23 @@ export const Biblioteca = () => {
   const handleReLoadTemas = () => {
     dispatch(getTemas());
   };
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    if (width > 800) {
+      setSlideToShow(3);
+    }
+    if (width <= 800) {
+      setSlideToShow(2);
+    }
+    if (width <= 600) {
+      setSlideToShow(1);
+    }
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
 
   const handlePrevClick = () => {
     SetSlideOrder((prevState) => ({
