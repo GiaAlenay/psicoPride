@@ -1,4 +1,5 @@
 import Modal from "react-bootstrap/Modal";
+import Placeholder from "react-bootstrap/Placeholder";
 import React, { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "../../reduxToolkit/store";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,6 +10,7 @@ import {
   vaciarContenido,
 } from "../../reduxToolkit/reducers/biblioteca";
 import "./detalleTema.css";
+import { AiOutlineReload, AiOutlineClose } from "react-icons/ai";
 interface MyComponentProps {
   id: number;
   show: boolean;
@@ -51,32 +53,67 @@ export const DetalleTema: React.FC<MyComponentProps> = ({
     <Modal
       show={show}
       onHide={handleOnhide}
-      backdrop="static"
       keyboard={true}
       centered
       size="lg"
       className="modaldetalleTema"
     >
-      <div className="bg-primary tex-light contDeTema">cargando...</div>
+      <div className="bg-dark contDeTemaLoding">
+        <Placeholder animation="glow" className=" h-100">
+          <Placeholder xs={12} bg="secondary" className={"loadingImgDe"} />
+          <div className="w-100 " style={{ marginTop: "5vh" }}>
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+          </div>
+          <div className="w-100 " style={{ marginTop: "5vh" }}>
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+          </div>
+          <div className="w-100 " style={{ marginTop: "5vh" }}>
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+            <Placeholder bg="secondary" className={"loadingParagraph"} />
+          </div>
+        </Placeholder>
+      </div>
     </Modal>;
   } else if (contenido.status && contenido.status > 400) {
     <Modal
       show={show}
       onHide={handleOnhide}
-      backdrop="static"
       keyboard={true}
       centered
       size="lg"
-      className="modaldetalleTema"
+      className="modaldetalleTemaError"
     >
-      <div className="bg-dark contDeTema">error...</div>
+      <div className="bg-dark w-100 detalleTemaError d-flex justify-content-center align-items-center mx-auto">
+        <AiOutlineClose onClick={handleOnhide} className="closeBtnDeTema" />
+        <div style={{ maxWidth: "90%" }}>
+          <h5>
+            {contenido.message
+              ? contenido.message
+              : "Error Obteniendo Tema, intente de nuevo."}
+          </h5>
+          <div className="w-100 d-flex justify-content-center align-items-center mx-auto">
+            <button
+              onClick={() => {
+                dispatch(getContenido(id));
+              }}
+              className="retryBtnTema"
+            >
+              Reintentar <AiOutlineReload />
+            </button>
+          </div>
+        </div>
+      </div>
     </Modal>;
   }
   return (
     <Modal
       show={show}
       onHide={handleOnhide}
-      backdrop="static"
       keyboard={true}
       centered
       size="lg"
@@ -90,6 +127,7 @@ export const DetalleTema: React.FC<MyComponentProps> = ({
             className="mainimgDetalleTema "
           />
           <div className="contContenidoDeTe">
+            <AiOutlineClose onClick={handleOnhide} className="closeBtnDeTema" />
             <div className="ContTituloDeTe">
               <h2>{detalle.titulo}</h2>
             </div>

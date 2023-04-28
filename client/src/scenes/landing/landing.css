@@ -2,6 +2,7 @@
     height: 100vh ;
     width: 100%;    
     position: relative;
+    /* background-image: radial-gradient(circle at 66.66666666666666% 65.66666920979817%, #8EB9F6 0%, 21.349999999999998%, rgba(142,185,246,0) 35%), radial-gradient(circle at 20% 8.333333333333332%, #F3809D 0%, 24.779999999999998%, rgba(243,128,157,0) 42%), radial-gradient(circle at 23.00004164377848% 64.33335622151692%, rgba(144,132,246,0.99) 0%, 29.5%, rgba(144,132,246,0) 50%), radial-gradient(circle at 65.66666920979817% 16.33333365122477%, #59EA94 0%, 42%, rgba(89,234,148,0) 70%), radial-gradient(circle at 48.9013671875% 49.521484375%, #C7C0FA 0%, 100%, rgba(199,192,250,0) 100%);; */
     background-image: url('./background.png');
     overflow:auto;
     background-repeat:no-repeat;
