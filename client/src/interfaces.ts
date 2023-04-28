@@ -27,7 +27,7 @@ export interface MensajeObj {
     id:number;
     titulo:string;
     mainImagen:string;
-    contenio?:string;
+    contenio?:(string | string[])[];
   }
 
   export interface SlideOrderAttributes{

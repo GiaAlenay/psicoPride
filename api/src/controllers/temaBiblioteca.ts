@@ -26,7 +26,16 @@ export const findTemaBiblioteca=async(req:Request, res:Response)=>{
         const {id}=req.params;
         const findTemaBiblioteca= await TemaBiblioteca.findByPk(id)
         if (findTemaBiblioteca) {
-            res.status(201).json(findTemaBiblioteca);
+            const contenidoArray=findTemaBiblioteca.contenido.replace(/\n/g, '').replace(/\t/g, '').split('<hr/>').map(c=>{
+                if (c.includes('<s>')) {
+                    return c.split('<s>')
+                }
+                else{
+                    return c
+                }
+            })
+
+            res.status(201).json({id:findTemaBiblioteca.id,titulo:findTemaBiblioteca.titulo,contenido:contenidoArray,mainImagen:findTemaBiblioteca.mainImagen});
         }else{
             res.status(404).send('Error Obteniendo Tema, intente de nuevo.');
         }

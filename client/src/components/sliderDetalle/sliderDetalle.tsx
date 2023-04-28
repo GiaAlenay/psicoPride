@@ -1,4 +1,5 @@
 import { BibliotecaTema, SlideOrderAttributes } from "../../interfaces";
+import { DetalleTema } from "../DetalleTemaBiblioteca/detalleTema";
 import "./sliderDetalle.css";
 import React, { useEffect, useState } from "react";
 import { MdExpandMore } from "react-icons/md";
@@ -17,6 +18,7 @@ export const SliderDetalle: React.FC<MyProps> = ({
 }) => {
   const [display, SetDisplay] = useState<string>("none");
   const [position, setPosition] = useState<string>("");
+  const [showFullDetail, setShowFullDetail] = useState<boolean>(false);
   useEffect(() => {
     if (show) {
       SetDisplay("block");
@@ -55,11 +57,23 @@ export const SliderDetalle: React.FC<MyProps> = ({
           <div>
             <h3>{atributos.titulo}</h3>
           </div>
-          <div className="">
-            <MdExpandMore className="moreDetalleBtn" />
+          <div>
+            <MdExpandMore
+              className="moreDetalleBtn"
+              onClick={() => {
+                setShowFullDetail(true);
+              }}
+            />
           </div>
         </div>
       </div>
+      <DetalleTema
+        id={atributos.id}
+        show={showFullDetail}
+        setShow={() => {
+          setShowFullDetail(false);
+        }}
+      />
     </div>
   );
 };

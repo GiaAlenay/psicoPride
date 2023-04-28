@@ -37,60 +37,62 @@ export interface TemaBibliotecaAttributes{
 }
 
 export const BibliotecaArray:TemaBibliotecaAttributes[]=[
-    {titulo:'Identidades de género',contenido:`Los tiempos han cambiado, y si antes se entendía el género desde una posición binaria de masculino y femenino, hoy son múltiples las identidades de género que cada persona puede asumir de forma personal y voluntaria. En líneas generales, encontramos personas cisgénero, que se refiere a una persona cuya identidad de género corresponde con el sexo asignado al nacer, es decir, naciste con los órganos reproductivos de una mujer y te identificas a ti misma como mujer. Por su parte, las personas transgénero no se identifican o reconocen dentro del género que les fue asignado al nacer y, por tanto, deciden transformarse y construirse de forma diferente a lo establecido socialmente.
-
-    Por eso, podrás encontrarte personas transgénero que se definen así mismas de las siguientes maneras:
+    {titulo:'Masturbación',
+    contenido:`La masturbación es una práctica sexual común y saludable que muchas personas disfrutan en solitario o en pareja. A pesar de su estigma social y de la falta de información en algunos contextos culturales, es una forma natural y segura de explorar la sexualidad y el placer propio.  <hr/> Esta práctica implica la estimulación de los genitales con las manos, juguetes sexuales u otros objetos para producir orgasmos y aliviar la tensión sexual acumulada. De esta forma, se pueden obtener los siguientes beneficios para la salud sexual y emocional de una persona:  <hr/>
+    	Reducción del estrés. <s>
+    	Mejora en el sueño.  <s>
+    	Aumento de la autoestima. <s>
+    	Mejora de la función sexual. <s>
+    	Mayor comprensión del propio cuerpo. <s>
+    	Aprender las preferencias y necesidades sexuales propias. <s>
+    	Mejora las relaciones sexuales con la(s) pareja(s). <s>
+    	Explorar la sexualidad sin riesgo de contraer enfermedades de transmisión sexual (ETS) o embarazos no deseados  <hr/>
+    Para disfrutar esta práctica de manera segura, es importante lavarse las manos y los juguetes sexuales antes y después de la masturbación para evitar infecciones, así como no usar objetos puntiagudos o afilados para evitar lesiones.  <hr/>
+    En conclusión, aunque algunas personas pueden sentir culpa o vergüenza por masturbarse, la mayoría de los expertos en sexualidad consideran que es una práctica saludable y normal. 
+    `
+    ,mainImagen:'Masturbacion.png'},
+    {titulo:'Higiene Sexual',
+    contenido:`La higiene sexual es un aspecto importante para mantener una buena salud sexual y prevenir infecciones de transmisión sexual (ITS). <hr/> A continuación, se presentan algunos consejos para una buena higiene sexual: <hr/>
+    	Para practicar sexo seguro, hay que utilizar preservativos o barreras de látex durante el sexo vaginal, anal y oral. <s>
+    	Lavarse las manos y los genitales con agua y jabón antes y después de tener relaciones sexuales. <s>
+    	se utilizan juguetes sexuales, es importante limpiarlos antes y después de cada uso con agua y jabón, o utilizar productos específicos para su limpieza. <s>
+    	Orinar después de tener relaciones sexuales ayuda a limpiar la uretra y eliminar cualquier bacteria que pueda haber ingresado al cuerpo. <s>
+    	adecuadamente la zona genital, evitar el uso de jabones perfumados, y usar ropa interior de algodón pueden ayudar a prevenir infecciones vaginales y urinarias. <s>
+    	Realizar chequeos médicos regulares para detectar y tratar cualquier ITS o problema de salud sexual. <hr/>
+    Es importante recordar que la higiene sexual no sólo implica prevenir las ITS, sino también mantener una buena salud sexual y mejorar la calidad de vida sexual. Hablar abierta y honestamente con la pareja sobre la higiene sexual y cualquier preocupación relacionada con la salud sexual puede ayudar a tener relaciones sexuales más seguras y satisfactorias.
+    `,
+    mainImagen:'HigieneSexual.jpg'},
+    {titulo:'Autoestima Sexual',
+    contenido:`La autoestima sexual es la forma en que las personas perciben y valoran su sexualidad y su capacidad para disfrutar y experimentar satisfacción sexual. Tener una autoestima sexual positiva puede mejorar la calidad de vida sexual y aumentar el bienestar emocional en general.  <hr/> A continuación, se presentan algunos consejos para fortalecerla: <hr/>
+    	Conócete a ti mismx: Explorar y conocer tu cuerpo, preferencias y límites mediante la masturbación te permitirá aprender a disfrutar del propio cuerpo. <s>
+    	Habla abiertamente sobre tus necesidades sexuales: Comunicar honestamente con la pareja sobre tus necesidades, deseos y límites sexuales puede ayudar a sentirte más cómodx y segurx en la relación. <s>
+    	Practica la aceptación y el amor propio: Aprender a aceptar y amar tu cuerpo y tu sexualidad tal como son, sin juzgarte o compararte con otrxs. <s>
+    	Experimenta con nuevas formas de placer: Como la estimulación del punto G o el uso de juguetes sexuales, y así descubrir nuevas sensaciones. <s>
+    	Evita compararte: Tu autoestima sexual puede verse afectada negativamente si te comparas en términos de desempeño sexual o atractivo. Recuerda, cada persona es única y tiene su propio ritmo y preferencias sexuales. <s>
+    	Aceptar los cambios: Durante la vida, es normal experimentar altibajos en la confianza sexual, sé paciente contigo mismx. 
+    `,
+    mainImagen:'Autoestimasexual.jpg'},
+    {titulo:'Sexo Anal',
+    contenido:`El sexo anal es una práctica sexual que consiste en la penetración del ano. Si se realiza correctamente, puede ser una experiencia placentera y satisfactoria para todas las personas involucradas. Sin embargo, es importante tener en cuenta la higiene y seguridad para prevenir posibles infecciones o lesiones. <hr/> A continuación, te compartimos algunos consejos para tener sexo anal higiénico y placentero:  <hr/>
+    	Comunicación abierta: Es importante hablar con la pareja antes de intentar esta práctica. Asegurarse de que ambxs estén cómodxs y dispuestxs a participar es esencial para tener una experiencia agradable y satisfactoria. <s>
+    	Lubricación: El ano no se lubrica naturalmente como la vagina, por lo que es importante usar suficiente lubricante para evitar lesiones y aumentar el placer. Se recomienda usar un lubricante a base de agua o silicona, ya que los aceites pueden causar daño al condón. <s>
+    	Higiene: Es importante lavar el ano y los alrededores con agua tibia y jabón antes del sexo anal. También se recomienda usar un enema para limpiar el interior del ano, aunque no es necesario hacerlo cada vez que se tiene sexo anal. <s>
+    	Condones: Es importante usar un condón durante el sexo anal para prevenir la transmisión de enfermedades de transmisión sexual (ETS) y reducir el riesgo de infecciones. Además, cambiar el condón si se cambia de actividad sexual (de anal a vaginal, por ejemplo) también es importante. <s>
+    	Posiciones: Existen diferentes posiciones sexuales que pueden ser más cómodas o placenteras para el sexo anal, dependiendo de la comodidad y preferencias de cada persona. Algunas posiciones comunes incluyen de lado, a cuatro patas o sentadxs. <hr/>
+    En resumen, el sexo anal puede ser una experiencia placentera y satisfactoria si se realiza correctamente y con precaución. Hablar abiertamente con la pareja, usar suficiente lubricante, mantener una buena higiene, usar condones y experimentar con diferentes posiciones pueden ayudar a tener una experiencia más placentera y segura.
+    `,
+    mainImagen:'SexoAnal.png'},
+    {titulo:'Consentimiento Sexual',
+    contenido:`El consentimiento sexual se refiere al acuerdo explícito, libre y mutuo que se da entre las personas involucradas en una actividad sexual. Así, se garantiza que todxs se sientan cómodxs, segurxs y respetadxs. <hr/> A continuación, te presentamos cómo debería verse el consentimiento: <hr/>
+    	Debe ser libre y entusiasta: No puede ser dado si alguien se encuentra bajo los efectos del alcohol o las drogas, es presionadx o se siente amenazadx de alguna manera. <s>
+    	Debe ser pedido en todo momento: Cada experiencia sexual es única y debe ser consentida individualmente. No se debe dar por sentado que alguien quiere tener relaciones sexuales porque lo han hecho en el pasado. <s>
+    	Debe ser claro: Si una persona no está segura de si la(s) otra(s) quiere(n) tener relaciones sexuales, es importante preguntar y esperar una respuesta clara antes de continuar. <s>
+    	Puede retirarse en cualquier momento: Si alguien cambia de opinión durante la actividad sexual, tiene derecho a detenerla y comunicarlo a lxs demás. <s>
+    	Es una responsabilidad compartida: Cada persona debe asegurarse que todxs estén cómodxs e informadxs previamente de las medidas de protección y actividades sexuales que se realizarán.  <s>
+    <hr/> Si se considera que el consentimiento ha sido violado, es importante buscar ayuda de inmediato. Puede ser necesario hablar con un profesional de la salud, un consejero o un asesor jurídico para obtener asesoramiento y apoyo. <hr/> En conclusión, el consentimiento debe ser libre, entusiasta, informado y reversible. El respeto por esta decisión es fundamental en cualquier relación íntima. De esta forma, se garantiza la salud, seguridad y disfrute de todxs lxs participantes.
+    `,
+    mainImagen:'ConsentimientoSexual.png'},
     
-    Transexual: persona cuya identidad de género difiere del género asignado al nacer, por lo que replantean su género y su sexo de manera definitiva. Generalmente, aunque no siempre, se sienten inconformes con su cuerpo y recurren a tratamiento hormonales o a cirugías de cambio de sexo.
-    
-    Transformista: persona que ocasionalmente asume roles del género opuesto al de nacimiento. Hombres de nacimiento que eventualmente tienen conductas, atuendos y estilos que se consideran culturalmente como femeninos; mujeres que adoptan conductas, atuendos y estilos que culturalmente se interpretan como masculinos.
-    
-    Travesti: persona que expresa su género, de manera permanente, a través de la utilización de prendas de vestir y actitudes que culturalmente se consideran propias del otro género. También es importante que sepas que no todas las personas travestis son necesariamente homosexuales. El género no va ligado a la orientación sexual, como te explicaremos más adelante.`,mainImagen:'https://images.ctfassets.net/o65uf8qogksw/7dIbFicM3K2nGchmSK2oLP/b2c7a9ce7e7d337c9dfcacfc3f630724/identidad-de-genero-mobile.jpg'},
-    {titulo:'que es la asexualidad',contenido:`La asexualidad se suele considerar una orientación sexual, pero, en realidad, es todo lo contrario, porque es una no-orientación sexual. Son personas que no sienten deseo sexual de ningún tipo, ni frente a hombres, ni frente a mujeres, ni frente a ningún otro género o parafilia que pudiéramos imaginar.
-
-    Es importante señalar que no se trata ni de una ideología ni de una orientación sexual, sino que es una condición en la que una persona no se siente movida a tener relaciones sexuales de ningún tipo.
-    
-    Pero esta motivación no puede provenir de sentimientos religiosos o culturales. Es decir, no es un celibato. Simplemente, son personas que, de forma natural, no sienten ningún interés por el sexo.
-    
-    Eso sí, hay que señalar que aunque no se trate de una ideología ni de una orientación sexual, los asexuales y las organizaciones a las que pertenecen sí han establecido vínculos políticos para mejorar su visibilidad y ser mejor considerados en la sociedad. Es por ello que, en muchas ocasiones, van de la mano del movimiento LGTB.
-    
-    Y es que, de un tiempo a esta parte, son muchos los asexuales que se han unido para reivindicar que la sociedad no esté tan centrada en el deseo sexual, y que no sea necesario tener sexo para recibir aprobación social por parte de las demás personas.
-    
-    Es por ello que existen asociaciones y comunidades como la Asexual Visibility and Education Network (AVEN), centrada en dar a conocer los conocimientos y experiencias relacionados con la asexualidad y dar voz a las personas asexuales. Y no es una asociación pequeña, precisamente, puesto que cuenta con más de 10.000 socios.`,mainImagen:'https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/10/19081648/asexual-sexo-sexualidad.jpeg'},
-    {titulo:'que es ser no binario',contenido:`Demi Lovato, Ezra Miller y Elliot Page son personas del medio artístico que han comunicado ser de género no binario. Te contamos sobre el significado y de qué va identificarse con ello.
-
-    “Hoy es un día en el que estoy muy feliz de compartir más de mi vida con todos ustedes. Me enorgullece hacerles saber que me identifico como no binarie y que oficialmente cambiaré mi pronombre a elle”, indicó en su cuenta de Twitter Lovato en días recientes.
-    
-    Ser no binario se designa a las identidades de género que se reconocen con aspectos femeninos y masculinos, no son hombres o mujeres.
-    
-    Además, las personas que se identifican como no binarias, usan pronombres neutros, y piden que se les identifique como tal. Por ejemplo, ‘elle’.
-    
-    Al respecto, Hola amigue, un colectivo mexicano, explica que las personas no binarias no deben tener siempre un aspecto andrógino, sino que viven fuera de ser hombre o mujer, de lo masculino y lo femenino.
-    
-    El Día Internacional de la Visibilidad No Binaria se celebra el 14 de julio.`,mainImagen:'https://cdn.lesbicanarias.es/wp-content/uploads/2018/02/No-binario.jpg'},
-    {titulo:'Los métodos anticonceptivos',contenido:`Existen multitud de maneras de clasificar los métodos anticonceptivos. Por ejemplo, se pueden tener en cuenta los diferentes a los parámetros que se comentan a continuación:
-
-    Masculinos o femeninos
-    en función de si lo usa el hombre o la mujer.
-    Orales o no orales
-    hace referencia a si los anticonceptivos se toman en forma de pastillas o se colocan en otro lugar del cuerpo.
-    Hormonales o no hormonales
-    en base a si incluyen hormonas en su composición.
-    Temporales o permanentes
-    en función de la duración del método anticonceptivo.
-    Reversibles o irreversibles
-    hace referencia a la esterilización total del hombre o la mujer.Un mismo anticonceptivo puede incluirse en varios de estos grupos que hemos descrito. Por tanto, para una comprensión más clara de cómo funciona cada uno, nos basaremos en su mecanismo de acción para describirlos a lo largo de este artículo, así como las principales indicaciones.`,mainImagen:'https://www.huesped.org.ar/wp-content/uploads/2017/04/acceso-a-mac-660x330.png'},
-    {titulo:'orientaciones sexuales',contenido:`¿Sabes que existen muchas más sexualidades de las que conoces? Estamos acostumbrados a términos como bisexual, transexual o heterosexual, pero con el pasar del tiempo cada vez se conocen nuevas orientaciones sexuales, con diferentes características que hacen a la conducta de la atracción, y el amor en los seres humanos.
-
-    La forma en la que nos identificamos sexualmente es conocida como orientación sexual y esta tiene diferentes aspectos, ya que una orientación no define solamente quién es el fruto de tu atracción, sino también con qué tipo de personas mantienes relaciones. Mediante esta podemos definir el interés, la atracción sexual y romántica, así como también el comportamiento y las distintas formas en la que se experimenta precisamente la sexualidad.
-    
-    Se suele confundir a la orientación sexual con la identidad de género y estas tienen aspectos que se diferencian bastante entre sí.
-    
-    Como mencionamos, por quién sientes atracción, tanto emocional como romántica y sexual, forma parte de lo que es la orientación, mientras que en la identidad de género no importa con qué otro tipo de persona te relacionas, sino más bien en quién eres tú mismo.
-    
-    Esto quiere decir que mientras el género responde al tipo de persona que eres, que puede ser hombre, mujer, la orientación sexual remite al tipo de personas con las que puedes o podrías mantener una relación, sin que esto tenga que ver con quién eres en realidad.
-    
-    Es muy importante para las personas llegar a la comprensión del tipo de experiencias que cada persona cercana tiene y cómo identifican su propia sexualidad, esto puede ser muy importante para conocernos mejor, interpretar a cada uno y convivir en un mundo en total tolerancia y respeto hacia el tipo de atracción sexual que tenga cualquier persona.`,mainImagen:'https://previews.123rf.com/images/naidzionysheva/naidzionysheva2011/naidzionysheva201100016/159733148-un-conjunto-de-ilustraciones-vectoriales-con-parejas-j%C3%B3venes-de-diferentes-orientaciones-sexuales-de.jpg'},
 ]
 
 

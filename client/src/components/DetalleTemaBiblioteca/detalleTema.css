@@ -1,0 +1,27 @@
+.mainimgDetalleTema{
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+.contDeTema{
+    color: aliceblue;
+    position: relative;
+}
+.contContenidoDeTe{
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(rgba(207, 203, 203, 0.1),   rgba(0, 0, 0, 0.5));
+    
+    width: 100%;
+    height: 100%;
+}
+
+.ContTituloDeTe{
+    margin-left: 20px;
+    text-shadow: 5px 5px black;    
+    max-width: 60%;
+    margin-top: 30vh;
+}
+.ContTituloDeTe h2{
+    font-size: 70px;
+}
