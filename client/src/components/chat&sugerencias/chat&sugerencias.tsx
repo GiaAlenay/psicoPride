@@ -12,6 +12,7 @@ import { Conversacion } from "../conversacion/conversacion";
 import { useDispatch } from "react-redux";
 import { getRespuesta } from "../../reduxToolkit/reducers/chat";
 import { ModalSugerencias } from "../modalSugerencias/modalSugerencias";
+import { useNavigate } from "react-router-dom";
 
 export const ChatandSugerencias: React.FC = () => {
   const [str, setStr] = useState<string>("");
@@ -38,6 +39,7 @@ export const ChatandSugerencias: React.FC = () => {
     "Hola! Soy Coni ❤️",
     "Un Chatbot que contestara tus preguntas.",
   ];
+  const navigate = useNavigate();
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -247,7 +249,14 @@ export const ChatandSugerencias: React.FC = () => {
         }}
       />
       <div className="ChatLogoContHide">
-        <img src={"logo.png"} alt={"logo"} className="chatLogo" />
+        <img
+          src={"logo.png"}
+          alt={"logo"}
+          className="chatLogo"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
       </div>
       <div
         className="chatboXCont d-flex w-100 h-100 justify-content-center align-items-center mx-auto"
@@ -334,7 +343,14 @@ export const ChatandSugerencias: React.FC = () => {
       </div>
       <div className="ChatLogoSeacrhPregCont  w-100  justify-content-center align-items-center mx-auto ">
         <div className="ChatLogoCont">
-          <img src={"logo.png"} alt={"logo"} className="chatLogo" />
+          <img
+            src={"logo.png"}
+            alt={"logo"}
+            className="chatLogo"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
         </div>
         <PreguntasSearchBar
           posiblePregunta={posiblePregunta}
