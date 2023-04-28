@@ -1,17 +1,23 @@
+.modaldetalleTema{
+    height: 100vh;
+}
 .mainimgDetalleTema{
     width: 100%;
     height: 50vh;
     object-fit: cover;
 }
 .contDeTema{
+    background-color: black;
+    min-height: 200vh;
+  max-height: 200vh;
+  
     color: aliceblue;
     position: relative;
 }
 .contContenidoDeTe{
     position: absolute;
     top: 0;
-    background-image: linear-gradient(rgba(207, 203, 203, 0.1),   rgba(0, 0, 0, 0.5));
-    
+    background-image: linear-gradient(rgba(207, 203, 203, 0.1),   rgba(0, 0, 0, 0.5));    
     width: 100%;
     height: 100%;
 }
@@ -21,7 +27,36 @@
     text-shadow: 5px 5px black;    
     max-width: 60%;
     margin-top: 30vh;
+    min-height: 20vh;
 }
 .ContTituloDeTe h2{
     font-size: 70px;
+}
+
+.ContAllParagraphs{
+    width: 90%;
+    margin: 1% 5%;
+}
+
+.contParagraph{
+    margin: 3% 0%;
+}
+
+.ContParagraphLista{
+    width: 90%;
+    margin: 2% 5%;
+}
+
+.ContContParagraph{
+    margin: 3% 0%;
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.ContadorParag{
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-size: 180%;
+    text-shadow: 2px 2px black;
 }

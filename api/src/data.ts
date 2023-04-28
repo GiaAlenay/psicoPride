@@ -88,7 +88,7 @@ export const BibliotecaArray:TemaBibliotecaAttributes[]=[
     	Debe ser pedido en todo momento: Cada experiencia sexual es única y debe ser consentida individualmente. No se debe dar por sentado que alguien quiere tener relaciones sexuales porque lo han hecho en el pasado. <s>
     	Debe ser claro: Si una persona no está segura de si la(s) otra(s) quiere(n) tener relaciones sexuales, es importante preguntar y esperar una respuesta clara antes de continuar. <s>
     	Puede retirarse en cualquier momento: Si alguien cambia de opinión durante la actividad sexual, tiene derecho a detenerla y comunicarlo a lxs demás. <s>
-    	Es una responsabilidad compartida: Cada persona debe asegurarse que todxs estén cómodxs e informadxs previamente de las medidas de protección y actividades sexuales que se realizarán.  <s>
+    	Es una responsabilidad compartida: Cada persona debe asegurarse que todxs estén cómodxs e informadxs previamente de las medidas de protección y actividades sexuales que se realizarán. 
     <hr/> Si se considera que el consentimiento ha sido violado, es importante buscar ayuda de inmediato. Puede ser necesario hablar con un profesional de la salud, un consejero o un asesor jurídico para obtener asesoramiento y apoyo. <hr/> En conclusión, el consentimiento debe ser libre, entusiasta, informado y reversible. El respeto por esta decisión es fundamental en cualquier relación íntima. De esta forma, se garantiza la salud, seguridad y disfrute de todxs lxs participantes.
     `,
     mainImagen:'ConsentimientoSexual.png'},
