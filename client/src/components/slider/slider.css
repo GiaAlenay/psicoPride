@@ -1,10 +1,4 @@
-.mainImgSlider{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;    
-    border-radius: 2px;
-    box-shadow:  -2px -1px 6px -4px rgb(73, 73, 73),0.6px -1px 3px rgb(110, 110, 110);
-}
+
 /* .contMainImg div{
     width: 90%;
     height: 90%;
@@ -18,20 +12,7 @@
     display: grid;
     
 } */
-.contSlider{
-    position: relative;
-    place-items: center;
-   display: grid;
-}
 
-.contSliceCenter{
-    position: relative;
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 96%;
-    height: 60%;
-    
-}
 /* .contitleSlider{
     font-size: 120%;
     text-transform:capitalize;
@@ -63,4 +44,40 @@
 .buttonMoreSlider:active{
     padding: 15px;
     box-shadow:  inset 0.6px 0.6px 2px rgb(48, 48, 48);
+} */
+
+.slick-slide .contSlider{  
+    height: 400px;
+    width: 100%;
+    border-radius: 4px;    
+  }
+
+  .contSlider{
+    position: relative;
+    place-items: center;
+   display: grid;
+}
+
+.contSliceCenter{
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 96%;
+    height: 60%;
+    
+}
+.mainImgSlider{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+    border-radius: 2px;
+    box-shadow:  -2px -1px 6px -4px rgb(73, 73, 73),0.6px -1px 3px rgb(110, 110, 110);
+}
+.contSliceCenter:hover{
+    cursor:pointer;
+    position: absolute;
+    transform: scale(1.02);
+}
+
+/* .contSliceCenter:hover {
+
 } */

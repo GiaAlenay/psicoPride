@@ -1,9 +1,10 @@
+.contSliderDetalle{
+  position: relative;
+  padding: 0% 10% 0% 10%;
+}
+
 .slick-slide {
-    height:fit-content;
-    
-  
-  
-     
+    height:fit-content;    
   }
   .contBiblioteca{
     height: 90vh;
@@ -18,15 +19,9 @@
     width: 100%;
     border-radius: 4px;
 }
-.slick-slide .contSlider{
-  
-  height: 400px;
-  width: 100%;
-  border-radius: 4px;
-  
-}
+
   .centerContBiblioteca{
-    padding: 5% 10% 0% 10%;
+    padding: 5% 0% 0% 0%;
     /* background-color: red; */
   }
     
@@ -43,3 +38,4 @@
     height: 100%;
     border-radius: 4px;
   }
+  

@@ -29,3 +29,10 @@ export interface MensajeObj {
     mainImagen:string;
     contenio?:string;
   }
+
+  export interface SlideOrderAttributes{
+    primero:number;
+    segundo:number;
+    tercero:number;
+    [key: string]: any;
+  }
