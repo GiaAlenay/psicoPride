@@ -22,7 +22,7 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
 }) => {
   const miInput = useRef<HTMLInputElement>(null);
   const { data } = useSelector<RootState, GenderState>((state) => state.gender);
-
+  const [otroID, setOtroID] = useState<number>(0);
   useEffect(() => {
     if (user.GenderIdentityId) {
       hanldledisable();
@@ -33,6 +33,18 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
       miInput.current.focus();
     }
   }, []);
+  useEffect(() => {
+    if (Array.isArray(data) && data.length > 0) {
+      const otro = data.find((e) => e.name === "Otro");
+      setOtroID(1);
+      if (otro?.id) {
+        setOtroID(otro.id);
+      } else {
+        setOtroID(6);
+      }
+    }
+  }, [data]);
+
   return (
     <div className="W-100 text-center" data-aos="flip-left">
       <h3>¿Cuál es tu identidad de género?</h3>
@@ -58,15 +70,14 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
         ))}
         <div className="ContBtnOtro" style={{ position: "relative" }}>
           <button
-            key={data[data.length - 1].id}
+            key={otroID}
             className={`btnGeneroOtro ${
-              user.GenderIdentityId &&
-              user.GenderIdentityId.includes(data[data.length - 1].id)
+              user.GenderIdentityId && user.GenderIdentityId.includes(otroID)
                 ? "selectedGenOtro"
                 : "notselectedGenOtro"
             }`}
             onClick={() => {
-              setUser("GenderIdentityId", data[data.length - 1].id, true);
+              setUser("GenderIdentityId", otroID, true);
               setTimeout(() => {
                 if (miInput.current) {
                   miInput.current.focus();
@@ -76,8 +87,7 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
           >
             <div
               className={`otroContGen ${
-                user.GenderIdentityId &&
-                user.GenderIdentityId.includes(data[data.length - 1].id)
+                user.GenderIdentityId && user.GenderIdentityId.includes(otroID)
                   ? "OtroContArriba"
                   : "OtroContCentro"
               }`}
@@ -93,8 +103,7 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
               }}
               type="text"
               className={`${
-                user.GenderIdentityId &&
-                user.GenderIdentityId.includes(data[data.length - 1].id)
+                user.GenderIdentityId && user.GenderIdentityId.includes(otroID)
                   ? "OtroinputArriba"
                   : "OtroinputDebajo"
               }`}
@@ -102,9 +111,6 @@ export const CuestionarioParte2: React.FC<MyComponentProps> = ({
           </button>
         </div>
       </div>
-      {/* <div className="d-flex w-100 justify-content-center align-items-center ">
-        
-      </div> */}
     </div>
   );
 };

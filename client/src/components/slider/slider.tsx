@@ -58,7 +58,6 @@ export const SliderBiblioteca: React.FC<MyProps> = ({
                   <MdExpandMore
                     className="moreDetalleBtn"
                     onClick={() => {
-                      console.log(id);
                       setShowFullDetail(true);
                     }}
                   />

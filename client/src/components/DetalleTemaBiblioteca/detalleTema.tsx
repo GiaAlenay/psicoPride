@@ -32,7 +32,6 @@ export const DetalleTema: React.FC<MyComponentProps> = ({
     TemaGlobalState
   >((state) => state.biblioteca);
   useEffect(() => {
-    console.log("este es el id:", id);
     if (id) {
       dispatch(getContenido(id));
     }
@@ -45,8 +44,10 @@ export const DetalleTema: React.FC<MyComponentProps> = ({
         SetContenidoTexto(contenido.data.contenido);
       }
     }
-  }, [contenido]);
+  }, [contenido, show]);
   const handleOnhide = () => {
+    setDetalle(null);
+    SetContenidoTexto([]);
     dispatch(vaciarContenido());
     setShow();
   };
